@@ -29,9 +29,9 @@ outputfileName = st.text_input("Write the name of output (docx file) name in her
 run = title.add_run(titleText)
 run.bold = True
 run.font.size = Pt(18)
+
+st.markdown("--------------------------")
 bundling = st.checkbox("Bundling?")
-
-
 if bundling:
   st.caption("Bundling is selected")
   p = document.add_paragraph(style=document.styles['List Bullet 0'])
@@ -40,6 +40,7 @@ if bundling:
   p.add_run('Bundling')
   bparentstep1 = st.checkbox('Step: Parent Bundling Step 1')
   
+  st.markdown("--------------------------")
   if bparentstep1:
      p = document.add_paragraph(style=document.styles['List Bullet 1'])
      p.add_run('Bundling Parent Step 1')
@@ -53,6 +54,8 @@ if bundling:
      if bchildstep1_2:
         p = document.add_paragraph(style=document.styles['List Bullet 2'])
         p.add_run('Bundling Child Step 1-2')
+  
+  st.markdown("--------------------------")
   bparentstep2 = st.checkbox('Step: Parent Bundling Step 2')
   if bparentstep2:
      p = document.add_paragraph(style=document.styles['List Bullet 1'])
@@ -68,6 +71,7 @@ if bundling:
         p.add_run('Bundling Child Step 2-2')
   
 #-------------------------------------------------------------------------------
+st.markdown("--------------------------")
 cartoning = st.checkbox("Cartoning?")
 if cartoning:
   st.caption("cartoning is selected")
@@ -77,6 +81,7 @@ if cartoning:
   p.add_run('cartoning')
   cparentstep1 = st.checkbox('Step: Parent cartoning Step 1')
   
+  st.markdown("--------------------------")
   if cparentstep1:
      p = document.add_paragraph(style=document.styles['List Bullet 1'])
      p.add_run('cartoning Parent Step 1')
@@ -90,6 +95,8 @@ if cartoning:
      if cchildstep1_2:
         p = document.add_paragraph(style=document.styles['List Bullet 2'])
         p.add_run('cartoning Child Step 1-2')
+  
+  st.markdown("--------------------------")
   cparentstep2 = st.checkbox('Step: Parent cartoning Step 2')
   if cparentstep2:
      p = document.add_paragraph(style=document.styles['List Bullet 1'])
@@ -105,6 +112,7 @@ if cartoning:
         p.add_run('cartoning Child Step 2-2')
 
 #-------------------------------------------------------------------------------
+st.markdown("--------------------------")
 additional = st.checkbox("Additional?")
 if additional:
   st.caption("additional is selected")
@@ -112,8 +120,9 @@ if additional:
   p.paragraph_format.line_spacing = Pt(12)  # Set line spacing to 24 points
   # Main Process Name
   p.add_run('additional')
+
+  st.markdown("--------------------------")
   aparentstep1 = st.checkbox('Step: Parent additional Step 1')
-  
   if aparentstep1:
      p = document.add_paragraph(style=document.styles['List Bullet 1'])
      p.add_run('additional Parent Step 1')
@@ -127,6 +136,8 @@ if additional:
      if achildstep1_2:
         p = document.add_paragraph(style=document.styles['List Bullet 2'])
         p.add_run('additional Child Step 1-2')
+  
+  st.markdown("--------------------------")
   aparentstep2 = st.checkbox('Step: Parent additional Step 2')
   if aparentstep2:
      p = document.add_paragraph(style=document.styles['List Bullet 1'])
