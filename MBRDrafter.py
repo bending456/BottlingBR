@@ -30,8 +30,7 @@ run = title.add_run(titleText)
 run.bold = True
 run.font.size = Pt(18)
 bundling = st.checkbox("Bundling?")
-cartoning = st.checkbox("Cartoning?")
-additional = st.checkbox("Additional?")
+
 
 if bundling:
   st.caption("Bundling is selected")
@@ -69,6 +68,7 @@ if bundling:
         p.add_run('Bundling Child Step 2-2')
   
 #-------------------------------------------------------------------------------
+cartoning = st.checkbox("Cartoning?")
 if cartoning:
   st.caption("cartoning is selected")
   p = document.add_paragraph(style=document.styles['List Bullet 0'])
@@ -105,6 +105,7 @@ if cartoning:
         p.add_run('cartoning Child Step 2-2')
 
 #-------------------------------------------------------------------------------
+additional = st.checkbox("Additional?")
 if additional:
   st.caption("additional is selected")
   p = document.add_paragraph(style=document.styles['List Bullet 0'])
