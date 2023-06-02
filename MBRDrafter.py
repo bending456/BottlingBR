@@ -8,6 +8,7 @@ from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 from docx.oxml.ns import nsdecls
 from docx.oxml import parse_xml
 from docx.shared import Inches
+from docx.shared import RGBColor
 
 st.header("Master Batch Record Drafter [Under Construction]")
 if 'writing draft' not in st.session_state:
@@ -64,7 +65,9 @@ if bundling:
   if bparentstep1warning:
         bps1warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: bps1)")
         p = document.add_paragraph(style=document.styles['List Bullet 1'])
-        p.add_run(bps1warning)
+        run = p.add_run(bps1warning)
+        run.font.color.rgb = RGBColor(255, 0, 0)
+        run.font.bold = True
      
   
   st.markdown("--------------------------")
@@ -88,7 +91,9 @@ if bundling:
   if bparentstep2warning:
         bps2warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: bps2)")
         p = document.add_paragraph(style=document.styles['List Bullet 1'])
-        p.add_run(bps2warning)  
+        run = p.add_run(bps2warning)  
+        run.font.color.rgb = RGBColor(255, 0, 0)
+        run.font.bold = True
   
 #-------------------------------------------------------------------------------
 st.markdown("--------------------------")
@@ -120,7 +125,9 @@ if cartoning:
   if cparentstep1warning:
         cps2warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: cps1)")
         p = document.add_paragraph(style=document.styles['List Bullet 1'])
-        p.add_run(cps2warning) 
+        run = p.add_run(cps2warning) 
+        run.font.color.rgb = RGBColor(255, 0, 0)
+        run.font.bold = True
 
   st.markdown("--------------------------")
   cparentstep2 = st.checkbox('Step: Parent cartoning Step 2',value=True)
@@ -143,7 +150,9 @@ if cartoning:
   if cparentstep2warning:
         cps2warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: cps2)")
         p = document.add_paragraph(style=document.styles['List Bullet 1'])
-        p.add_run(cps2warning) 
+        run = p.add_run(cps2warning) 
+        run.font.color.rgb = RGBColor(255, 0, 0)
+        run.font.bold = True
 
 #-------------------------------------------------------------------------------
 st.markdown("--------------------------")
@@ -176,7 +185,9 @@ if additional:
   if aparentstep1warning:
         aps1warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: aps1)")
         p = document.add_paragraph(style=document.styles['List Bullet 1'])
-        p.add_run(aps1warning) 
+        run = p.add_run(aps1warning) 
+        run.font.color.rgb = RGBColor(255, 0, 0)
+        run.font.bold = True
 
   st.markdown("--------------------------")
   aparentstep2 = st.checkbox('Step: Parent additional Step 2',value=True)
@@ -199,7 +210,9 @@ if additional:
   if bparentstep2warning:
         aps2warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: aps2)")
         p = document.add_paragraph(style=document.styles['List Bullet 1'])
-        p.add_run(aps2warning) 
+        run = p.add_run(aps2warning)
+        run.font.color.rgb = RGBColor(255, 0, 0)
+        run.font.bold = True
 
 # Save the document
 #document.save(outputfileName+'.docx')
