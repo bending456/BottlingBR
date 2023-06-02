@@ -10,21 +10,22 @@ from docx.oxml import parse_xml
 from docx.shared import Inches
 
 def MBRDrafter():  
+  
+
+  st.header("Master Batch Record Drafter [Under Construction]")
+
   document = Document()
   
   # Create a new style for each indent level
   for i in range(5):  # Adjust range for as many levels as you need
-      try:
-          style = document.styles.add_style(f'List Bullet {i}', document.styles['Normal'].type)
-      except:
-          style = document.styles[f'List Bullet {i}']
-  
-      style.paragraph_format.left_indent = Pt(18 * i)  # 36 points = 0.5 inches
-      style.paragraph_format.first_line_indent = Pt(-9)  # 18 points = 0.25 inches
-      style.paragraph_format.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
-      style.font.size = Pt(11)
-
-  st.header("Master Batch Record Drafter [Under Construction]")
+    try:
+        style = document.styles.add_style(f'List Bullet {i}', document.styles['Normal'].type)
+    except:
+        style = document.styles[f'List Bullet {i}']
+    style.paragraph_format.left_indent = Pt(18 * i)  # 36 points = 0.5 inches
+    style.paragraph_format.first_line_indent = Pt(-9)  # 18 points = 0.25 inches
+    style.paragraph_format.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
+    style.font.size = Pt(11)
 
   # Header of Document
   title = document.add_paragraph()
