@@ -43,7 +43,7 @@ if bundling:
   if bparentstep1:
      p = document.add_paragraph(style=document.styles['List Bullet 1'])
      p.add_run('Bundling Parent Step 1')
-     st.markdown('*')
+     st.markdown('- Choose specific bundling steps')
      
      bchildstep1_1 = st.checkbox('Sub step: child bundling step 1')
      if bchildstep1_1:
