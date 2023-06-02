@@ -164,7 +164,6 @@ if additional:
   # Main Process Name
   p.add_run('additional')
 
-  st.markdown("--------------------------")
   aparentstep1 = st.checkbox('Step: Parent additional Step 1',value=True)
   aparentstep1warning = st.checkbox('Any warning regarding additional step 1?')
   if aparentstep1:
