@@ -1,7 +1,7 @@
 ## Opening of Python Packages to run the program ###
 import streamlit as st
 import os
-import tempfiles
+import tempfile
 from docx import Document
 from docx.shared import Pt
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
