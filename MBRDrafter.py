@@ -10,7 +10,13 @@ from docx.oxml import parse_xml
 from docx.shared import Inches
 
 st.header("Master Batch Record Drafter [Under Construction]")
+if 'writing draft' not in st.session_state:
+   st.session_state['writing draft']=False
+
 document = Document()
+
+if st.checkbox("Check this box to prevent unwanted rerun"):
+   st.session_state['writing draft']=True
 
 # Create a new style for each indent level
 for i in range(5):  # Adjust range for as many levels as you need
