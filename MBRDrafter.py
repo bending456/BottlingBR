@@ -142,7 +142,7 @@ if additional:
   # Save the document
 #document.save(outputfileName+'.docx')
 with tempfile.NamedTemporaryFile(delete=False, suffix='.docx') as tmp:
-    doc.save(tmp.name)
+    document.save(tmp.name)
     tmp.seek(0)
 
     # Create a button to download the docx file
