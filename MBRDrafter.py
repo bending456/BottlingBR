@@ -106,7 +106,7 @@ if cartoning:
   p.add_run('cartoning')
 
   cparentstep1 = st.checkbox('Step: Parent cartoning Step 1',value=True)  
-  cparentstep1warning = st.checkbox('Any warning regarding additional step 1?')
+  cparentstep1warning = st.checkbox('Any warning regarding cartoning step 1?')
   if cparentstep1:
      p = document.add_paragraph(style=document.styles['List Bullet 1'])
      p.add_run('cartoning Parent Step 1')
