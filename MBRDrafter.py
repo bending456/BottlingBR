@@ -62,7 +62,7 @@ if bundling:
         p.add_run('Bundling Child Step 1-2')
 
   if bparentstep1warning:
-        bps1warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID:bps1)")
+        bps1warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: bps1)")
         p = document.add_paragraph(style=document.styles['List Bullet 1'])
         p.add_run(bps1warning)
      
@@ -86,7 +86,7 @@ if bundling:
         p.add_run('Bundling Child Step 2-2')
 
   if bparentstep2warning:
-        bps2warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID:bps2)")
+        bps2warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: bps2)")
         p = document.add_paragraph(style=document.styles['List Bullet 1'])
         p.add_run(bps2warning)  
   
@@ -118,7 +118,7 @@ if cartoning:
         p.add_run('cartoning Child Step 1-2')
   
   if cparentstep1warning:
-        cps2warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID:cps1)")
+        cps2warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: cps1)")
         p = document.add_paragraph(style=document.styles['List Bullet 1'])
         p.add_run(cps2warning) 
 
@@ -141,7 +141,7 @@ if cartoning:
         p.add_run('cartoning Child Step 2-2')
 
   if cparentstep2warning:
-        cps2warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID:cps2)")
+        cps2warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: cps2)")
         p = document.add_paragraph(style=document.styles['List Bullet 1'])
         p.add_run(cps2warning) 
 
@@ -174,7 +174,7 @@ if additional:
         p.add_run('additional Child Step 1-2')
   
   if aparentstep1warning:
-        aps1warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID:aps1)")
+        aps1warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: aps1)")
         p = document.add_paragraph(style=document.styles['List Bullet 1'])
         p.add_run(aps1warning) 
 
@@ -197,7 +197,7 @@ if additional:
         p.add_run('additional Child Step 2-2')
   
   if bparentstep2warning:
-        aps2warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID:aps2)")
+        aps2warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: aps2)")
         p = document.add_paragraph(style=document.styles['List Bullet 1'])
         p.add_run(aps2warning) 
 
