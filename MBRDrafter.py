@@ -207,7 +207,7 @@ if additional:
         p = document.add_paragraph(style=document.styles['List Bullet 2'])
         p.add_run('additional Child Step 2-2')
   
-  if bparentstep2warning:
+  if aparentstep2warning:
         aps2warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: aps2)")
         p = document.add_paragraph(style=document.styles['List Bullet 1'])
         run = p.add_run(aps2warning)
