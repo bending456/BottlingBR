@@ -39,18 +39,18 @@ if bundling:
   # Main Process Name
   p.add_run('Bundling')
   bparentstep1 = st.checkbox('Step: Parent Bundling Step 1')
-  
-  st.markdown("--------------------------")
+
   if bparentstep1:
      p = document.add_paragraph(style=document.styles['List Bullet 1'])
      p.add_run('Bundling Parent Step 1')
-     st.markdown('- Choose specific bundling steps')
+     st.caption('- Choose specific bundling steps')
      
-     bchildstep1_1 = st.checkbox('Sub step: child bundling step 1')
+     bchildstep1_1 = st.checkbox('Sub step: child bundling step 1-1')
      if bchildstep1_1:
         p = document.add_paragraph(style=document.styles['List Bullet 2'])
         p.add_run('Bundling Child Step 1-1')
-     bchildstep1_2 = st.checkbox('Sub step: child bundling step 2')
+
+     bchildstep1_2 = st.checkbox('Sub step: child bundling step 1-2')
      if bchildstep1_2:
         p = document.add_paragraph(style=document.styles['List Bullet 2'])
         p.add_run('Bundling Child Step 1-2')
@@ -60,12 +60,14 @@ if bundling:
   if bparentstep2:
      p = document.add_paragraph(style=document.styles['List Bullet 1'])
      p.add_run('Bundling Parent Step 2')
-     st.markdown('*')
-     bchildstep2_1 = st.checkbox('Sub step: child bundling step 1')
+     st.caption('- Choose specific bundling steps')
+     
+     bchildstep2_1 = st.checkbox('Sub step: child bundling step 2-1')
      if bchildstep2_1:
         p = document.add_paragraph(style=document.styles['List Bullet 2'])
         p.add_run('Bundling Child Step 2-1')
-     bchildstep2_2 = st.checkbox('Sub step: child bundling step 2')
+
+     bchildstep2_2 = st.checkbox('Sub step: child bundling step 2-2')
      if bchildstep2_2:
         p = document.add_paragraph(style=document.styles['List Bullet 2'])
         p.add_run('Bundling Child Step 2-2')
@@ -79,19 +81,19 @@ if cartoning:
   p.paragraph_format.line_spacing = Pt(12)  # Set line spacing to 24 points
   # Main Process Name
   p.add_run('cartoning')
-  cparentstep1 = st.checkbox('Step: Parent cartoning Step 1')
-  
-  st.markdown("--------------------------")
+
+  cparentstep1 = st.checkbox('Step: Parent cartoning Step 1')  
   if cparentstep1:
      p = document.add_paragraph(style=document.styles['List Bullet 1'])
      p.add_run('cartoning Parent Step 1')
-     st.markdown('*')
+     st.caption('- Choose specific bundling steps')
      
-     cchildstep1_1 = st.checkbox('Sub step: child cartoning step 1')
+     cchildstep1_1 = st.checkbox('Sub step: child cartoning step 1-1')
      if cchildstep1_1:
         p = document.add_paragraph(style=document.styles['List Bullet 2'])
         p.add_run('cartoning Child Step 1-1')
-     cchildstep1_2 = st.checkbox('Sub step: child cartoning step 2')
+
+     cchildstep1_2 = st.checkbox('Sub step: child cartoning step 1-2')
      if cchildstep1_2:
         p = document.add_paragraph(style=document.styles['List Bullet 2'])
         p.add_run('cartoning Child Step 1-2')
@@ -101,12 +103,14 @@ if cartoning:
   if cparentstep2:
      p = document.add_paragraph(style=document.styles['List Bullet 1'])
      p.add_run('cartoning Parent Step 2')
-     st.markdown('*')
-     cchildstep2_1 = st.checkbox('Sub step: child cartoning step 1')
+     st.caption('- Choose specific bundling steps')
+
+     cchildstep2_1 = st.checkbox('Sub step: child cartoning step 2-1')
      if cchildstep2_1:
         p = document.add_paragraph(style=document.styles['List Bullet 2'])
         p.add_run('cartoning Child Step 2-1')
-     cchildstep2_2 = st.checkbox('Sub step: child cartoning step 2')
+
+     cchildstep2_2 = st.checkbox('Sub step: child cartoning step 2-2')
      if cchildstep2_2:
         p = document.add_paragraph(style=document.styles['List Bullet 2'])
         p.add_run('cartoning Child Step 2-2')
@@ -126,13 +130,14 @@ if additional:
   if aparentstep1:
      p = document.add_paragraph(style=document.styles['List Bullet 1'])
      p.add_run('additional Parent Step 1')
-     st.markdown('*')
+     st.caption('- Choose specific bundling steps')
      
-     achildstep1_1 = st.checkbox('Sub step: child additional step 1')
+     achildstep1_1 = st.checkbox('Sub step: child additional step 1-1')
      if achildstep1_1:
         p = document.add_paragraph(style=document.styles['List Bullet 2'])
         p.add_run('additional Child Step 1-1')
-     achildstep1_2 = st.checkbox('Sub step: child additional step 2')
+
+     achildstep1_2 = st.checkbox('Sub step: child additional step 1-2')
      if achildstep1_2:
         p = document.add_paragraph(style=document.styles['List Bullet 2'])
         p.add_run('additional Child Step 1-2')
@@ -142,12 +147,14 @@ if additional:
   if aparentstep2:
      p = document.add_paragraph(style=document.styles['List Bullet 1'])
      p.add_run('additional Parent Step 2')
-     st.markdown('*')
-     achildstep2_1 = st.checkbox('Sub step: child additional step 1')
+     st.caption('- Choose specific bundling steps')
+
+     achildstep2_1 = st.checkbox('Sub step: child additional step 2-1')
      if achildstep2_1:
         p = document.add_paragraph(style=document.styles['List Bullet 2'])
         p.add_run('additional Child Step 2-1')
-     achildstep2_2 = st.checkbox('Sub step: child additional step 2')
+
+     achildstep2_2 = st.checkbox('Sub step: child additional step 2-2')
      if achildstep2_2:
         p = document.add_paragraph(style=document.styles['List Bullet 2'])
         p.add_run('additional Child Step 2-2')
