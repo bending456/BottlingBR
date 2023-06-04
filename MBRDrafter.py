@@ -52,7 +52,7 @@ paragraph = header.paragraphs[0]
 batchnumber = st.text_input("Write the batch number in here ...")
 run = paragraph.add_run(batchnumber)
 run.bold = True
-run.font.size = Pt{10}
+run.font.size = Pt(10)
 run.font.color.rgb = RGBColor(255, 0, 0)
 
 st.markdown("--------------------------")
