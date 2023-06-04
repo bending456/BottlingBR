@@ -69,7 +69,7 @@ st.markdown("--------------------------")
 if bundling:
   st.markdown('<p style="font-size: 20px;">Bundling is selected</p>', unsafe_allow_html=True)
   p = document.add_paragraph(style=document.styles['List Bullet 0'])
-  p.paragraph_format.line_spacing = Pt(6)  # Set line spacing to 24 points
+  p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
   # Main Process Name
   p.add_run('Bundling')
   bparentstep1 = st.checkbox('Step: Parent Bundling Step 1',value=True)
@@ -128,7 +128,7 @@ st.markdown("--------------------------")
 if cartoning:
   st.markdown('<p style="font-size: 20px;">Cartoning is selected</p>', unsafe_allow_html=True)
   p = document.add_paragraph(style=document.styles['List Bullet 0'])
-  p.paragraph_format.line_spacing = Pt(6)  # Set line spacing to 24 points
+  p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
   # Main Process Name
   p.add_run('cartoning')
 
@@ -186,7 +186,7 @@ st.markdown("--------------------------")
 if additional:
   st.markdown('<p style="font-size: 20px;">Additional is selected</p>', unsafe_allow_html=True)
   p = document.add_paragraph(style=document.styles['List Bullet 0'])
-  p.paragraph_format.line_spacing = Pt(6)  # Set line spacing to 24 points
+  p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
   # Main Process Name
   p.add_run('additional')
 
