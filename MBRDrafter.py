@@ -11,6 +11,7 @@ from docx.shared import Inches
 from docx.shared import RGBColor
 
 st.header("Master Batch Record Drafter [Under Construction]")
+st.caption("Note: We may need to split primary and secondary options")
 if 'writing draft' not in st.session_state:
    st.session_state['writing draft']=False
 
@@ -70,18 +71,21 @@ run.font.size = Pt(10)
 run.font.color.rgb = RGBColor(0, 0, 255)
 
 ##---- Selecting Processes
-st.sidebar.header("**List of Processes**")
-###--- Primary Packaging related list
-st.sidebar.markdown("*Primary Packaging*")
-st.sidebar.checkbox("Sachet?")
-st.sidebar.checkbox("Canister?")
-st.sidebar.checkbox("Cotton Filler?")
-st.sidebar.checkbox("Additional1?")
-###--- Secondary Packaging related list
-st.sidebar.markdown("# Secondary Packaging")
-bundling = st.sidebar.checkbox("Bundling?")
-cartoning = st.sidebar.checkbox("Cartoning?")
-additional = st.sidebar.checkbox("Additional2?")
+st.sidebar.markdown("# List of Processes")
+with st.sidbar.checkbox("Primary Packaging"):
+   ###--- Primary Packaging related list
+   st.sidebar.markdown("## Primary Packaging")
+   st.sidebar.checkbox("Sachet?")
+   st.sidebar.checkbox("Canister?")
+   st.sidebar.checkbox("Cotton Filler?")
+   st.sidebar.checkbox("Additional1?")
+
+with st.sidebar.checkbox("Secondary Packaging"):
+   ###--- Secondary Packaging related list
+   st.sidebar.markdown("## Secondary Packaging")
+   bundling = st.sidebar.checkbox("Bundling?")
+   cartoning = st.sidebar.checkbox("Cartoning?")
+   additional = st.sidebar.checkbox("Additional2?")
 
 
 ##################################################################
