@@ -76,6 +76,8 @@ if bundling:
   p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
   # Main Process Name
   p.add_run('Bundling')
+  p.bold = True
+  p.font.size = Pt(12)
   bparentstep1 = st.checkbox('Step: Parent Bundling Step 1',value=True)
   bparentstep1warning = st.checkbox('Any warning regarding bundling step 1?')
   if bparentstep1:
@@ -135,6 +137,8 @@ if cartoning:
   p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
   # Main Process Name
   p.add_run('Cartoning')
+  p.bold = True
+  p.font.size = Pt(12)
 
   cparentstep1 = st.checkbox('Step: Parent cartoning Step 1',value=True)  
   cparentstep1warning = st.checkbox('Any warning regarding cartoning step 1?')
@@ -195,6 +199,8 @@ if additional:
   p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
   # Main Process Name
   p.add_run('Additional')
+  p.bold = True
+  p.font.size = Pt(12)
 
   aparentstep1 = st.checkbox('Step: Parent additional Step 1',value=True)
   aparentstep1warning = st.checkbox('Any warning regarding additional step 1?')
