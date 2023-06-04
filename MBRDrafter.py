@@ -40,8 +40,8 @@ for i in range(5):  # Adjust range for as many levels as you need
 
 ###------ Title of Document
 title = document.add_paragraph()
-titleText = st.text_input("Write the title of your document in here ... ")
-outputfileName = st.text_input("Write the name of output (docx file) name in here ...")
+titleText = st.sidebar.text_input("Write the title of your document in here ... ")
+outputfileName = st.sidebar.text_input("Write the name of output (docx file) name in here ...")
 run = title.add_run(titleText)
 run.bold = True
 run.font.size = Pt(14)
@@ -50,7 +50,7 @@ run.font.size = Pt(14)
 header = document.sections[0].header
 paragraph = header.paragraphs[0]
 paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.RIGHT
-batchnumber = st.text_input("Write the batch number in here ...")
+batchnumber = st.sidebar.text_input("Write the batch number in here ...")
 run = paragraph.add_run(batchnumber)
 run.bold = True
 run.font.size = Pt(10)
