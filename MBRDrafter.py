@@ -70,6 +70,7 @@ additional = st.sidebar.checkbox("Additional?",value=True)
 st.markdown("--------------------------")
 if bundling:
   st.markdown('<p style="font-size: 20px;">Bundling is selected</p>', unsafe_allow_html=True)
+  st.markdown("--------------------------")
   p = document.add_paragraph(style=document.styles['List Bullet 0'])
   p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
   # Main Process Name
@@ -129,6 +130,7 @@ st.markdown("--------------------------")
 
 if cartoning:
   st.markdown('<p style="font-size: 20px;">Cartoning is selected</p>', unsafe_allow_html=True)
+  st.markdown("--------------------------")
   p = document.add_paragraph(style=document.styles['List Bullet 0'])
   p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
   # Main Process Name
@@ -187,6 +189,7 @@ if cartoning:
 st.markdown("--------------------------")
 if additional:
   st.markdown('<p style="font-size: 20px;">Additional is selected</p>', unsafe_allow_html=True)
+  st.markdown("--------------------------")
   p = document.add_paragraph(style=document.styles['List Bullet 0'])
   p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
   # Main Process Name
