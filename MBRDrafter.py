@@ -49,11 +49,21 @@ run.font.size = Pt(14)
 ###------ Header of Document
 header = document.sections[0].header
 paragraph = header.paragraphs[0]
+paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.RIGHT
 batchnumber = st.text_input("Write the batch number in here ...")
 run = paragraph.add_run(batchnumber)
 run.bold = True
 run.font.size = Pt(10)
 run.font.color.rgb = RGBColor(255, 0, 0)
+
+###------ Footer of Document
+footer = document.sections[0].footer
+paragraph = footer.paragraphs[0]
+paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+run = paragraph.add_run("Confidential")
+run.bold = True
+run.font.size = Pt(10)
+run.font.color.rgb = RGBColor(0, 0, 255)
 
 st.markdown("--------------------------")
 if bundling:
