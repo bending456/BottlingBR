@@ -38,7 +38,7 @@ titleText = st.sidebar.text_input("Write the title of your document in here ... 
 outputfileName = st.sidebar.text_input("Write the name of output (docx file) name in here ...")
 run = title.add_run(titleText)
 run.bold = True
-run.font.size = Pt(14)
+run.font.size = Pt(16)
 
 ###------ Header of Document
 header = document.sections[0].header
