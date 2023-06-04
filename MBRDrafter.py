@@ -16,10 +16,13 @@ if 'writing draft' not in st.session_state:
 
 document = Document()
 
-st.sidebar.header("**List of Processes**")
+
 
 if st.sidebar.checkbox("Check this box to prevent unwanted rerun"):
    st.session_state['writing draft']=True
+
+st.sidebar.header("**List of Processes**")
+#----------- List of Processes ---------------------------
 
 # Create a new style for each indent level
 for i in range(5):  # Adjust range for as many levels as you need
@@ -42,6 +45,7 @@ run.font.size = Pt(18)
 st.markdown("--------------------------")
 bundling = st.sidebar.checkbox("Bundling?",value=True)
 if bundling:
+  st.markdown('<p style="font-size: 20px;">This is a caption with a larger font.</p>', unsafe_allow_html=True)
   st.caption("Bundling is selected")
   p = document.add_paragraph(style=document.styles['List Bullet 0'])
   p.paragraph_format.line_spacing = Pt(12)  # Set line spacing to 24 points
