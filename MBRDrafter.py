@@ -62,12 +62,12 @@ run.font.color.rgb = RGBColor(0, 0, 255)
 ##---- Selecting Processes
 st.sidebar.header("**List of Processes**")
 ###----------- List of Processes ---------------------------
-bundling = st.sidebar.checkbox("Bundling?",value=True)
-cartoning = st.sidebar.checkbox("Cartoning?",value=True)
-additional = st.sidebar.checkbox("Additional?",value=True)
+bundling = st.sidebar.checkbox("Bundling?")
+cartoning = st.sidebar.checkbox("Cartoning?")
+additional = st.sidebar.checkbox("Additional?")
 
 
-
+##################################################################
 if bundling:
   st.markdown("--------------------------")
   st.markdown('<p style="font-size: 20px;">Bundling is selected</p>', unsafe_allow_html=True)
