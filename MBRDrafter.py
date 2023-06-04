@@ -28,7 +28,7 @@ for i in range(5):  # Adjust range for as many levels as you need
   except:
       style = document.styles[f'List Bullet {i}']
   style.paragraph_format.left_indent = Pt(18 * i)  # 36 points = 0.5 inches
-  style.paragraph_format.first_line_indent = Pt(-9)  # 18 points = 0.25 inches
+  style.paragraph_format.first_line_indent = Pt(0)  # 18 points = 0.25 inches
   style.paragraph_format.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
   style.font.size = Pt(11)
 
