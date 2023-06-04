@@ -16,15 +16,18 @@ if 'writing draft' not in st.session_state:
 
 document = Document()
 
-
-
+#---------- Sidebar Setup
 if st.sidebar.checkbox("Check this box to prevent unwanted rerun"):
    st.session_state['writing draft']=True
 
 st.sidebar.header("**List of Processes**")
-#----------- List of Processes ---------------------------
+##----------- List of Processes ---------------------------
+bundling = st.sidebar.checkbox("Bundling?",value=True)
+cartoning = st.sidebar.checkbox("Cartoning?",value=True)
+additional = st.sidebar.checkbox("Additional?",value=True)
 
-# Create a new style for each indent level
+##----------- docx file generator setup 
+####------- Create a new style for each indent level
 for i in range(5):  # Adjust range for as many levels as you need
   try:
       style = document.styles.add_style(f'List Bullet {i}', document.styles['Normal'].type)
@@ -34,16 +37,25 @@ for i in range(5):  # Adjust range for as many levels as you need
   style.paragraph_format.first_line_indent = Pt(-9)  # 18 points = 0.25 inches
   style.paragraph_format.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
   style.font.size = Pt(11)
-# Header of Document
+
+###------ Title of Document
 title = document.add_paragraph()
 titleText = st.text_input("Write the title of your document in here ... ")
 outputfileName = st.text_input("Write the name of output (docx file) name in here ...")
 run = title.add_run(titleText)
 run.bold = True
-run.font.size = Pt(18)
+run.font.size = Pt(14)
+
+###------ Header of Document
+header = document.sections[0].header
+paragraph = header.paragraphs[0]
+batchnumber = st.text_input("Write the batch number in here ...")
+run = paragraph.add_run(batchnumber)
+run.bold = True
+run.font.size = Pt{10}
+run.font.color.rgb = RGBColor(255, 0, 0)
 
 st.markdown("--------------------------")
-bundling = st.sidebar.checkbox("Bundling?",value=True)
 if bundling:
   st.markdown('<p style="font-size: 20px;">Bundling is selected</p>', unsafe_allow_html=True)
   p = document.add_paragraph(style=document.styles['List Bullet 0'])
@@ -102,7 +114,7 @@ if bundling:
   
 #-------------------------------------------------------------------------------
 st.markdown("--------------------------")
-cartoning = st.checkbox("Cartoning?",value=True)
+
 if cartoning:
   st.markdown('<p style="font-size: 20px;">Cartoning is selected</p>', unsafe_allow_html=True)
   p = document.add_paragraph(style=document.styles['List Bullet 0'])
@@ -161,7 +173,6 @@ if cartoning:
 
 #-------------------------------------------------------------------------------
 st.markdown("--------------------------")
-additional = st.checkbox("Additional?",value=True)
 if additional:
   st.markdown('<p style="font-size: 20px;">Additional is selected</p>', unsafe_allow_html=True)
   p = document.add_paragraph(style=document.styles['List Bullet 0'])
