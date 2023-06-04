@@ -16,7 +16,7 @@ if 'writing draft' not in st.session_state:
 
 document = Document()
 
-st.sidebar.header("```List of Processes```")
+st.sidebar.header("**List of Processes**")
 
 if st.sidebar.checkbox("Check this box to prevent unwanted rerun"):
    st.session_state['writing draft']=True
