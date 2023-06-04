@@ -130,7 +130,7 @@ if cartoning:
   p = document.add_paragraph(style=document.styles['List Bullet 0'])
   p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
   # Main Process Name
-  p.add_run('cartoning')
+  p.add_run('Cartoning')
 
   cparentstep1 = st.checkbox('Step: Parent cartoning Step 1',value=True)  
   cparentstep1warning = st.checkbox('Any warning regarding cartoning step 1?')
@@ -188,7 +188,7 @@ if additional:
   p = document.add_paragraph(style=document.styles['List Bullet 0'])
   p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
   # Main Process Name
-  p.add_run('additional')
+  p.add_run('Additional')
 
   aparentstep1 = st.checkbox('Step: Parent additional Step 1',value=True)
   aparentstep1warning = st.checkbox('Any warning regarding additional step 1?')
