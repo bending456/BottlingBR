@@ -71,10 +71,17 @@ run.font.color.rgb = RGBColor(0, 0, 255)
 
 ##---- Selecting Processes
 st.sidebar.header("**List of Processes**")
-###----------- List of Processes ---------------------------
+###--- Primary Packaging related list
+st.sidebar.markdown("#Primary Packaging")
+st.sidebar.checkbox("Sachet?")
+st.sidebar.checkbox("Canister?")
+st.sidebar.checkbox("Cotton Filler?")
+st.sidebar.checkbox("Additional1?")
+###--- Secondary Packaging related list
+st.sidebar.markdown("#Secondary Packaging")
 bundling = st.sidebar.checkbox("Bundling?")
 cartoning = st.sidebar.checkbox("Cartoning?")
-additional = st.sidebar.checkbox("Additional?")
+additional = st.sidebar.checkbox("Additional2?")
 
 
 ##################################################################
@@ -96,16 +103,15 @@ if bundling:
          p.add_run('Bundling Parent Step 1')
          st.caption('- Choose specific bundling steps')
 
-         with st.expander('Select Sub Steps for Bundling Step 1'):
-            bchildstep1_1 = st.checkbox('Sub step: child bundling step 1-1',value=True)
-            if bchildstep1_1:
-               p = document.add_paragraph(style=document.styles['List Bullet 2'])
-               p.add_run('Bundling Child Step 1-1')
-
-            bchildstep1_2 = st.checkbox('Sub step: child bundling step 1-2',value=True)
-            if bchildstep1_2:
-               p = document.add_paragraph(style=document.styles['List Bullet 2'])
-               p.add_run('Bundling Child Step 1-2')
+         bchildstep1_1 = st.checkbox('Sub step: child bundling step 1-1',value=True)
+         if bchildstep1_1:
+            p = document.add_paragraph(style=document.styles['List Bullet 2'])
+            p.add_run('Bundling Child Step 1-1')
+         
+         bchildstep1_2 = st.checkbox('Sub step: child bundling step 1-2',value=True)
+         if bchildstep1_2:
+            p = document.add_paragraph(style=document.styles['List Bullet 2'])
+            p.add_run('Bundling Child Step 1-2')
 
       if bparentstep1warning:
             bps1warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: bps1)")
