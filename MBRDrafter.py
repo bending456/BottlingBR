@@ -255,8 +255,8 @@ if additional:
 
 # Save the document
 #document.save(outputfileName+'.docx')
-st.sidebox.header("**Download Ready**")
-if st.sidebox.checkbox("Check this box if the draft is ready"):
+st.sidebar.header("**Download Ready**")
+if st.sidebar.checkbox("Check this box if the draft is ready"):
    with tempfile.NamedTemporaryFile(delete=False, suffix='.docx') as tmp:
        document.save(tmp.name)
        tmp.seek(0)
