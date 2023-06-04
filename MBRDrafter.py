@@ -17,7 +17,8 @@ if 'writing draft' not in st.session_state:
 document = Document()
 
 #---------- Sidebar Setup
-if st.sidebar.checkbox("Check this box to prevent unwanted rerun"):
+stateholder = st.sidebar.checkbox("Check this box to prevent unwanted rerun")
+if stateholder:
    st.session_state['writing draft']=True
 
 ##----------- docx file generator setup 
@@ -254,17 +255,19 @@ if additional:
 
 # Save the document
 #document.save(outputfileName+'.docx')
-with tempfile.NamedTemporaryFile(delete=False, suffix='.docx') as tmp:
-    document.save(tmp.name)
-    tmp.seek(0)
+st.sidebox.markdown("**Download Ready**")
+if st.sidebox.checkbox("Check this box if the draft is ready"):
+   with tempfile.NamedTemporaryFile(delete=False, suffix='.docx') as tmp:
+       document.save(tmp.name)
+       tmp.seek(0)
 
-    # Create a button to download the docx file
-    st.download_button(
-        label="Download .docx file",
-        data=tmp.read(),
-        file_name=outputfileName+".docx",
-        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-    )
+       # Create a button to download the docx file
+       st.sidebar.download_button(
+           label="Download .docx file",
+           data=tmp.read(),
+           file_name=outputfileName+".docx",
+           mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+       )
 
-# Remove temporary file
-os.unlink(tmp.name)
+   # Remove temporary file
+   os.unlink(tmp.name)
