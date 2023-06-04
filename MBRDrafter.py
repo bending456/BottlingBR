@@ -72,7 +72,7 @@ run.font.color.rgb = RGBColor(0, 0, 255)
 
 ##---- Selecting Processes
 st.sidebar.markdown("# List of Processes")
-with st.sidbar.checkbox("Primary Packaging"):
+with st.sidebar.checkbox("Primary Packaging"):
    ###--- Primary Packaging related list
    st.sidebar.markdown("## Primary Packaging")
    st.sidebar.checkbox("Sachet?")
