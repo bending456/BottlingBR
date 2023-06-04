@@ -67,8 +67,9 @@ cartoning = st.sidebar.checkbox("Cartoning?",value=True)
 additional = st.sidebar.checkbox("Additional?",value=True)
 
 
-st.markdown("--------------------------")
+
 if bundling:
+  st.markdown("--------------------------")
   st.markdown('<p style="font-size: 20px;">Bundling is selected</p>', unsafe_allow_html=True)
   st.markdown("--------------------------")
   p = document.add_paragraph(style=document.styles['List Bullet 0'])
@@ -126,9 +127,8 @@ if bundling:
         run.font.bold = True
   
 #-------------------------------------------------------------------------------
-st.markdown("--------------------------")
-
 if cartoning:
+  st.markdown("--------------------------")
   st.markdown('<p style="font-size: 20px;">Cartoning is selected</p>', unsafe_allow_html=True)
   st.markdown("--------------------------")
   p = document.add_paragraph(style=document.styles['List Bullet 0'])
@@ -186,8 +186,9 @@ if cartoning:
         run.font.bold = True
 
 #-------------------------------------------------------------------------------
-st.markdown("--------------------------")
+
 if additional:
+  st.markdown("--------------------------")
   st.markdown('<p style="font-size: 20px;">Additional is selected</p>', unsafe_allow_html=True)
   st.markdown("--------------------------")
   p = document.add_paragraph(style=document.styles['List Bullet 0'])
