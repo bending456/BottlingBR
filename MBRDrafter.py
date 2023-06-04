@@ -70,8 +70,7 @@ additional = st.sidebar.checkbox("Additional?")
 
 ##################################################################
 if bundling:
-  with st.expander('Test',expanded=True):
-   st.markdown("--------------------------")
+  with st.expander('Click Me',expanded=True):
    st.markdown('<p style="font-size: 20px;">Bundling is selected</p>', unsafe_allow_html=True)
    st.markdown("--------------------------")
    p = document.add_paragraph(style=document.styles['List Bullet 0'])
