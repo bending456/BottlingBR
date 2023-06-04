@@ -20,12 +20,6 @@ document = Document()
 if st.sidebar.checkbox("Check this box to prevent unwanted rerun"):
    st.session_state['writing draft']=True
 
-st.sidebar.header("**List of Processes**")
-##----------- List of Processes ---------------------------
-bundling = st.sidebar.checkbox("Bundling?",value=True)
-cartoning = st.sidebar.checkbox("Cartoning?",value=True)
-additional = st.sidebar.checkbox("Additional?",value=True)
-
 ##----------- docx file generator setup 
 ####------- Create a new style for each indent level
 for i in range(5):  # Adjust range for as many levels as you need
@@ -64,6 +58,14 @@ run = paragraph.add_run("Confidential")
 run.bold = True
 run.font.size = Pt(10)
 run.font.color.rgb = RGBColor(0, 0, 255)
+
+##---- Selecting Processes
+st.sidebar.header("**List of Processes**")
+###----------- List of Processes ---------------------------
+bundling = st.sidebar.checkbox("Bundling?",value=True)
+cartoning = st.sidebar.checkbox("Cartoning?",value=True)
+additional = st.sidebar.checkbox("Additional?",value=True)
+
 
 st.markdown("--------------------------")
 if bundling:
