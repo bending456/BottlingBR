@@ -45,10 +45,9 @@ run.font.size = Pt(18)
 st.markdown("--------------------------")
 bundling = st.sidebar.checkbox("Bundling?",value=True)
 if bundling:
-  st.markdown('<p style="font-size: 20px;">This is a caption with a larger font.</p>', unsafe_allow_html=True)
-  st.caption("Bundling is selected")
+  st.markdown('<p style="font-size: 20px;">Bundling is selected</p>', unsafe_allow_html=True)
   p = document.add_paragraph(style=document.styles['List Bullet 0'])
-  p.paragraph_format.line_spacing = Pt(12)  # Set line spacing to 24 points
+  p.paragraph_format.line_spacing = Pt(6)  # Set line spacing to 24 points
   # Main Process Name
   p.add_run('Bundling')
   bparentstep1 = st.checkbox('Step: Parent Bundling Step 1',value=True)
@@ -105,9 +104,9 @@ if bundling:
 st.markdown("--------------------------")
 cartoning = st.checkbox("Cartoning?",value=True)
 if cartoning:
-  st.caption("cartoning is selected")
+  st.markdown('<p style="font-size: 20px;">Cartoning is selected</p>', unsafe_allow_html=True)
   p = document.add_paragraph(style=document.styles['List Bullet 0'])
-  p.paragraph_format.line_spacing = Pt(12)  # Set line spacing to 24 points
+  p.paragraph_format.line_spacing = Pt(6)  # Set line spacing to 24 points
   # Main Process Name
   p.add_run('cartoning')
 
@@ -164,9 +163,9 @@ if cartoning:
 st.markdown("--------------------------")
 additional = st.checkbox("Additional?",value=True)
 if additional:
-  st.caption("additional is selected")
+  st.markdown('<p style="font-size: 20px;">Additional is selected</p>', unsafe_allow_html=True)
   p = document.add_paragraph(style=document.styles['List Bullet 0'])
-  p.paragraph_format.line_spacing = Pt(12)  # Set line spacing to 24 points
+  p.paragraph_format.line_spacing = Pt(6)  # Set line spacing to 24 points
   # Main Process Name
   p.add_run('additional')
 
