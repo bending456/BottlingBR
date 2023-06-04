@@ -70,7 +70,7 @@ additional = st.sidebar.checkbox("Additional?")
 
 ##################################################################
 if bundling:
-  with st.expander('Test',value=False):
+  with st.expander('Test',expanded=True):
    st.markdown("--------------------------")
    st.markdown('<p style="font-size: 20px;">Bundling is selected</p>', unsafe_allow_html=True)
    st.markdown("--------------------------")
