@@ -72,7 +72,9 @@ run.font.color.rgb = RGBColor(0, 0, 255)
 
 ##---- Selecting Processes
 st.sidebar.markdown("# List of Processes")
-with st.sidebar.checkbox("Primary Packaging"):
+primary = st.sidebar.checkbox("Primary Packaging")
+secondary = st.sidebar.checkbox("Secondary Packaging")
+if primary:
    ###--- Primary Packaging related list
    st.sidebar.markdown("## Primary Packaging")
    st.sidebar.checkbox("Sachet?")
@@ -80,7 +82,7 @@ with st.sidebar.checkbox("Primary Packaging"):
    st.sidebar.checkbox("Cotton Filler?")
    st.sidebar.checkbox("Additional1?")
 
-with st.sidebar.checkbox("Secondary Packaging"):
+if secondary:
    ###--- Secondary Packaging related list
    st.sidebar.markdown("## Secondary Packaging")
    bundling = st.sidebar.checkbox("Bundling?")
