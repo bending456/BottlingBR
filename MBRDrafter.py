@@ -16,7 +16,9 @@ if 'writing draft' not in st.session_state:
 
 document = Document()
 
-if st.checkbox("Check this box to prevent unwanted rerun"):
+st.sidebar.header("```List of Processes```")
+
+if st.sidebar.checkbox("Check this box to prevent unwanted rerun"):
    st.session_state['writing draft']=True
 
 # Create a new style for each indent level
@@ -38,7 +40,7 @@ run.bold = True
 run.font.size = Pt(18)
 
 st.markdown("--------------------------")
-bundling = st.checkbox("Bundling?",value=True)
+bundling = st.sidebar.checkbox("Bundling?",value=True)
 if bundling:
   st.caption("Bundling is selected")
   p = document.add_paragraph(style=document.styles['List Bullet 0'])
