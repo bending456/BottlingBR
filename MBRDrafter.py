@@ -54,9 +54,14 @@ run.font.color.rgb = RGBColor(255, 0, 0)
 
 ###------ Header of Document - Batch Number
 authorname = st.sidebar.text_input("Write the name of author in here ...")
-left_run = header1.add_paragraph(authorname)
-left_run.bold = True
-left_run.font.color.rgb = RGBColor(0, 0, 255)
+new_paragraph = header1.add_paragraph()
+run2 = new_paragraph.add_run(authorname)
+run2.bold = True
+run2.font.size = Pt(10)
+run2.font.color.rgb = RGBColor(0,0,255)
+new_paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+
+
 
 ###------ Footer of Document
 footer = document.sections[0].footer
