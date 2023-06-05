@@ -14,6 +14,11 @@ from datetime import date
 
 st.header("Master Batch Record Drafter [Under Construction]")
 st.caption("Note: We may need to split primary and secondary options")
+
+with st.expander("",expanded=True):
+   st.markdown("### ***README***")
+   st.caption("Step 1: ")
+
 if 'writing draft' not in st.session_state:
    st.session_state['writing draft']=False
 
