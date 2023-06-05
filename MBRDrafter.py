@@ -98,10 +98,15 @@ with col1:
 
    if primary:
       ###--- Primary Packaging related list
-      st.checkbox("Sachet?")
-      st.checkbox("Canister?")
-      st.checkbox("Cotton Filler?")
-      st.checkbox("Additional1?")
+      sachet = st.checkbox("Sachet?")
+      canister = st.checkbox("Canister?")
+      cotton = st.checkbox("Cotton Filler?")
+      additional1 = st.checkbox("Additional1?")
+
+      subtitle = document.add_paragraph()
+      run = subtitle.add_run('Primary Packaging')
+      run.bold = True
+      run.font.size = Pt(14)
 
 with col2:
    st.markdown('#### Secondary Packaging')
@@ -111,7 +116,12 @@ with col2:
       ###--- Secondary Packaging related list
       bundling = st.checkbox("Bundling?")
       cartoning = st.checkbox("Cartoning?")
-      additional = st.checkbox("Additional2?")
+      additional2 = st.checkbox("Additional2?")
+
+      subtitle = document.add_paragraph()
+      run = subtitle.add_run('Secondary Packaging')
+      run.bold = True
+      run.font.size = Pt(14)
 
 
 ##------------ Control Panel -----------------------------
@@ -122,34 +132,34 @@ if not primary:
    st.caption("Primary is not Selected")
    st.divider()
 
-elif primary:
+elif primary and sachet:
    st.markdown('#### Primary Packaging Step Selection')
-   with st.expander('Select Steps for XXX Process',expanded=True):
+   with st.expander('Select Steps for Sachet Process',expanded=True):
       p = document.add_paragraph(style='List Number')
       p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
       # Main Process Name
-      run = p.add_run('XXX Process')
+      run = p.add_run('Sachet Process')
       run.bold = True
       run.font.size = Pt(12)
-      xparentstep1 = st.checkbox('Step: Parent XXX Step 1',value=True)
-      if xparentstep1:
+      sparentstep1 = st.checkbox('Step: Parent Sachet Step 1',value=True)
+      if sparentstep1:
          #p = document.add_paragraph(style='List Number 2')
          p = document.add_paragraph(style='List Number 2')
-         p.add_run('XXX Parent Step 1')
+         p.add_run('Sachet Parent Step 1')
          st.caption('- Choose specific bundling steps')
-         xchildstep1_1 = st.checkbox('Sub step: child XXX step 1-1',value=True)
-         if xchildstep1_1:
+         schildstep1_1 = st.checkbox('Sub step: child Sachet step 1-1',value=True)
+         if schildstep1_1:
             p = document.add_paragraph(style=document.styles['List Bullet 2'])
-            p.add_run('XXX Child Step 1-1')
+            p.add_run('Sachet Child Step 1-1')
          
-         xchildstep1_2 = st.checkbox('Sub step: child XXX step 1-2',value=True)
-         if xchildstep1_2:
+         schildstep1_2 = st.checkbox('Sub step: child Sachet step 1-2',value=True)
+         if schildstep1_2:
             p = document.add_paragraph(style=document.styles['List Bullet 2'])
-            p.add_run('XXX Child Step 1-2')
+            p.add_run('Sachet Child Step 1-2')
       
-      xparentstep1warning = st.checkbox('Any warning regarding XXX step 1?')
-      if xparentstep1warning:
-            xps1warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: xps1)")
+      sparentstep1warning = st.checkbox('Any warning regarding Sachet step 1?')
+      if sparentstep1warning:
+            xps1warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: sps1)")
             #p = document.add_paragraph(style='List Number 2')
             p = document.add_paragraph(style='List Number 2')
             run = p.add_run(xps1warning)
@@ -157,22 +167,22 @@ elif primary:
             run.font.bold = True
    
       st.divider()
-      xparentstep2 = st.checkbox('Step: Parent XXX Step 2',value=True)
-      if xparentstep2:
+      sparentstep2 = st.checkbox('Step: Parent Sachet Step 2',value=True)
+      if sparentstep2:
          p = document.add_paragraph(style='List Number 2')
-         p.add_run('XXX Parent Step 2')
-         st.caption('Choose specific XXX steps')
-         xchildstep2_1 = st.checkbox('Sub step: child XXX step 2-1',value=True)
-         if xchildstep2_1:
+         p.add_run('Sachet Parent Step 2')
+         st.caption('Choose specific Sachet steps')
+         schildstep2_1 = st.checkbox('Sub step: child Sachet step 2-1',value=True)
+         if schildstep2_1:
             p = document.add_paragraph(style=document.styles['List Bullet 2'])
-            p.add_run('XXX Child Step 2-1')
-         xchildstep2_2 = st.checkbox('Sub step: child XXX step 2-2',value=True)
-         if xchildstep2_2:
+            p.add_run('Sachet Child Step 2-1')
+         schildstep2_2 = st.checkbox('Sub step: child Sachet step 2-2',value=True)
+         if schildstep2_2:
             p = document.add_paragraph(style=document.styles['List Bullet 2'])
-            p.add_run('XXX Child Step 2-2')
-      xparentstep2warning = st.checkbox('Any warning regarding XXX step 2?')
-      if xparentstep2warning:
-            xps2warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: xps2)")
+            p.add_run('Sachet Child Step 2-2')
+      sparentstep2warning = st.checkbox('Any warning regarding Sachet step 2?')
+      if sparentstep2warning:
+            xps2warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: sps2)")
             p = document.add_paragraph(style='List Number 2')
             run = p.add_run(xps2warning)  
             run.font.color.rgb = RGBColor(255, 0, 0)
@@ -292,7 +302,7 @@ elif cartoning and secondary:
             run.font.color.rgb = RGBColor(255, 0, 0)
             run.font.bold = True
 #-------------------------------------------------------------------------------
-elif additional and secondary:
+elif additional2 and secondary:
    st.markdown('#### Secondary Packaging Step Selection')
    with st.expander('Select Steps for Additional Process',expanded=True):
       p = document.add_paragraph(style='List Number')
