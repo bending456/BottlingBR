@@ -56,7 +56,6 @@ run.font.color.rgb = RGBColor(255, 0, 0)
 authorname = st.sidebar.text_input("Write the name of author in here ...")
 left_run = header1.add_paragraph(authorname)
 left_run.bold = True
-left_run.font.size = Pt(10)
 left_run.font.color.rgb = RGBColor(0, 0, 255)
 
 ###------ Footer of Document
