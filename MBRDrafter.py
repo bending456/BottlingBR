@@ -69,7 +69,7 @@ run3 = new_paragraph2.add_run(str(Today_Date))
 run3.bold = True
 run3.font.size = Pt(10)
 run3.font.color.rgb = RGBColor(255,255,255)
-new_paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+new_paragraph2.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
 
 ###------ Footer of Document
 footer = document.sections[0].footer
