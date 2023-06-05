@@ -61,8 +61,8 @@ table = header.add_table(rows=1, cols=2)
 
 # Set the column widths to evenly distribute across the page
 # Width is set in twips (1 inch = 1440 twips)
-table.columns[0].width = Pt(3 * 1440)  # 3 inches wide
-table.columns[1].width = Pt(3 * 1440)  # 3 inches wide
+#table.columns[0].width = Pt(3 * 1440)  # 3 inches wide
+#table.columns[1].width = Pt(3 * 1440)  # 3 inches wide
 
 # Remove the border of the table
 table.style = 'Table Grid'
