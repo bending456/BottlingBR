@@ -15,9 +15,16 @@ from datetime import date
 st.header("Master Batch Record Drafter [Under Construction]")
 st.caption("Note: We may need to split primary and secondary options")
 
-with st.expander("",expanded=True):
-   st.markdown("### ***README***")
-   st.caption("Step 1: ")
+st.markdown("### ***README***")
+with st.expander("User Guide",expanded=True):
+   st.caption("Step 0: Check the box to prevent auto reset")
+   st.caption("Step 1: Type Document Name in Sidebar ")
+   st.caption("Step 2: Type Output Name in Sidebar ")
+   st.caption("Step 3: Type Batch Number in Sidebar ")
+   st.caption("Step 4: Type Your Name in Sidebar ")
+   st.caption("Step 5: Select Packaging Process(s) - [List of Processes] ")
+   st.caption("Step 6: Select Specific Steps - [Process Control Panel] ")
+   st.caption("Step 7: Download docx file")
 
 if 'writing draft' not in st.session_state:
    st.session_state['writing draft']=False
@@ -25,7 +32,7 @@ if 'writing draft' not in st.session_state:
 document = Document()
 
 #---------- Sidebar Setup
-stateholder = st.sidebar.checkbox("Check this box to prevent unwanted rerun")
+stateholder = st.sidebar.checkbox("Step 0: Check this box to prevent unwanted rerun")
 if stateholder:
    st.session_state['writing draft']=True
 
@@ -60,8 +67,8 @@ for i in range(5):  # Adjust range for as many levels as you need
 
 ###------ Title of Document
 title = document.add_paragraph()
-titleText = st.sidebar.text_input("Write the title of your document in here ... (ex: Bundling procedure for XXX project)")
-outputfileName = st.sidebar.text_input("Write the name of output (docx file) name in here ...")
+titleText = st.sidebar.text_input("Step 1: Write the title of your document in here ... (ex: Bundling procedure for XXX project)")
+outputfileName = st.sidebar.text_input("Step 2: Write the name of output (docx file) name in here ...")
 run = title.add_run(titleText)
 run.bold = True
 run.font.size = Pt(16)
@@ -70,7 +77,7 @@ run.font.size = Pt(16)
 header1 = document.sections[0].header
 paragraph = header1.paragraphs[0]
 paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.RIGHT
-batchnumber = st.sidebar.text_input("Write the batch number in here ...")
+batchnumber = st.sidebar.text_input("Step 3: Write the batch number in here ...")
 run = paragraph.add_run(batchnumber)
 run.bold = True
 run.font.size = Pt(10)
@@ -79,7 +86,7 @@ paragraph.paragraph_format.space_before=Pt(0)
 paragraph.paragraph_format.space_after=Pt(0)
 
 ###------ Header of Document - Name
-authorname = st.sidebar.text_input("Write the name of author in here ...")
+authorname = st.sidebar.text_input("Step 4: Write the name of author in here ...")
 new_paragraph = header1.add_paragraph()
 run2 = new_paragraph.add_run(authorname)
 run2.bold = True
@@ -111,7 +118,7 @@ run.font.size = Pt(10)
 run.font.color.rgb = RGBColor(0, 0, 255)
 
 ##---- Selecting Processes
-st.markdown("### List of Processes")
+st.markdown("### Step 5: List of Processes")
 col1, col2 = st.columns(2)
 
 ### -------------- Primary Packaging -------------------
@@ -141,7 +148,7 @@ with col1:
 
 ##------------ Control Panel -----------------------------
 st.divider()
-st.markdown('### Process Control Panel')
+st.markdown('### Step 6: Process Control Panel')
 
 
 ##################################################################
@@ -391,7 +398,7 @@ elif additional2 and secondary:
 
 # Save the document
 #document.save(outputfileName+'.docx')
-st.sidebar.header("**Download Ready**")
+st.sidebar.header("**Step 7: Download Ready**")
 if st.sidebar.checkbox("Check this box if the draft is ready"):
    with tempfile.NamedTemporaryFile(delete=False, suffix='.docx') as tmp:
        document.save(tmp.name)
