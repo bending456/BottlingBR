@@ -121,7 +121,7 @@ if not primary:
    st.divider()
 
 if not secondary:
-   st.cpation("Secondary is not Selected")
+   st.caption("Secondary is not Selected")
    st.divider()
 
 elif bundling and secondary:
