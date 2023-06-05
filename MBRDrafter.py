@@ -12,8 +12,18 @@ from docx.shared import RGBColor
 from datetime import date
 
 
+##########################################
+#----------------------------------------#
+#----------------------------------------#
+##########################################
+
 st.header("Master Batch Record Drafter")
 st.caption("Note: We may need to split primary and secondary options")
+
+##########################################
+#----------------------------------------#
+#----------------------------------------#
+##########################################
 
 st.markdown("### ***README***")
 with st.expander("User Guide",expanded=True):
@@ -35,8 +45,6 @@ document = Document()
 stateholder = st.sidebar.checkbox("Step 0: Check this box to prevent unwanted rerun")
 if stateholder:
    st.session_state['writing draft']=True
-
-
 
 
 ##########################################
@@ -117,6 +125,12 @@ run.bold = True
 run.font.size = Pt(10)
 run.font.color.rgb = RGBColor(0, 0, 255)
 
+
+##########################################
+#----------------------------------------#
+#----------------------------------------#
+##########################################
+
 ##---- Selecting Processes
 st.markdown("### Step 5: List of Processes")
 col1, col2 = st.columns(2)
@@ -139,11 +153,6 @@ with col1:
       run.bold = True
       run.font.size = Pt(14)
       i = 0
-
-##########################################
-#----------------------------------------#
-#----------------------------------------#
-##########################################
 
 
 ##------------ Control Panel -----------------------------
@@ -246,6 +255,7 @@ elif bundling and secondary:
       run.bold = True
       run.font.size = Pt(12)
       bparentstep1 = st.checkbox('Step: Parent Bundling Step 1',value=True)
+
       if bparentstep1:
          p = document.add_paragraph(style=document.styles['List Bullet 1'])
          p.add_run('Bundling Parent Step 1')
@@ -289,7 +299,6 @@ elif bundling and secondary:
             run = p.add_run(bps2warning)  
             run.font.color.rgb = RGBColor(255, 0, 0)
             run.font.bold = True
-   
 #- ------------------------------------------------------------------------------
 elif cartoning and secondary:
    st.markdown('#### Secondary Packaging Step Selection')
@@ -321,6 +330,7 @@ elif cartoning and secondary:
             run = p.add_run(cps2warning) 
             run.font.color.rgb = RGBColor(255, 0, 0)
             run.font.bold = True
+
       st.divider()
       cparentstep2 = st.checkbox('Step: Parent cartoning Step 2',value=True)
       if cparentstep2:
@@ -353,6 +363,7 @@ elif additional2 and secondary:
       run.bold = True
       run.font.size = Pt(12)
       aparentstep1 = st.checkbox('Step: Parent additional Step 1',value=True)
+
       if aparentstep1:
          p = document.add_paragraph(style=document.styles['List Bullet 1'])
          p.add_run('additional Parent Step 1')
@@ -373,6 +384,7 @@ elif additional2 and secondary:
             run = p.add_run(aps1warning) 
             run.font.color.rgb = RGBColor(255, 0, 0)
             run.font.bold = True
+
       st.divider()
       aparentstep2 = st.checkbox('Step: Parent additional Step 2',value=True)
       if aparentstep2:
@@ -396,8 +408,13 @@ elif additional2 and secondary:
             run.font.color.rgb = RGBColor(255, 0, 0)
             run.font.bold = True
 
+
+##########################################
+#----------------------------------------#
+#----------------------------------------#
+##########################################
+
 # Save the document
-#document.save(outputfileName+'.docx')
 st.sidebar.header("**Step 7: Download Ready**")
 if st.sidebar.checkbox("Check this box if the draft is ready"):
    with tempfile.NamedTemporaryFile(delete=False, suffix='.docx') as tmp:
