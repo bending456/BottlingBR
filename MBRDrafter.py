@@ -108,20 +108,7 @@ with col1:
       run.bold = True
       run.font.size = Pt(14)
 
-with col2:
-   st.markdown('#### Secondary Packaging')
-   secondary = st.checkbox("Secondary Packaging")
 
-   if secondary:
-      ###--- Secondary Packaging related list
-      bundling = st.checkbox("Bundling?")
-      cartoning = st.checkbox("Cartoning?")
-      additional2 = st.checkbox("Additional2?")
-
-      subtitle = document.add_paragraph()
-      run = subtitle.add_run('Secondary Packaging')
-      run.bold = True
-      run.font.size = Pt(14)
 
 
 ##------------ Control Panel -----------------------------
@@ -187,6 +174,26 @@ elif primary and sachet:
             run = p.add_run(xps2warning)  
             run.font.color.rgb = RGBColor(255, 0, 0)
             run.font.bold = True
+
+#################################################################################
+
+
+with col2:
+   st.markdown('#### Secondary Packaging')
+   secondary = st.checkbox("Secondary Packaging")
+
+   if secondary:
+      ###--- Secondary Packaging related list
+      bundling = st.checkbox("Bundling?")
+      cartoning = st.checkbox("Cartoning?")
+      additional2 = st.checkbox("Additional2?")
+
+      subtitle = document.add_paragraph()
+      run = subtitle.add_run('Secondary Packaging')
+      run.bold = True
+      run.font.size = Pt(14)
+
+
 
 #########################################################################
 if not secondary:
