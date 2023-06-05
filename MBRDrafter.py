@@ -64,8 +64,9 @@ new_paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
 
 ###------ Header of Document - Date
 new_paragraph2 = header1.add_paragraph()
-Today_Date = date.today()
-run3 = new_paragraph2.add_run(str(Today_Date))
+today = date.today()
+formatted_date = today.strftime("%B %d, %Y")
+run3 = new_paragraph2.add_run(f'{formatted_date}')
 run3.bold = True
 run3.font.size = Pt(10)
 run3.font.color.rgb = RGBColor(255,255,255)
