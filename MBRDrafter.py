@@ -109,10 +109,7 @@ if secondary:
 
    ##################################################################
    if bundling:
-      with st.expander('Select Steps for Bundling Process',expanded=True):
-         #st.markdown('<p style="font-size: 20px;">Bundling is selected</p>', unsafe_allow_html=True)
-         #st.markdown("--------------------------")
-         #p = document.add_paragraph(style=document.styles['List Bullet 0'])
+      with st.expander('# Select Steps for Bundling Process',expanded=True):
          p = document.add_paragraph(style='List Number')
          p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
          # Main Process Name
@@ -121,28 +118,26 @@ if secondary:
          run.font.size = Pt(12)
 
          bparentstep1 = st.checkbox('Step: Parent Bundling Step 1',value=True)
-         bparentstep1warning = st.checkbox('Any warning regarding bundling step 1?')
          if bparentstep1:
-            #p = document.add_paragraph(style=document.styles['List Bullet 1'])
+            #p = document.add_paragraph(style='List Number 2')
             p = document.add_paragraph(style='List Number 2')
             p.add_run('Bundling Parent Step 1')
             st.caption('- Choose specific bundling steps')
 
             bchildstep1_1 = st.checkbox('Sub step: child bundling step 1-1',value=True)
             if bchildstep1_1:
-               #p = document.add_paragraph(style=document.styles['List Bullet 2'])
-               p = document.add_paragraph(style='List Number 3')
+               p = document.add_paragraph(style=document.styles['List Bullet 2'])
                p.add_run('Bundling Child Step 1-1')
             
             bchildstep1_2 = st.checkbox('Sub step: child bundling step 1-2',value=True)
             if bchildstep1_2:
-               #p = document.add_paragraph(style=document.styles['List Bullet 2'])
-               p = document.add_paragraph(style='List Number 3')
+               p = document.add_paragraph(style=document.styles['List Bullet 2'])
                p.add_run('Bundling Child Step 1-2')
-
+         
+         bparentstep1warning = st.checkbox('## Any warning regarding bundling step 1?')
          if bparentstep1warning:
                bps1warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: bps1)")
-               #p = document.add_paragraph(style=document.styles['List Bullet 1'])
+               #p = document.add_paragraph(style='List Number 2')
                p = document.add_paragraph(style='List Number 2')
                run = p.add_run(bps1warning)
                run.font.color.rgb = RGBColor(255, 0, 0)
@@ -151,9 +146,8 @@ if secondary:
       
          st.markdown("--------------------------")
          bparentstep2 = st.checkbox('Step: Parent Bundling Step 2',value=True)
-         bparentstep2warning = st.checkbox('Any warning regarding bundling step 2?')
          if bparentstep2:
-            p = document.add_paragraph(style=document.styles['List Bullet 1'])
+            p = document.add_paragraph(style='List Number 2')
             p.add_run('Bundling Parent Step 2')
             st.caption('Choose specific bundling steps')
 
@@ -167,20 +161,18 @@ if secondary:
                p = document.add_paragraph(style=document.styles['List Bullet 2'])
                p.add_run('Bundling Child Step 2-2')
 
+         bparentstep2warning = st.checkbox('## Any warning regarding bundling step 2?')
          if bparentstep2warning:
                bps2warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: bps2)")
-               p = document.add_paragraph(style=document.styles['List Bullet 1'])
+               p = document.add_paragraph(style='List Number 2')
                run = p.add_run(bps2warning)  
                run.font.color.rgb = RGBColor(255, 0, 0)
                run.font.bold = True
       
    #- ------------------------------------------------------------------------------
    if cartoning:
-      with st.expander('Select Steps for Cartoning Process',expanded=True):
-         #st.markdown("--------------------------")
-         #st.markdown('<p style="font-size: 20px;">Cartoning is selected</p>', unsafe_allow_html=True)
-         #st.markdown("--------------------------")
-         p = document.add_paragraph(style=document.styles['List Bullet 0'])
+      with st.expander('# Select Steps for Cartoning Process',expanded=True):
+         p = document.add_paragraph(style='List Number')
          p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
          # Main Process Name
          run = p.add_run('Cartoning')
@@ -188,9 +180,9 @@ if secondary:
          run.font.size = Pt(12)
 
          cparentstep1 = st.checkbox('Step: Parent cartoning Step 1',value=True)  
-         cparentstep1warning = st.checkbox('Any warning regarding cartoning step 1?')
+         
          if cparentstep1:
-            p = document.add_paragraph(style=document.styles['List Bullet 1'])
+            p = document.add_paragraph(style='List Number 2')
             p.add_run('cartoning Parent Step 1')
             st.caption('- Choose specific bundling steps')
 
@@ -203,19 +195,19 @@ if secondary:
             if cchildstep1_2:
                p = document.add_paragraph(style=document.styles['List Bullet 2'])
                p.add_run('cartoning Child Step 1-2')
-         
+
+         cparentstep1warning = st.checkbox('## Any warning regarding cartoning step 1?')
          if cparentstep1warning:
                cps2warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: cps1)")
-               p = document.add_paragraph(style=document.styles['List Bullet 1'])
+               p = document.add_paragraph(style='List Number 2')
                run = p.add_run(cps2warning) 
                run.font.color.rgb = RGBColor(255, 0, 0)
                run.font.bold = True
 
          st.markdown("--------------------------")
          cparentstep2 = st.checkbox('Step: Parent cartoning Step 2',value=True)
-         cparentstep2warning = st.checkbox('Any warning regarding cartoning step 2?')
          if cparentstep2:
-            p = document.add_paragraph(style=document.styles['List Bullet 1'])
+            p = document.add_paragraph(style='List Number 2')
             p.add_run('cartoning Parent Step 2')
             st.caption('- Choose specific bundling steps')
 
@@ -229,9 +221,10 @@ if secondary:
                p = document.add_paragraph(style=document.styles['List Bullet 2'])
                p.add_run('cartoning Child Step 2-2')
 
+         cparentstep2warning = st.checkbox('## Any warning regarding cartoning step 2?')
          if cparentstep2warning:
                cps2warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: cps2)")
-               p = document.add_paragraph(style=document.styles['List Bullet 1'])
+               p = document.add_paragraph(style='List Number 2')
                run = p.add_run(cps2warning) 
                run.font.color.rgb = RGBColor(255, 0, 0)
                run.font.bold = True
@@ -239,11 +232,8 @@ if secondary:
    #-------------------------------------------------------------------------------
 
    if additional:
-      with st.expander('Select Steps for Cartoning Process',expanded=True):
-         #st.markdown("--------------------------")
-         #st.markdown('<p style="font-size: 20px;">Additional is selected</p>', unsafe_allow_html=True)
-         #st.markdown("--------------------------")
-         p = document.add_paragraph(style=document.styles['List Bullet 0'])
+      with st.expander('# Select Steps for Cartoning Process',expanded=True):
+         p = document.add_paragraph(style='List Number')
          p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
          # Main Process Name
          run = p.add_run('Additional')
@@ -251,9 +241,8 @@ if secondary:
          run.font.size = Pt(12)
 
          aparentstep1 = st.checkbox('Step: Parent additional Step 1',value=True)
-         aparentstep1warning = st.checkbox('Any warning regarding additional step 1?')
          if aparentstep1:
-            p = document.add_paragraph(style=document.styles['List Bullet 1'])
+            p = document.add_paragraph(style='List Number 2')
             p.add_run('additional Parent Step 1')
             st.caption('- Choose specific bundling steps')
 
@@ -267,18 +256,18 @@ if secondary:
                p = document.add_paragraph(style=document.styles['List Bullet 2'])
                p.add_run('additional Child Step 1-2')
          
+         aparentstep1warning = st.checkbox('## Any warning regarding additional step 1?')
          if aparentstep1warning:
                aps1warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: aps1)")
-               p = document.add_paragraph(style=document.styles['List Bullet 1'])
+               p = document.add_paragraph(style='List Number 2')
                run = p.add_run(aps1warning) 
                run.font.color.rgb = RGBColor(255, 0, 0)
                run.font.bold = True
 
          st.markdown("--------------------------")
          aparentstep2 = st.checkbox('Step: Parent additional Step 2',value=True)
-         aparentstep2warning = st.checkbox('Any warning regarding additional step 2?')
          if aparentstep2:
-            p = document.add_paragraph(style=document.styles['List Bullet 1'])
+            p = document.add_paragraph(style='List Number 2')
             p.add_run('additional Parent Step 2')
             st.caption('- Choose specific bundling steps')
 
@@ -292,9 +281,10 @@ if secondary:
                p = document.add_paragraph(style=document.styles['List Bullet 2'])
                p.add_run('additional Child Step 2-2')
          
+         aparentstep2warning = st.checkbox('## Any warning regarding additional step 2?')
          if aparentstep2warning:
                aps2warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: aps2)")
-               p = document.add_paragraph(style=document.styles['List Bullet 1'])
+               p = document.add_paragraph(style='List Number 2')
                run = p.add_run(aps2warning)
                run.font.color.rgb = RGBColor(255, 0, 0)
                run.font.bold = True
