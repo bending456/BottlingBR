@@ -10,11 +10,8 @@ from docx.oxml import parse_xml
 from docx.shared import Inches
 from docx.shared import RGBColor
 from datetime import date
-import pyautogui
- 
-if st.button("Reset"):
-    pyautogui.hotkey("ctrl","F5")
-    
+
+
 st.header("Master Batch Record Drafter [Under Construction]")
 st.caption("Note: We may need to split primary and secondary options")
 if 'writing draft' not in st.session_state:
@@ -116,7 +113,7 @@ with col2:
       cartoning = st.checkbox("Cartoning?")
       additional = st.checkbox("Additional2?")
 
-
+st.divider()
 st.markdown('## Process Control Panel')
 ##################################################################
 if bundling and secondary:
@@ -152,7 +149,7 @@ if bundling and secondary:
             run.font.color.rgb = RGBColor(255, 0, 0)
             run.font.bold = True
    
-      st.markdown("--------------------------")
+      st.divider()
       bparentstep2 = st.checkbox('Step: Parent Bundling Step 2',value=True)
       if bparentstep2:
          p = document.add_paragraph(style='List Number 2')
@@ -204,7 +201,7 @@ if cartoning and secondary:
             run = p.add_run(cps2warning) 
             run.font.color.rgb = RGBColor(255, 0, 0)
             run.font.bold = True
-      st.markdown("--------------------------")
+      st.divider()
       cparentstep2 = st.checkbox('Step: Parent cartoning Step 2',value=True)
       if cparentstep2:
          p = document.add_paragraph(style='List Number 2')
@@ -255,7 +252,7 @@ if additional and secondary:
             run = p.add_run(aps1warning) 
             run.font.color.rgb = RGBColor(255, 0, 0)
             run.font.bold = True
-      st.markdown("--------------------------")
+      st.divider()
       aparentstep2 = st.checkbox('Step: Parent additional Step 2',value=True)
       if aparentstep2:
          p = document.add_paragraph(style='List Number 2')
