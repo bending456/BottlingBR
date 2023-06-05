@@ -113,6 +113,8 @@ with col2:
       cartoning = st.checkbox("Cartoning?")
       additional = st.checkbox("Additional2?")
 
+
+##------------ Control Panel -----------------------------
 st.divider()
 st.markdown('### Process Control Panel')
 ##################################################################
@@ -120,11 +122,69 @@ if not primary:
    st.caption("Primary is not Selected")
    st.divider()
 
+elif primary:
+   st.markdown('#### Primary Packaging Step Selection')
+   with st.expander('Select Steps for XXX Process',expanded=True):
+      p = document.add_paragraph(style='List Number')
+      p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
+      # Main Process Name
+      run = p.add_run('XXX Process')
+      run.bold = True
+      run.font.size = Pt(12)
+      xparentstep1 = st.checkbox('Step: Parent XXX Step 1',value=True)
+      if xparentstep1:
+         #p = document.add_paragraph(style='List Number 2')
+         p = document.add_paragraph(style='List Number 2')
+         p.add_run('XXX Parent Step 1')
+         st.caption('- Choose specific bundling steps')
+         xchildstep1_1 = st.checkbox('Sub step: child XXX step 1-1',value=True)
+         if xchildstep1_1:
+            p = document.add_paragraph(style=document.styles['List Bullet 2'])
+            p.add_run('XXX Child Step 1-1')
+         
+         xchildstep1_2 = st.checkbox('Sub step: child XXX step 1-2',value=True)
+         if xchildstep1_2:
+            p = document.add_paragraph(style=document.styles['List Bullet 2'])
+            p.add_run('XXX Child Step 1-2')
+      
+      xparentstep1warning = st.checkbox('Any warning regarding XXX step 1?')
+      if xparentstep1warning:
+            xps1warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: xps1)")
+            #p = document.add_paragraph(style='List Number 2')
+            p = document.add_paragraph(style='List Number 2')
+            run = p.add_run(xps1warning)
+            run.font.color.rgb = RGBColor(255, 0, 0)
+            run.font.bold = True
+   
+      st.divider()
+      xparentstep2 = st.checkbox('Step: Parent XXX Step 2',value=True)
+      if xparentstep2:
+         p = document.add_paragraph(style='List Number 2')
+         p.add_run('XXX Parent Step 2')
+         st.caption('Choose specific XXX steps')
+         xchildstep2_1 = st.checkbox('Sub step: child XXX step 2-1',value=True)
+         if xchildstep2_1:
+            p = document.add_paragraph(style=document.styles['List Bullet 2'])
+            p.add_run('XXX Child Step 2-1')
+         xchildstep2_2 = st.checkbox('Sub step: child XXX step 2-2',value=True)
+         if xchildstep2_2:
+            p = document.add_paragraph(style=document.styles['List Bullet 2'])
+            p.add_run('XXX Child Step 2-2')
+      xparentstep2warning = st.checkbox('Any warning regarding XXX step 2?')
+      if xparentstep2warning:
+            xps2warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: xps2)")
+            p = document.add_paragraph(style='List Number 2')
+            run = p.add_run(xps2warning)  
+            run.font.color.rgb = RGBColor(255, 0, 0)
+            run.font.bold = True
+
+#########################################################################
 if not secondary:
    st.caption("Secondary is not Selected")
    st.divider()
 
 elif bundling and secondary:
+   st.markdown('#### Secondary Packaging Step Selection')
    with st.expander('Select Steps for Bundling Process',expanded=True):
       p = document.add_paragraph(style='List Number')
       p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
@@ -181,6 +241,7 @@ elif bundling and secondary:
    
 #- ------------------------------------------------------------------------------
 elif cartoning and secondary:
+   st.markdown('#### Secondary Packaging Step Selection')
    with st.expander('Select Steps for Cartoning Process',expanded=True):
       p = document.add_paragraph(style='List Number')
       p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
@@ -232,6 +293,7 @@ elif cartoning and secondary:
             run.font.bold = True
 #-------------------------------------------------------------------------------
 elif additional and secondary:
+   st.markdown('#### Secondary Packaging Step Selection')
    with st.expander('Select Steps for Additional Process',expanded=True):
       p = document.add_paragraph(style='List Number')
       p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
