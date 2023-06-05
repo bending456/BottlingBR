@@ -130,9 +130,9 @@ with col1:
    if primary:
       ###--- Primary Packaging related list
       sachet = st.checkbox("Sachet?")
-      canister = st.checkbox("Canister?")
-      cotton = st.checkbox("Cotton Filler?")
-      additional1 = st.checkbox("Additional1?")
+      canister = st.checkbox("Canister? - N/A")
+      cotton = st.checkbox("Cotton Filler? - N/A")
+      additional1 = st.checkbox("Additional1? - N/A")
 
       subtitle = document.add_paragraph()
       run = subtitle.add_run('Primary Packaging')
