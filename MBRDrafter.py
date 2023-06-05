@@ -57,16 +57,8 @@ batchnumber = st.sidebar.text_input("Write the batch number in here ...")
 header = document.sections[0].header
 
 # Create a table in the header
-table = header.add_table(rows=1, cols=2)
+table = header.add_table(rows=1, cols=2, width=Pt(3 * 1440))
 
-# Set the column widths to evenly distribute across the page
-# Width is set in twips (1 inch = 1440 twips)
-def set_column_width(column, width):
-    for cell in column:
-        cell.width = width
-
-set_column_width(table.columns[0], Pt(3 * 1440))  # 3 inches wide
-set_column_width(table.columns[1], Pt(3 * 1440))  # 3 inches wide
 
 # Remove the border of the table
 table.style = 'Table Grid'
