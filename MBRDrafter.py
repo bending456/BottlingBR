@@ -24,6 +24,14 @@ stateholder = st.sidebar.checkbox("Check this box to prevent unwanted rerun")
 if stateholder:
    st.session_state['writing draft']=True
 
+
+
+
+##########################################
+#----------------------------------------#
+#----------------------------------------#
+##########################################
+
 ##----------- docx file generator setup 
 ####------- Create a new style for each indent level
 for i in range(5):  # Adjust range for as many levels as you need
@@ -35,6 +43,15 @@ for i in range(5):  # Adjust range for as many levels as you need
   style.paragraph_format.first_line_indent = Pt(0)  # 18 points = 0.25 inches
   style.paragraph_format.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
   style.font.size = Pt(11)
+
+
+
+
+##########################################
+#----------------------------------------#
+#----------------------------------------#
+##########################################
+
 
 ###------ Title of Document
 title = document.add_paragraph()
@@ -92,6 +109,8 @@ run.font.color.rgb = RGBColor(0, 0, 255)
 st.markdown("### List of Processes")
 col1, col2 = st.columns(2)
 
+### -------------- Primary Packaging -------------------
+
 with col1:
    st.markdown('#### Primary Packaging')
    primary = st.checkbox("Primary Packaging")
@@ -108,12 +127,21 @@ with col1:
       run.bold = True
       run.font.size = Pt(14)
 
-
+##########################################
+#----------------------------------------#
+#----------------------------------------#
+##########################################
 
 
 ##------------ Control Panel -----------------------------
 st.divider()
 st.markdown('### Process Control Panel')
+
+
+# Add a numbered list
+for i in range(100):
+    p = document.add_paragraph(style='List Number')
+    p.add_run('Item {}'.format(i + 1))
 ##################################################################
 if not primary:
    st.caption("Primary is not Selected")
@@ -178,6 +206,8 @@ elif primary and sachet:
 #################################################################################
 
 
+## ---- Secondary Packaging ------------------------------
+
 with col2:
    st.markdown('#### Secondary Packaging')
    secondary = st.checkbox("Secondary Packaging")
@@ -194,7 +224,10 @@ with col2:
       run.font.size = Pt(14)
 
 
-
+# Add another numbered list, the numbering will be reset
+for i in range(100):
+    p = document.add_paragraph(style='List Number')
+    p.add_run('Item {}'.format(i + 1))
 #########################################################################
 if not secondary:
    st.caption("Secondary is not Selected")
