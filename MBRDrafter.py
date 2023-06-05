@@ -43,50 +43,24 @@ run.bold = True
 run.font.size = Pt(16)
 
 ###------ Header of Document - Batch Number
-#header = document.sections[0].header
-#paragraph = header.paragraphs[0]
-#paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.RIGHT
+header1 = document.sections[0].header
+paragraph = header1.paragraphs[0]
+paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.RIGHT
 batchnumber = st.sidebar.text_input("Write the batch number in here ...")
-#run = paragraph.add_run(batchnumber)
-#run.bold = True
-#run.font.size = Pt(10)
-#run.font.color.rgb = RGBColor(255, 0, 0)
+run = paragraph.add_run(batchnumber)
+run.bold = True
+run.font.size = Pt(10)
+run.font.color.rgb = RGBColor(255, 0, 0)
 
-###------ Header of Document - Author Name
-# Access zeroth section's header
-header = document.sections[0].header
-
-# Create a table in the header
-table = header.add_table(rows=1, cols=2, width=Pt(3 * 1440))
-
-
-# Remove the border of the table
-table.style = 'Table Grid'
-for row in table.rows:
-    for cell in row.cells:
-        for p in cell.paragraphs:
-            for run in p.runs:
-                run.font.size = Pt(0)
-
-# Add the left-aligned text to the first cell
+###------ Header of Document - Batch Number
+header2 = document.sections[0].header
+paragraph = header2.paragraphs[0]
+paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
 authorname = st.sidebar.text_input("Write the name of author in here ...")
-left_cell = table.cell(0, 0)
-left_paragraph = left_cell.paragraphs[0]
-left_run = left_paragraph.add_run(authorname)
+left_run = paragraph.add_run(authorname)
 left_run.bold = True
 left_run.font.size = Pt(10)
 left_run.font.color.rgb = RGBColor(0, 0, 255)
-left_paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
-
-# Add the right-aligned text to the second cell
-batchnumber = st.sidebar.text_input("Write the batch number in here ...")
-right_cell = table.cell(0, 1)
-right_paragraph = right_cell.paragraphs[0]
-right_run = right_paragraph.add_run(batchnumber)
-right_run.bold = True
-right_run.font.size = Pt(10)
-right_run.font.color.rgb = RGBColor(255, 0, 0)
-right_paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.RIGHT
 
 ###------ Footer of Document
 footer = document.sections[0].footer
