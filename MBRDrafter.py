@@ -53,13 +53,13 @@ run.font.size = Pt(10)
 run.font.color.rgb = RGBColor(255, 0, 0)
 
 ###------ Header of Document - Author Name
-header = document.sections[1].header
-paragraph = header.paragraphs[1]
-paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
-authorName = st.sidebar.text_input("Write the name of author ...")
-run = paragraph.add_run(authorName)
-run.bold = True
-run.font.size = Pt(10)
+#header = document.sections[1].header
+#paragraph = header.paragraphs[1]
+#paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+#authorName = st.sidebar.text_input("Write the name of author ...")
+#run = paragraph.add_run(authorName)
+#run.bold = True
+#run.font.size = Pt(10)
 
 ###------ Footer of Document
 footer = document.sections[0].footer
