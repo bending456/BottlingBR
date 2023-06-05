@@ -132,6 +132,10 @@ if not primary:
    st.caption("Primary is not Selected")
    st.divider()
 
+elif primary:
+   with col1:
+      st.caption("Please, choose the process")
+
 elif primary and sachet:
    st.markdown('#### Primary Packaging Step Selection')
    with st.expander('Select Steps for Sachet Process',expanded=True):
@@ -192,6 +196,10 @@ elif primary and sachet:
 if not secondary:
    st.caption("Secondary is not Selected")
    st.divider()
+
+elif secondary:
+   with col2:
+      st.caption("Please, choose the process")
 
 elif bundling and secondary:
    st.markdown('#### Secondary Packaging Step Selection')
