@@ -116,6 +116,9 @@ with col2:
 st.divider()
 st.markdown('## Process Control Panel')
 ##################################################################
+if primary is not True:
+   st.caption("Primary is not Selected")
+   
 if bundling and secondary:
    with st.expander('Select Steps for Bundling Process',expanded=True):
       p = document.add_paragraph(style='List Number')
