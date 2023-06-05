@@ -53,7 +53,7 @@ run.bold = True
 run.font.size = Pt(10)
 run.font.color.rgb = RGBColor(255, 0, 0)
 paragraph.paragraph_format.space_before=Pt(0)
-paragraph.paragraph_format.space_after=Pt(-10)
+paragraph.paragraph_format.space_after=Pt(0)
 
 ###------ Header of Document - Name
 authorname = st.sidebar.text_input("Write the name of author in here ...")
@@ -63,8 +63,8 @@ run2.bold = True
 run2.font.size = Pt(10)
 run2.font.color.rgb = RGBColor(0,0,255)
 new_paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
-new_paragraph.paragraph_format.space_before=Pt(-10)
-new_paragraph.paragraph_format.space_after=Pt(-10)
+new_paragraph.paragraph_format.space_before=Pt(0)
+new_paragraph.paragraph_format.space_after=Pt(0)
 
 ###------ Header of Document - Date
 new_paragraph2 = header1.add_paragraph()
@@ -75,8 +75,8 @@ run3.bold = True
 run3.font.size = Pt(10)
 run3.font.color.rgb = RGBColor(0,0,0)
 new_paragraph2.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
-new_paragraph2.paragraph_format.space_before=Pt(-10)
-new_paragraph2.paragraph_format.space_after=Pt(5)
+new_paragraph2.paragraph_format.space_before=Pt(0)
+new_paragraph2.paragraph_format.space_after=Pt(0)
 
 ###------ Footer of Document
 footer = document.sections[0].footer
