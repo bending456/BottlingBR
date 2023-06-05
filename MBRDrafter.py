@@ -89,11 +89,11 @@ run.font.size = Pt(10)
 run.font.color.rgb = RGBColor(0, 0, 255)
 
 ##---- Selecting Processes
-st.markdown("## List of Processes")
+st.markdown("### List of Processes")
 col1, col2 = st.columns(2)
 
 with col1:
-   st.markdown('### Primary Packaging')
+   st.markdown('#### Primary Packaging')
    primary = st.checkbox("Primary Packaging")
 
    if primary:
@@ -104,7 +104,7 @@ with col1:
       st.checkbox("Additional1?")
 
 with col2:
-   st.markdown('### Secondary Packaging')
+   st.markdown('#### Secondary Packaging')
    secondary = st.checkbox("Secondary Packaging")
 
    if secondary:
@@ -114,12 +114,17 @@ with col2:
       additional = st.checkbox("Additional2?")
 
 st.divider()
-st.markdown('## Process Control Panel')
+st.markdown('### Process Control Panel')
 ##################################################################
-if primary is not True:
+if not primary:
    st.caption("Primary is not Selected")
-   
-if bundling and secondary:
+   st.divider()
+
+if not secondary:
+   st.cpation("Secondary is not Selected")
+   st.divider()
+
+elif bundling and secondary:
    with st.expander('Select Steps for Bundling Process',expanded=True):
       p = document.add_paragraph(style='List Number')
       p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
@@ -175,7 +180,7 @@ if bundling and secondary:
             run.font.bold = True
    
 #- ------------------------------------------------------------------------------
-if cartoning and secondary:
+elif cartoning and secondary:
    with st.expander('Select Steps for Cartoning Process',expanded=True):
       p = document.add_paragraph(style='List Number')
       p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
@@ -226,7 +231,7 @@ if cartoning and secondary:
             run.font.color.rgb = RGBColor(255, 0, 0)
             run.font.bold = True
 #-------------------------------------------------------------------------------
-if additional and secondary:
+elif additional and secondary:
    with st.expander('Select Steps for Additional Process',expanded=True):
       p = document.add_paragraph(style='List Number')
       p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
