@@ -69,7 +69,7 @@ formatted_date = today.strftime("%B %d, %Y")
 run3 = new_paragraph2.add_run(f'{formatted_date}')
 run3.bold = True
 run3.font.size = Pt(10)
-run3.font.color.rgb = RGBColor(255,255,255)
+run3.font.color.rgb = RGBColor(0,0,0)
 new_paragraph2.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
 
 ###------ Footer of Document
