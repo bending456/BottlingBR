@@ -52,7 +52,7 @@ run = paragraph.add_run(batchnumber)
 run.bold = True
 run.font.size = Pt(10)
 run.font.color.rgb = RGBColor(255, 0, 0)
-paragraph.paragraph_format.space_before=Pt(10)
+#paragraph.paragraph_format.space_before=Pt(10)
 #paragraph.paragraph_format.space_after=Pt(10)
 
 ###------ Header of Document - Name
