@@ -12,7 +12,7 @@ from docx.shared import RGBColor
 from datetime import date
 
 
-st.header("Master Batch Record Drafter [Under Construction]")
+st.header("Master Batch Record Drafter")
 st.caption("Note: We may need to split primary and secondary options")
 
 st.markdown("### ***README***")
