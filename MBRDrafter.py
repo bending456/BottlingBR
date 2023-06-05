@@ -9,6 +9,7 @@ from docx.oxml.ns import nsdecls
 from docx.oxml import parse_xml
 from docx.shared import Inches
 from docx.shared import RGBColor
+from datetime import date
 
 st.header("Master Batch Record Drafter [Under Construction]")
 st.caption("Note: We may need to split primary and secondary options")
@@ -52,7 +53,7 @@ run.bold = True
 run.font.size = Pt(10)
 run.font.color.rgb = RGBColor(255, 0, 0)
 
-###------ Header of Document - Batch Number
+###------ Header of Document - Name
 authorname = st.sidebar.text_input("Write the name of author in here ...")
 new_paragraph = header1.add_paragraph()
 run2 = new_paragraph.add_run(authorname)
@@ -61,7 +62,14 @@ run2.font.size = Pt(10)
 run2.font.color.rgb = RGBColor(0,0,255)
 new_paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
 
-
+###------ Header of Document - Date
+new_paragraph2 = header1.add_paragraph()
+Today_Date = date.today()
+run3 = new_paragraph2.add_run(str(Today_Date))
+run3.bold = True
+run3.font.size = Pt(10)
+run3.font.color.rgb = RGBColor(255,255,255)
+new_paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
 
 ###------ Footer of Document
 footer = document.sections[0].footer
