@@ -131,6 +131,10 @@ run.font.color.rgb = RGBColor(0, 0, 255)
 #----------------------------------------#
 ##########################################
 
+sachet = canister = cotton = additional1 = False
+cartoning = topsert = sidesert = bundling = shipper = bundlingwcarton = bundlingwbottle = additional2 = False
+
+
 ##---- Selecting Processes
 st.markdown("### Step 5: List of Processes")
 col1, col2 = st.columns(2)
@@ -142,7 +146,7 @@ with col1:
    primary = st.checkbox("Primary Packaging")
 
    # Define all checkbox variables first
-   sachet = canister = cotton = additional1 = False
+   
    if primary:
       ###--- Primary Packaging related list
       st.divider()
@@ -231,9 +235,7 @@ if sachet:
 with col2:
    st.markdown('#### Secondary Packaging')
    secondary = st.checkbox("Secondary Packaging")
-   
-   cartoning = topsert = sidesert = bundling = shipper = bundlingwcarton = bundlingwbottle = additional2 = False
-   
+      
    if secondary:
       ###--- Secondary Packaging related list
       st.divider()
