@@ -248,7 +248,7 @@ if not secondary:
    st.divider()
 
 #- ------------------------------------------------------------------------------
-elif sidesert and secondary:
+elif sidesert:
    with st.expander('Select Steps for Sidesert Process',expanded=True):
       p = document.add_paragraph(style=document.styles['List Bullet 0'])
       p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
@@ -310,7 +310,7 @@ elif sidesert and secondary:
             run.font.bold = True
 
 #- ------------------------------------------------------------------------------
-elif cartoning and secondary:
+elif cartoning:
    st.markdown('#### Secondary Packaging Step Selection')
    with st.expander('Select Steps for Cartoning Process',expanded=True):
       p = document.add_paragraph(style=document.styles['List Bullet 0'])
@@ -399,7 +399,7 @@ elif cartoning and secondary:
             run.font.color.rgb = RGBColor(255, 0, 0)
             run.font.bold = True
 
-elif bundling and secondary:
+elif bundling:
    st.markdown('#### Secondary Packaging Step Selection')
    with st.expander('Select Steps for Bundling Process',expanded=True):
       p = document.add_paragraph(style=document.styles['List Bullet 0'])
@@ -456,7 +456,7 @@ elif bundling and secondary:
 
 
 #-------------------------------------------------------------------------------
-elif additional2 and secondary:
+elif additional2:
    st.markdown('#### Secondary Packaging Step Selection')
    with st.expander('Select Steps for Additional Process',expanded=True):
       p = document.add_paragraph(style=document.styles['List Bullet 0'])
