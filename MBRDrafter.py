@@ -588,7 +588,7 @@ if bundlingwcarton:
       p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
       p.add_run('- Using the changeover list, start setting each station to the correct setting. Then reinstall correct change parts. Once installed, go to machine configuration and press Link tab.')
       run = p.add_run("\nNote: Once machine is setup for processing, minor adjustments may be needed.")
-      run.fort.bold = True
+      run.font.bold = True
       p = document.add_paragraph(style=document.styles['List Bullet 1'])
       p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
       p.add_run('- Ensure both heaters have been turned on (Sealing bar heater and Therm Heater). Allow the machine to heat up to temperature. The alarm will clear once the correct temperature has been reached.')
