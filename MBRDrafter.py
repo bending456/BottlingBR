@@ -271,7 +271,7 @@ if sidesert:
          p = document.add_paragraph(style=document.styles['List Bullet 1'])
          p.add_run('Weighing Sidesert')
          st.caption('- Choose specific weighing steps')
-         sschildstep1_1 = st.checkbox('Step 1-A: Collect 10 cartons and printweigh in the space provided. Record the scale number and lot number in the spaces provided.',value=True)
+         sschildstep1_1 = st.checkbox('Step 1-A: Collect 10 sideserts and printweigh in the space provided. Record the scale number and lot number in the spaces provided.',value=True)
          if sschildstep1_1:
             p = document.add_paragraph(style=document.styles['List Bullet 2'])
             p.add_run('Collect 10 sideserts and printweigh in the space provided. Record the scale number and lot number in the spaces provided. \nRecord the sidesert usage log on pages XX-XX')
