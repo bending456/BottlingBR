@@ -350,8 +350,8 @@ if topsert:
          p = document.add_paragraph(style=document.styles['List Bullet 1'])
          p.add_run('Weighing Topsert')
          st.caption('- Choose specific weighing steps')
-         sschildstep1_1 = st.checkbox('Step 1-A: Collect 10 topserts and printweigh in the space provided. Record the scale number and lot number in the spaces provided.',value=True)
-         if sschildstep1_1:
+         tschildstep1_1 = st.checkbox('Step 1-A: Collect 10 topserts and printweigh in the space provided. Record the scale number and lot number in the spaces provided.',value=True)
+         if tschildstep1_1:
             p = document.add_paragraph(style=document.styles['List Bullet 1'])
             p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
             p.add_run('- Collect 10 topserts and printweigh in the space provided. Record the scale number and lot number in the spaces provided. \nRecord the topsert usage log on pages XX-XX')
@@ -379,7 +379,7 @@ if topsert:
 
       st.divider()
       tsparentstep2 = st.checkbox('Step 2: Preparing Topsert',value=True)
-      if ssparentstep2:
+      if tsparentstep2:
          p = document.add_paragraph(style=document.styles['List Bullet 1'])
          p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          p.add_run('- Once the labeler machine is et up, remove 5 topserts from the topsert stream. Using maker, draw a line diagonally through the center of each topsert. Apply those topserts to the bottle and place them back. Ensure each bottle is rejected. Circle pass or fail')
