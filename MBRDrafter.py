@@ -232,7 +232,7 @@ with col2:
    st.markdown('#### Secondary Packaging')
    secondary = st.checkbox("Secondary Packaging")
    
-   cartoning = topsert = sidesert = bundling = shipper = additional2 = False
+   cartoning = topsert = sidesert = bundling = shipper = bundlingwcarton = bundlingwbottle = additional2 = False
    
    if secondary:
       ###--- Secondary Packaging related list
