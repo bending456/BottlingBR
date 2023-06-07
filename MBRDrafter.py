@@ -141,6 +141,8 @@ with col1:
    st.markdown('#### Primary Packaging')
    primary = st.checkbox("Primary Packaging")
 
+   # Define all checkbox variables first
+   sachet = canister = cotton = additional1 = False
    if primary:
       ###--- Primary Packaging related list
       sachet = st.checkbox("Sachet?")
@@ -229,7 +231,9 @@ if sachet:
 with col2:
    st.markdown('#### Secondary Packaging')
    secondary = st.checkbox("Secondary Packaging")
-
+   
+   cartoning = sidesert = bundling = shipper = additional2 = False
+   
    if secondary:
       ###--- Secondary Packaging related list
       cartoning = st.checkbox("Cartoning?")
