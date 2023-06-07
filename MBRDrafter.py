@@ -145,6 +145,7 @@ with col1:
    sachet = canister = cotton = additional1 = False
    if primary:
       ###--- Primary Packaging related list
+      st.divider()
       sachet = st.checkbox("Sachet?")
       canister = st.checkbox("Canister? - N/A")
       cotton = st.checkbox("Cotton Filler? - N/A")
@@ -232,13 +233,16 @@ with col2:
    st.markdown('#### Secondary Packaging')
    secondary = st.checkbox("Secondary Packaging")
    
-   cartoning = sidesert = bundling = shipper = additional2 = False
+   cartoning = topsert = sidesert = bundling = shipper = additional2 = False
    
    if secondary:
       ###--- Secondary Packaging related list
+      st.divider()
       cartoning = st.checkbox("Cartoning?")
       sidesert = st.checkbox("Sidesert?")
-      bundling = st.checkbox("Bundling?")
+      topsert = st.checkbox("Topsert?")
+      bundlingwcarton = st.checkbox("Bundling with Carton? - N/A without cartoning option")
+      bundlingwbottle = st.checkbox("Bundling bottles?")
       shipper = st.checkbox("Shipper?")
       additional2 = st.checkbox("Additional2?")
 
@@ -256,7 +260,10 @@ if not secondary:
 if secondary:
    st.markdown('#### Secondary Packaging Step Selection')
 
-#- ------------------------------------------------------------------------------
+#----------------------
+#----   SIDESERT  -----
+#----------------------
+
 if sidesert:
    with st.expander('Select Steps for Sidesert Process',expanded=True):
       p = document.add_paragraph(style=document.styles['List Bullet 0'])
@@ -324,7 +331,80 @@ if sidesert:
             run.font.color.rgb = RGBColor(255, 0, 0)
             run.font.bold = True
 
-#- ------------------------------------------------------------------------------
+#----------------------
+#----   TOPSERT   -----
+#----------------------
+
+if topsert:
+   with st.expander('Select Steps for Sidesert Process',expanded=True):
+      p = document.add_paragraph(style=document.styles['List Bullet 0'])
+      p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
+      # Main Process Name
+      run = p.add_run('Adding Topsert')
+      run.bold = True
+      run.font.size = Pt(12)
+      tsparentstep1 = st.checkbox('Step 1: Preparing Topsert',value=True)  
+      
+      if tsparentstep1:
+         p = document.add_paragraph(style=document.styles['List Bullet 1'])
+         p.add_run('Weighing Topsert')
+         st.caption('- Choose specific weighing steps')
+         sschildstep1_1 = st.checkbox('Step 1-A: Collect 10 topserts and printweigh in the space provided. Record the scale number and lot number in the spaces provided.',value=True)
+         if sschildstep1_1:
+            p = document.add_paragraph(style=document.styles['List Bullet 1'])
+            p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+            p.add_run('- Collect 10 topserts and printweigh in the space provided. Record the scale number and lot number in the spaces provided. \nRecord the topsert usage log on pages XX-XX')
+            p= document.add_paragraph(style=document.styles['List Bullet 2'])
+            p.add_run("New Column 1: Scale #")
+            p= document.add_paragraph(style=document.styles['List Bullet 2'])
+            p.add_run("New Column 2: Lot #")
+            p= document.add_paragraph(style=document.styles['List Bullet 2'])
+            p.add_run("New Column 3: blank to print the weight")
+            p = document.add_paragraph(style=document.styles['List Bullet 1'])
+            p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+            p.add_run('- Use the following calculation to determine the average weight of one topsert')
+            p = document.add_paragraph(style=document.styles['List Bullet 2'])
+            p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+            p.add_run('__________ g (Wt. of 10 topsert) / 10 = __________ g (Avg. Wt. of one topsert)')
+            
+      
+      tsparentstep1warning = st.checkbox('Any warning regarding adding sidesert step 1?')
+      if tsparentstep1warning:
+            tsps1warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: tsps1)")
+            p = document.add_paragraph(style=document.styles['List Bullet 1'])
+            run = p.add_run(tsps1warning) 
+            run.font.color.rgb = RGBColor(255, 0, 0)
+            run.font.bold = True
+
+      st.divider()
+      tsparentstep2 = st.checkbox('Step 2: Preparing Topsert',value=True)
+      if ssparentstep2:
+         p = document.add_paragraph(style=document.styles['List Bullet 1'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+         p.add_run('- Once the labeler machine is et up, remove 5 topserts from the topsert stream. Using maker, draw a line diagonally through the center of each topsert. Apply those topserts to the bottle and place them back. Ensure each bottle is rejected. Circle pass or fail')
+         run = p.add_run('\nIf the topserts are not rejected, stop and contact a Supervisor or above to perform any adjustments needed')
+         run.font.bold = True
+         p = document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.add_run('New Column: Circle one Pass or Fail')
+         p = document.add_paragraph(style=document.styles['List Bullet 1'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+         p.add_run('- Place the topserts on the machine channel to ensure that the topserts are facing the correct way. Circle pass or fail')
+         run = p.add_run('\nIf the topserts are not rejected, stop and contact a Supervisor or above to perform any adjustments needed. \nNote: This is to ensure that the barcode is facing out. Once placed on the bottle, the barcode is facing out and detectable.')
+         run.font.bold = True
+         p = document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.add_run('New Column: Circle one Pass or Fail')
+
+      tsparentstep2warning = st.checkbox('Any warning regarding adding topsert step 2?')
+      if tsparentstep2warning:
+            tsps2warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: tsps2)")
+            p = document.add_paragraph(style=document.styles['List Bullet 1'])
+            run = p.add_run(tsps2warning) 
+            run.font.color.rgb = RGBColor(255, 0, 0)
+            run.font.bold = True
+
+#----------------------
+#----   CARTONING -----
+#----------------------
 if cartoning:
    with st.expander('Select Steps for Cartoning Process',expanded=True):
       p = document.add_paragraph(style=document.styles['List Bullet 0'])
@@ -397,8 +477,10 @@ if cartoning:
          p= document.add_paragraph(style=document.styles['List Bullet 1'])
          p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          p.add_run("- Gather any reusable components (bottles, leaflets, pill packes, etc.) and return to appropriate location for rework")
+         run = p.add_run("\nNote: Rework artons per OTW-PKG-0011")
+         run.font.bold = True
          p= document.add_paragraph(style=document.styles['List Bullet 1'])
-         p.add_run("- Ensure the inspected cartons are rejected. ")
+         p.add_run("- Ensure the inspected cartons are rejected.")
          run = p.add_run("Note: Cartons cannot be reworked.")
          run.font.bold = True
          p= document.add_paragraph(style=document.styles['List Bullet 1'])
@@ -414,6 +496,59 @@ if cartoning:
          p.add_run("- Using the change over list, start setting each station to the correct setting. Then reinstall correct change parts. Once installed, go to machine configuration and press Link tab.")
          run = p.add_run("Note: Once machine is setup for processing, minor adjustment may be needed")
          run.font.bold = True
+         p= document.add_paragraph(style=document.styles['List Bullet 1'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+         p.add_run("- Setup of Carton Tracker:")
+         p= document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+         p.add_run("Press the ")
+         run = p.add_run("ACCEPT WARNING ")
+         run.font.bold = True
+         p.add_run("Button on the HMI to acknowledge alarm, if present.")
+         p= document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+         p.add_run("Press ")
+         run = p.add_run("STARTUP ")
+         run.font.bold = True
+         p.add_run("to log into CartonTracker")
+         p= document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+         p.add_run("Press the ")
+         run = p.add_run("QUICK SETUP button")
+         run.font.bold = True
+         p= document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+         p.add_run("Press the")
+         run = p.add_run(" QUICK button")
+         run.font.bold = True
+         p= document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+         run = p.add_run("Note: The conveyor will start up. All cartons used for building image references will be rejected.")
+         run.font.bold = True
+         p= document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+         p.add_run("Feed a carton into the cartoner in the correct orientation and press the Accept Image button once the print looks acceptable.")
+         p= document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+         p.add_run("Press ")
+         run = p.add_run("Frames ")
+         run.font.bold = True
+         p.add_run("and press ")
+         run = p.add_run("NEXT ")
+         run.font.bold = True
+         p.add_run("to scroll through all the frames, when frames are properly centered, they are displayed with the green frames on the CartonTracker HMI.")
+         p= document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+         p.add_run("Press the ")
+         run = p.add_run("Accept Frames button")
+         run.font.bold = True
+         p.add_run(" to accept image.")
+         p= document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+         p.add_run("Press the ")
+         run = p.add_run("Build Reference button")
+         run.font.bold = True
+         p.add_run(" to build a reference on CartonTracker.")
 
       cparentstep2warning = st.checkbox('Any warning regarding cartoning step 2?')
       if cparentstep2warning:
@@ -423,7 +558,11 @@ if cartoning:
             run.font.color.rgb = RGBColor(255, 0, 0)
             run.font.bold = True
 
-if bundling:  
+#----------------------
+#----   BUNDLING  -----
+#----------------------
+
+if bundlingwcarton:  
    with st.expander('Select Steps for Bundling Process',expanded=True):
       p = document.add_paragraph(style=document.styles['List Bullet 0'])
       p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
@@ -431,22 +570,53 @@ if bundling:
       run = p.add_run('Bundling')
       run.bold = True
       run.font.size = Pt(12)
-      bparentstep1 = st.checkbox('Step: Parent Bundling Step 1',value=True)
-
-      if bparentstep1:
-         p = document.add_paragraph(style=document.styles['List Bullet 1'])
-         p.add_run('Bundling Parent Step 1')
-         st.caption('- Choose specific bundling steps')
-         bchildstep1_1 = st.checkbox('Sub step: child bundling step 1-1',value=True)
-         if bchildstep1_1:
-            p = document.add_paragraph(style=document.styles['List Bullet 2'])
-            p.add_run('Bundling Child Step 1-1')
-         
-         bchildstep1_2 = st.checkbox('Sub step: child bundling step 1-2',value=True)
-         if bchildstep1_2:
-            p = document.add_paragraph(style=document.styles['List Bullet 2'])
-            p.add_run('Bundling Child Step 1-2')
+      bundlingformat = st.text_input("Please, provide bundling format (ex. 3 cartons in a row = 3 x 1 x 1 [L x W x H])")
       
+      p = document.add_paragraph(style=document.styles['List Bullet 1'])
+      p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+      p.add_run('- Login to Shrink Wrap Bundler')
+      p = document.add_paragraph(style=document.styles['List Bullet 1'])
+      p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+      p.add_run('- Set up the Shrink Wrap Bundler per OTW-PKG-0016 using materials listed in the Secondary Packaging list.')
+      p = document.add_paragraph(style=document.styles['List Bullet 1'])
+      p.add_run('- Go to Format tab and select correct format: ')
+      run = p.add_run('Format XX PG '+bundlingformat)
+      run.font.bold = True
+      p.add_run('\nPress Load format, then press OK.')
+      p = document.add_paragraph(style=document.styles['List Bullet 1'])
+      p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+      p.add_run('- Using the changeover list, start setting each station to the correct setting. Then reinstall correct change parts. Once installed, go to machine configuration and press Link tab.')
+      run = p.add_run("\nNote: Once machine is setup for processing, minor adjustments may be needed.")
+      run.fort.bold = True
+      p = document.add_paragraph(style=document.styles['List Bullet 1'])
+      p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+      p.add_run('- Ensure both heaters have been turned on (Sealing bar heater and Therm Heater). Allow the machine to heat up to temperature. The alarm will clear once the correct temperature has been reached.')
+      p = document.add_paragraph(style=document.styles['List Bullet 2'])
+      p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+      p.add_run('Parameter: Seal Bar Temperature (degree C)')
+      p = document.add_paragraph(style=document.styles['List Bullet 3'])
+      p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+      p.add_run('Target: 180')
+      p = document.add_paragraph(style=document.styles['List Bullet 3'])
+      p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+      p.add_run('Range: 175 - 185')
+      p = document.add_paragraph(style=document.styles['List Bullet 2'])
+      p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+      p.add_run('Parameter: Thermal Heater Temperature (degree C)')
+      p = document.add_paragraph(style=document.styles['List Bullet 3'])
+      p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+      p.add_run('Target: 160')
+      p = document.add_paragraph(style=document.styles['List Bullet 3'])
+      p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+      p.add_run('Range: 155 - 165')
+
+      bundlingadd = st.checkbox("Additional Step in Bundling?")
+      if bundlingadd:
+          bundlingaddtional = st.text_input("Please, write out the description of the additional step")
+          p = document.add_paragraph(style=document.styles['List Bullet 1'])
+          p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+          p.add_run('- '+bundlingaddtional) 
+   
       bparentstep1warning = st.checkbox('Any warning regarding bundling step 1?')
       if bparentstep1warning:
             bps1warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: bps1)")
@@ -454,29 +624,10 @@ if bundling:
             run = p.add_run(bps1warning)
             run.font.color.rgb = RGBColor(255, 0, 0)
             run.font.bold = True
-   
-      st.divider()
-      bparentstep2 = st.checkbox('Step: Parent Bundling Step 2',value=True)
-      if bparentstep2:
-         p = document.add_paragraph(style=document.styles['List Bullet 1'])
-         p.add_run('Bundling Parent Step 2')
-         st.caption('Choose specific bundling steps')
-         bchildstep2_1 = st.checkbox('Sub step: child bundling step 2-1',value=True)
-         if bchildstep2_1:
-            p = document.add_paragraph(style=document.styles['List Bullet 2'])
-            p.add_run('Bundling Child Step 2-1')
-         bchildstep2_2 = st.checkbox('Sub step: child bundling step 2-2',value=True)
-         if bchildstep2_2:
-            p = document.add_paragraph(style=document.styles['List Bullet 2'])
-            p.add_run('Bundling Child Step 2-2')
-      bparentstep2warning = st.checkbox('Any warning regarding bundling step 2?')
-      if bparentstep2warning:
-            bps2warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: bps2)")
-            p = document.add_paragraph(style=document.styles['List Bullet 1'])
-            run = p.add_run(bps2warning)  
-            run.font.color.rgb = RGBColor(255, 0, 0)
-            run.font.bold = True
 
+#----------------------
+#---   Additional  ----
+#----------------------
 
 #-------------------------------------------------------------------------------
 if additional2:
