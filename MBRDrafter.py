@@ -132,7 +132,7 @@ run.font.color.rgb = RGBColor(0, 0, 255)
 ##########################################
 
 sachet = canister = cotton = additional1 = False
-cartoning = topsert = sidesert = bundling = shipper = bundlingwcarton = bundlingwbottle = additional2 = False
+cartoning = topsert = sidesert = shipper = bundlingwcarton = bundlingwbottle = additional2 = False
 
 
 ##---- Selecting Processes
