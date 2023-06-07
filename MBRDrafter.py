@@ -165,8 +165,10 @@ if not primary:
    st.caption("Primary is not Selected")
    st.divider()
 
-elif primary and sachet:
+if primary:
    st.markdown('#### Primary Packaging Step Selection')
+
+if sachet:
    with st.expander('Select Steps for Sachet Process',expanded=True):
       p = document.add_paragraph(style=document.styles['List Bullet 0'])
       p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
@@ -247,8 +249,11 @@ if not secondary:
    st.caption("Secondary is not Selected")
    st.divider()
 
+if secondary:
+   st.markdown('#### Secondary Packaging Step Selection')
+
 #- ------------------------------------------------------------------------------
-elif sidesert:
+if sidesert:
    with st.expander('Select Steps for Sidesert Process',expanded=True):
       p = document.add_paragraph(style=document.styles['List Bullet 0'])
       p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
@@ -310,8 +315,7 @@ elif sidesert:
             run.font.bold = True
 
 #- ------------------------------------------------------------------------------
-elif cartoning:
-   st.markdown('#### Secondary Packaging Step Selection')
+if cartoning:
    with st.expander('Select Steps for Cartoning Process',expanded=True):
       p = document.add_paragraph(style=document.styles['List Bullet 0'])
       p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
@@ -399,8 +403,7 @@ elif cartoning:
             run.font.color.rgb = RGBColor(255, 0, 0)
             run.font.bold = True
 
-elif bundling:
-   st.markdown('#### Secondary Packaging Step Selection')
+if bundling:  
    with st.expander('Select Steps for Bundling Process',expanded=True):
       p = document.add_paragraph(style=document.styles['List Bullet 0'])
       p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
@@ -456,8 +459,7 @@ elif bundling:
 
 
 #-------------------------------------------------------------------------------
-elif additional2:
-   st.markdown('#### Secondary Packaging Step Selection')
+if additional2:
    with st.expander('Select Steps for Additional Process',expanded=True):
       p = document.add_paragraph(style=document.styles['List Bullet 0'])
       p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
