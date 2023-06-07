@@ -230,8 +230,10 @@ with col2:
 
    if secondary:
       ###--- Secondary Packaging related list
-      bundling = st.checkbox("Bundling?")
       cartoning = st.checkbox("Cartoning?")
+      sidesert = st.checkbox("Sidesert?")
+      bundling = st.checkbox("Bundling?")
+      shipper = st.checkbox("Shipper?")
       additional2 = st.checkbox("Additional2?")
 
       subtitle = document.add_paragraph()
@@ -244,6 +246,158 @@ with col2:
 if not secondary:
    st.caption("Secondary is not Selected")
    st.divider()
+
+#- ------------------------------------------------------------------------------
+elif sidesert and secondary:
+   with st.expander('Select Steps for Sidesert Process',expanded=True):
+      p = document.add_paragraph(style=document.styles['List Bullet 0'])
+      p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
+      # Main Process Name
+      run = p.add_run('Adding Sidesert')
+      run.bold = True
+      run.font.size = Pt(12)
+      ssparentstep1 = st.checkbox('Step 1: Preparing Sidesert',value=True)  
+      
+      if ssparentstep1:
+         p = document.add_paragraph(style=document.styles['List Bullet 1'])
+         p.add_run('Weighing Sidesert')
+         st.caption('- Choose specific weighing steps')
+         sschildstep1_1 = st.checkbox('Step 1-A: Collect 10 cartons and printweigh in the space provided. Record the scale number and lot number in the spaces provided.',value=True)
+         if sschildstep1_1:
+            p = document.add_paragraph(style=document.styles['List Bullet 2'])
+            p.add_run('Collect 10 sideserts and printweigh in the space provided. Record the scale number and lot number in the spaces provided. \nRecord the sidesert usage log on pages XX-XX')
+            p= document.add_paragraph(style=document.styles['List Bullet 3'])
+            p.add_run("New Column 1: Scale #")
+            p= document.add_paragraph(style=document.styles['List Bullet 3'])
+            p.add_run("New Column 2: Lot #")
+            p= document.add_paragraph(style=document.styles['List Bullet 3'])
+            p.add_run("New Column 3: blank to print the weight")
+            p = document.add_paragraph(style=document.styles['List Bullet 2'])
+            p.add_run('Use the following calculation to determine the average weight of one sidesert')
+            p = document.add_paragraph(style=document.styles['List Bullet 3'])
+            p.add_run('__________ g (Wt. of 10 sidesert) / 10 = __________ g (Avg. Wt. of one sidesert)')
+      
+      ssparentstep1warning = st.checkbox('Any warning regarding adding sidesert step 1?')
+      if ssparentstep1warning:
+            ssps1warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: ssps1)")
+            p = document.add_paragraph(style=document.styles['List Bullet 1'])
+            run = p.add_run(ssps1warning) 
+            run.font.color.rgb = RGBColor(255, 0, 0)
+            run.font.bold = True
+
+      st.divider()
+      ssparentstep2 = st.checkbox('Step 2: Preparing Sidesert',value=True)
+      if ssparentstep2:
+         p = document.add_paragraph(style=document.styles['List Bullet 1'])
+         p.add_run('Once the labeler machine is et up, remove 5 sideserts from the sidesert stream. Using maker, draw a line diagonally through the center of each sidesert. Apply those sideserts to the bottle and place them back. Ensure each bottle is rejected. Circle pass or fail')
+         run = p.add_run('If the sideserts are not rejected, stop and contact a Supervisor or above to perform any adjustments needed')
+         run.font.bold = True
+         p = document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.add_run('New Column: Circle one Pass or Fail')
+         p = document.add_paragraph(style=document.styles['List Bullet 1'])
+         p.add_run('Place the sideserts on the machine channel to ensure that the sideserts are facing the correct way. Circle pass or fail')
+         run = p.add_run('If the sideserts are not rejected, stop and contact a Supervisor or above to perform any adjustments needed. \nNote: This is to ensure that the barcode is facing out. Once placed on the bottle, the barcode is facing out and detectable.')
+         run.font.bold = True
+         p = document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.add_run('New Column: Circle one Pass or Fail')
+
+      ssparentstep2warning = st.checkbox('Any warning regarding adding sidesert step 2?')
+      if ssparentstep2warning:
+            ssps2warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: ssps2)")
+            p = document.add_paragraph(style=document.styles['List Bullet 1'])
+            run = p.add_run(ssps2warning) 
+            run.font.color.rgb = RGBColor(255, 0, 0)
+            run.font.bold = True
+
+#- ------------------------------------------------------------------------------
+elif cartoning and secondary:
+   st.markdown('#### Secondary Packaging Step Selection')
+   with st.expander('Select Steps for Cartoning Process',expanded=True):
+      p = document.add_paragraph(style=document.styles['List Bullet 0'])
+      p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
+      # Main Process Name
+      run = p.add_run('Cartoning')
+      run.bold = True
+      run.font.size = Pt(12)
+      cparentstep1 = st.checkbox('Step 1: Preparing Cartons',value=True)  
+      
+      if cparentstep1:
+         p = document.add_paragraph(style=document.styles['List Bullet 1'])
+         p.add_run('Weighing Cartons')
+         st.caption('- Choose specific weighing steps')
+         cchildstep1_1 = st.checkbox('Step 1-A: Collect 10 cartons and printweigh in the space provided. Record the scale number and lot number in the spaces provided.',value=True)
+         if cchildstep1_1:
+            p = document.add_paragraph(style=document.styles['List Bullet 2'])
+            p.add_run('Collect 10 cartons and printweigh in the space provided. Record the scale number and lot number in the spaces provided. \nRecord the carton usage log on pages XX-XX')
+            p= document.add_paragraph(style=document.styles['List Bullet 3'])
+            p.add_run("New Column 1: Scale #")
+            p= document.add_paragraph(style=document.styles['List Bullet 3'])
+            p.add_run("New Column 2: Lot #")
+            p= document.add_paragraph(style=document.styles['List Bullet 3'])
+            p.add_run("New Column 3: blank to print the weight")
+            p = document.add_paragraph(style=document.styles['List Bullet 2'])
+            p.add_run('Use the following calculation to determine the average weight of one carton')
+            p = document.add_paragraph(style=document.styles['List Bullet 3'])
+            p.add_run('__________ g (Wt. of 10 cartons) / 10 = __________ g (Avg. Wt. of one carton)')
+      cparentstep1warning = st.checkbox('Any warning regarding cartoning step 1?')
+      if cparentstep1warning:
+            cps1warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: cps1)")
+            p = document.add_paragraph(style=document.styles['List Bullet 1'])
+            run = p.add_run(cps1warning) 
+            run.font.color.rgb = RGBColor(255, 0, 0)
+            run.font.bold = True
+
+      st.divider()
+      cparentstep2 = st.checkbox('Step 2: Preparing Cartoner',value=True)
+      if cparentstep2:
+         p = document.add_paragraph(style=document.styles['List Bullet 1'])
+         p.add_run('Set up all cartoner infeed and outfeed conveyors to match the bottle and carton ins use')
+         p = document.add_paragraph(style=document.styles['List Bullet 1'])
+         p.add_run('Set up the cartoner in the Dry Run mode and allow to cycle for NLT 1 minute.\nVerify a smooth cycle')
+         p = document.add_paragraph(style=document.styles['List Bullet 1'])
+         p.add_run('Allow NLT 5 bottles to be loaded, formed, filled and sealed by turning Dry Run OFF.')
+         p = document.add_paragraph(style=document.styles['List Bullet 1'])
+         p.add_run('Once NLT 5 bottles have been loaded, turn Dry Run back On.')
+         p = document.add_paragraph(style=document.styles['List Bullet 1'])
+         p.add_run('Remove NLT 5 completed cartons from the exit conveyor ahead of CartonTracker for inspection. Indicate in the space provided if inspection is a PAss or FAil. If any failures are found, contact a Supervisor or above to perform any adjustment as needed')
+         p = document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.add_run('New Column: Inspection Results (Circle One) Pass or Fail')
+         p= document.add_paragraph(style=document.styles['List Bullet 1'])
+         p.add_run("Verify that the following are correct (carton will need to be opened for some items):")
+         p= document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.add_run("Carton is properly closed and sealed")
+         p= document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.add_run("Bottle is present and properly oriented")
+         p= document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.add_run("Insert (if applicable) is present and properly oriented")
+         p= document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.add_run("Any other required components (pill pack, etc.) are present and properly oriented")
+         p= document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.add_run("External seals or labels are applied in correct location")
+         p= document.add_paragraph(style=document.styles['List Bullet 1'])
+         p.add_run("Gather any reusable components (bottles, leaflets, pill packes, etc.) and return to appropriate location for rework")
+         p= document.add_paragraph(style=document.styles['List Bullet 1'])
+         p.add_run("Ensure the inspected cartons are rejected. ")
+         run = p.add_run("Note: Cartons cannot be reworked.")
+         run.font.bold = True
+         p= document.add_paragraph(style=document.styles['List Bullet 1'])
+         p.add_run("If seals or labels are applied to the carton, perform a challenge of the vision system")
+         p= document.add_paragraph(style=document.styles['List Bullet 1'])
+         p.add_run("Pass 5 cartons through the camera system with NLT 1 seal/label missing per carton. Verify all 5 cartons are rejected. Indicate in the space provided if inspection is a Pass or Fail. If any failures are found contact a Supervisor or above to perform an adjustement as needed")
+         p= document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.add_run("New Column: Inspection Results (Circle One) Pass or Fail")
+         p= document.add_paragraph(style=document.styles['List Bullet 1'])
+         p.add_run("Using the change over list, start setting each station to the correct setting. Then reinstall correct change parts. Once installed, go to machine configuration and press Link tab.")
+         run = p.add_run("Note: Once machine is setup for processing, minor adjustment may be needed")
+         run.font.bold = True
+
+      cparentstep2warning = st.checkbox('Any warning regarding cartoning step 2?')
+      if cparentstep2warning:
+            cps2warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: cps2)")
+            p = document.add_paragraph(style=document.styles['List Bullet 1'])
+            run = p.add_run(cps2warning) 
+            run.font.color.rgb = RGBColor(255, 0, 0)
+            run.font.bold = True
 
 elif bundling and secondary:
    st.markdown('#### Secondary Packaging Step Selection')
@@ -299,59 +453,8 @@ elif bundling and secondary:
             run = p.add_run(bps2warning)  
             run.font.color.rgb = RGBColor(255, 0, 0)
             run.font.bold = True
-#- ------------------------------------------------------------------------------
-elif cartoning and secondary:
-   st.markdown('#### Secondary Packaging Step Selection')
-   with st.expander('Select Steps for Cartoning Process',expanded=True):
-      p = document.add_paragraph(style=document.styles['List Bullet 0'])
-      p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
-      # Main Process Name
-      run = p.add_run('Cartoning')
-      run.bold = True
-      run.font.size = Pt(12)
-      cparentstep1 = st.checkbox('Step: Parent cartoning Step 1',value=True)  
-      
-      if cparentstep1:
-         p = document.add_paragraph(style=document.styles['List Bullet 1'])
-         p.add_run('cartoning Parent Step 1')
-         st.caption('- Choose specific bundling steps')
-         cchildstep1_1 = st.checkbox('Sub step: child cartoning step 1-1',value=True)
-         if cchildstep1_1:
-            p = document.add_paragraph(style=document.styles['List Bullet 2'])
-            p.add_run('cartoning Child Step 1-1')
-         cchildstep1_2 = st.checkbox('Sub step: child cartoning step 1-2',value=True)
-         if cchildstep1_2:
-            p = document.add_paragraph(style=document.styles['List Bullet 2'])
-            p.add_run('cartoning Child Step 1-2')
-      cparentstep1warning = st.checkbox('Any warning regarding cartoning step 1?')
-      if cparentstep1warning:
-            cps2warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: cps1)")
-            p = document.add_paragraph(style=document.styles['List Bullet 1'])
-            run = p.add_run(cps2warning) 
-            run.font.color.rgb = RGBColor(255, 0, 0)
-            run.font.bold = True
 
-      st.divider()
-      cparentstep2 = st.checkbox('Step: Parent cartoning Step 2',value=True)
-      if cparentstep2:
-         p = document.add_paragraph(style=document.styles['List Bullet 1'])
-         p.add_run('cartoning Parent Step 2')
-         st.caption('- Choose specific bundling steps')
-         cchildstep2_1 = st.checkbox('Sub step: child cartoning step 2-1',value=True)
-         if cchildstep2_1:
-            p = document.add_paragraph(style=document.styles['List Bullet 2'])
-            p.add_run('cartoning Child Step 2-1')
-         cchildstep2_2 = st.checkbox('Sub step: child cartoning step 2-2',value=True)
-         if cchildstep2_2:
-            p = document.add_paragraph(style=document.styles['List Bullet 2'])
-            p.add_run('cartoning Child Step 2-2')
-      cparentstep2warning = st.checkbox('Any warning regarding cartoning step 2?')
-      if cparentstep2warning:
-            cps2warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: cps2)")
-            p = document.add_paragraph(style=document.styles['List Bullet 1'])
-            run = p.add_run(cps2warning) 
-            run.font.color.rgb = RGBColor(255, 0, 0)
-            run.font.bold = True
+
 #-------------------------------------------------------------------------------
 elif additional2 and secondary:
    st.markdown('#### Secondary Packaging Step Selection')
