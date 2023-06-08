@@ -308,7 +308,7 @@ if cotton:
       p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
       run = p.add_run('Operator Notes:')
       run.font.bold = True
-      run = p.add_run('Ensure hopper gate is closed before charging.')
+      run = p.add_run(' Ensure hopper gate is closed before charging.')
       run.font.bold = True
       run.font.color.rgb = RGBColor(255,0,0)
       p.add_run('\nAdd materials to their respective hoppers and continue to fill the hoppers throughout the process as needed. ')
@@ -322,18 +322,23 @@ if cotton:
          p.add_run('- Record the 9-gram Cotton Coil lot number and item number in the spaces provided. Printweigh the weight of the 9-gram Cotton Coil in the space provided. Record the scale number in the space provided.')
          
          p = document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          p.add_run('New Column: Scale #')
          p = document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          p.add_run('New Column: Lot #')
          p = document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          p.add_run('New Column: Item #')
          p = document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          p.add_run('New Column: Blank for recording weight')
       
       cfparentstep1warning = st.checkbox('Any warning regarding Cotton Filling step 1?')
       if cfparentstep1warning:
             cfps1warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: cfps1)")
             p = document.add_paragraph(style=document.styles['List Bullet 1'])
+            p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
             run = p.add_run(cfps1warning)
             run.font.color.rgb = RGBColor(255, 0, 0)
             run.font.bold = True
@@ -351,6 +356,7 @@ if cotton:
          run.font.bold = True
          p.add_run('Ensure bottles are in the upright position then press start and allow the bottles to fill the line.')
          p = document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          p.add_run('New Column: Recipe Name')
          p.add_run('\n'+capsize)
 
@@ -362,12 +368,16 @@ if cotton:
          p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          p.add_run('- Select and load the appropriate recipe on the Uniline HMI then perform the following actions: \nSelect')        
          p = document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          p.add_run('Product Screen')
          p = document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          p.add_run('Batch Control')
          p = document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          p.add_run('Enter Lot number')
          p = document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          p.add_run('Press Start Batch')
          p = document.add_paragraph(style=document.styles['List Bullet 1'])
          p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
@@ -412,6 +422,7 @@ if sealer:
          sealerrange = st.text_input("Please, provide low and high end of the range (ex. 10 - 90). The default unit of range is %")
          sealergap = st.text_input("Please, provide the sealing gap (ex. 3 - 4). The default unit of gap is mm")
          p = document.add_paragraph(style=document.styles['List Bullet 1'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          p.add_run('- Verify that the Induction Sealer has been set up properly to ensure a complete seal per SOP OTW-PKG-0014-J11.')
          run = p.add_run('\nRange: '+sealerrange+'% and sealing gap of '+sealergap+' mm.')
          run.font.bold = True
@@ -419,27 +430,36 @@ if sealer:
          run = p.add_run('\nNote: Adjust as necessary to achieve proper seal.')
          run.font.bold = True
          p = document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          p.add_run('New Column: Induction Sealer Setting (%)')
          p = document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          p.add_run('New Column: Seal Gap (mm)')
 
          p = document.add_paragraph(style=document.styles['List Bullet 1'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          p.add_run('- On the Induction Sealer select:')
          p = document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          p.add_run('Data')
          p = document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          p.add_run('Bottle Counts')
          p = document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          p.add_run('Reset Counts')
          p = document.add_paragraph(style=document.styles['List Bullet 1'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          p.add_run('This completes the set-up process.')
 
          p = document.add_paragraph(style=document.styles['List Bullet 1'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          p.add_run('- Remove the foil from five (5) closures and place the closures back onto the bottles. Run the five (5) bottles through the induction sealer to ensure they are rejected.')
          p.add_run('\n Circle pass or fail')
          run = p.add_run('\nIf the bottles are not rejected, stop and contact a Supervisor or above to perform any adjustments needed.')
          run.font.bold = True
          p = document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          p.add_run('New Column: Circle One: Pass / Fail')
 
       
