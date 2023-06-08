@@ -593,7 +593,7 @@ if topsert:
             p.add_run('__________ g (Wt. of 10 topsert) / 10 = __________ g (Avg. Wt. of one topsert)')
             
       
-      tsparentstep1warning = st.checkbox('Any warning regarding adding sidesert step 1?')
+      tsparentstep1warning = st.checkbox('Any warning regarding adding topsert step 1?')
       if tsparentstep1warning:
             tsps1warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: tsps1)")
             p = document.add_paragraph(style=document.styles['List Bullet 1'])
