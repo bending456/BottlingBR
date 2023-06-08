@@ -132,7 +132,7 @@ run.font.color.rgb = RGBColor(0, 0, 255)
 ##########################################
 
 sachet = canister = cotton = additional1 = False
-cartoning = topsert = sidesert = shipper = bundlingwcarton = bundlingwbottle = additional2 = False
+cartoning = topsert = sidesert = shipper = bundling = additional2 = False
 
 
 ##---- Selecting Processes
@@ -242,8 +242,7 @@ with col2:
       cartoning = st.checkbox("Cartoning?")
       sidesert = st.checkbox("Sidesert?")
       topsert = st.checkbox("Topsert?")
-      bundlingwcarton = st.checkbox("Bundling with Carton? - N/A without cartoning option")
-      bundlingwbottle = st.checkbox("Bundling bottles?")
+      bundling = st.checkbox("Bundling?")
       shipper = st.checkbox("Shipper?")
       additional2 = st.checkbox("Additional2?")
 
@@ -559,16 +558,16 @@ if cartoning:
             run.font.color.rgb = RGBColor(255, 0, 0)
             run.font.bold = True
 
-#----------------------
-#----   BUNDLING  -----
-#----------------------
+#-------------------------------------
+#----   BUNDLING with cartoning  -----
+#-------------------------------------
 
-if bundlingwcarton:  
-   with st.expander('Select Steps for Bundling Process',expanded=True):
+if bundling and cartoning:  
+   with st.expander('Select Steps for Bundling Process (for cartoned product)',expanded=True):
       p = document.add_paragraph(style=document.styles['List Bullet 0'])
       p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
       # Main Process Name
-      run = p.add_run('Bundling')
+      run = p.add_run('Bundling after Cartoning')
       run.bold = True
       run.font.size = Pt(12)
       bundlingformat = st.text_input("Please, provide bundling format (ex. 3 cartons in a row = 3 x 1 x 1 [L x W x H])")
@@ -626,6 +625,15 @@ if bundlingwcarton:
             run.font.color.rgb = RGBColor(255, 0, 0)
             run.font.bold = True
 
+if bundling and not cartoning:
+    with st.expander('Select Steps for Bundling Process (for bottles)',expanded=True):
+      p = document.add_paragraph(style=document.styles['List Bullet 0'])
+      p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
+      # Main Process Name
+      run = p.add_run('Bundling for bottles')
+      run.bold = True
+      run.font.size = Pt(12)
+      #bundlingformat = st.text_input("Please, provide bundling format (ex. 3 cartons in a row = 3 x 1 x 1 [L x W x H])")
 #----------------------
 #---   Additional  ----
 #----------------------
