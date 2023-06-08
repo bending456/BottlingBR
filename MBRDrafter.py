@@ -443,9 +443,9 @@ if sealer:
          p.add_run('New Column: Circle One: Pass / Fail')
 
       
-      slparentstep1warning = st.checkbox('Any warning regarding Cotton Filling step 1?')
+      slparentstep1warning = st.checkbox('Any warning regarding Sealer step 1?')
       if slparentstep1warning:
-            slps1warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: cfps1)")
+            slps1warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: slps1)")
             p = document.add_paragraph(style=document.styles['List Bullet 1'])
             run = p.add_run(slps1warning)
             run.font.color.rgb = RGBColor(255, 0, 0)
