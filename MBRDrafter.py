@@ -131,7 +131,7 @@ run.font.color.rgb = RGBColor(0, 0, 255)
 #----------------------------------------#
 ##########################################
 
-sachet = canister = cotton = additional1 = False
+sachet = canister = cotton = sealer = additional1 = False
 cartoning = topsert = sidesert = shipper = bundling = additional2 = False
 
 
@@ -151,8 +151,9 @@ with col1:
       ###--- Primary Packaging related list
       st.divider()
       sachet = st.checkbox("Sachet?")
-      canister = st.checkbox("Canister? - N/A")
-      cotton = st.checkbox("Cotton Filler? - N/A")
+      canister = st.checkbox("Canister?")
+      cotton = st.checkbox("Cotton Filler?")
+      sealer = st.checkbox("Sealer?")
       additional1 = st.checkbox("Additional1? - N/A")
 
       subtitle = document.add_paragraph()
@@ -175,6 +176,11 @@ if not primary:
 if primary:
    st.markdown('#### Primary Packaging Step Selection')
 
+
+#----------------------
+#----   SACHET  -----
+#----------------------
+
 if sachet:
    with st.expander('Select Steps for Sachet Process',expanded=True):
       p = document.add_paragraph(style=document.styles['List Bullet 0'])
@@ -183,50 +189,269 @@ if sachet:
       run = p.add_run('Sachet Process')
       run.bold = True
       run.font.size = Pt(12)
-      sparentstep1 = st.checkbox('Step: Parent Sachet Step 1',value=True)
-      if sparentstep1:
+      saparentstep1 = st.checkbox('Step: Parent Sachet Step 1',value=True)
+      if saparentstep1:
          p = document.add_paragraph(style=document.styles['List Bullet 1'])
-         p.add_run('Sachet Parent Step 1')
-         st.caption('- Choose specific bundling steps')
-         schildstep1_1 = st.checkbox('Sub step: child Sachet step 1-1',value=True)
-         if schildstep1_1:
+         p.add_run('- Sachet Parent Step 1')
+         st.caption('Choose specific Sachet steps')
+         sachildstep1_1 = st.checkbox('Sub step: child Sachet step 1-1',value=True)
+         if sachildstep1_1:
             p = document.add_paragraph(style=document.styles['List Bullet 2'])
             p.add_run('Sachet Child Step 1-1')
          
-         schildstep1_2 = st.checkbox('Sub step: child Sachet step 1-2',value=True)
-         if schildstep1_2:
+         sachildstep1_2 = st.checkbox('Sub step: child Sachet step 1-2',value=True)
+         if sachildstep1_2:
             p = document.add_paragraph(style=document.styles['List Bullet 2'])
             p.add_run('Sachet Child Step 1-2')
       
-      sparentstep1warning = st.checkbox('Any warning regarding Sachet step 1?')
-      if sparentstep1warning:
-            xps1warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: sps1)")
+      saparentstep1warning = st.checkbox('Any warning regarding Sachet step 1?')
+      if saparentstep1warning:
+            saps1warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: saps1)")
             p = document.add_paragraph(style=document.styles['List Bullet 1'])
-            run = p.add_run(xps1warning)
+            run = p.add_run(saps1warning)
             run.font.color.rgb = RGBColor(255, 0, 0)
             run.font.bold = True
    
       st.divider()
-      sparentstep2 = st.checkbox('Step: Parent Sachet Step 2',value=True)
-      if sparentstep2:
+      saparentstep2 = st.checkbox('Step: Parent Sachet Step 2',value=True)
+      if saparentstep2:
          p = document.add_paragraph(style=document.styles['List Bullet 1'])
-         p.add_run('Sachet Parent Step 2')
+         p.add_run('- Sachet Parent Step 2')
          st.caption('Choose specific Sachet steps')
-         schildstep2_1 = st.checkbox('Sub step: child Sachet step 2-1',value=True)
-         if schildstep2_1:
+         sachildstep2_1 = st.checkbox('Sub step: child Sachet step 2-1',value=True)
+         if sachildstep2_1:
             p = document.add_paragraph(style=document.styles['List Bullet 2'])
             p.add_run('Sachet Child Step 2-1')
-         schildstep2_2 = st.checkbox('Sub step: child Sachet step 2-2',value=True)
-         if schildstep2_2:
+         sachildstep2_2 = st.checkbox('Sub step: child Sachet step 2-2',value=True)
+         if sachildstep2_2:
             p = document.add_paragraph(style=document.styles['List Bullet 2'])
             p.add_run('Sachet Child Step 2-2')
-      sparentstep2warning = st.checkbox('Any warning regarding Sachet step 2?')
-      if sparentstep2warning:
-            xps2warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: sps2)")
+      saparentstep2warning = st.checkbox('Any warning regarding Sachet step 2?')
+      if saparentstep2warning:
+            saps2warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: saps2)")
             p = document.add_paragraph(style=document.styles['List Bullet 1'])
-            run = p.add_run(xps2warning)  
+            run = p.add_run(saps2warning)  
             run.font.color.rgb = RGBColor(255, 0, 0)
             run.font.bold = True
+
+#----------------------
+#----   CANISTER  -----
+#----------------------
+
+if canister:
+   with st.expander('Select Steps for Canister Process',expanded=True):
+      p = document.add_paragraph(style=document.styles['List Bullet 0'])
+      p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
+      # Main Process Name
+      run = p.add_run('Canister Process')
+      run.bold = True
+      run.font.size = Pt(12)
+      caparentstep1 = st.checkbox('Step: Parent Canister Step 1',value=True)
+      if caparentstep1:
+         p = document.add_paragraph(style=document.styles['List Bullet 1'])
+         p.add_run('- Canister Parent Step 1')
+         st.caption('Choose specific Canister steps')
+         cachildstep1_1 = st.checkbox('Sub step: child Canister step 1-1',value=True)
+         if cachildstep1_1:
+            p = document.add_paragraph(style=document.styles['List Bullet 2'])
+            p.add_run('Canister Child Step 1-1')
+         
+         cachildstep1_2 = st.checkbox('Sub step: child Canister step 1-2',value=True)
+         if cachildstep1_2:
+            p = document.add_paragraph(style=document.styles['List Bullet 2'])
+            p.add_run('Canister Child Step 1-2')
+      
+      caparentstep1warning = st.checkbox('Any warning regarding Canister step 1?')
+      if caparentstep1warning:
+            caps1warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: caps1)")
+            p = document.add_paragraph(style=document.styles['List Bullet 1'])
+            run = p.add_run(caps1warning)
+            run.font.color.rgb = RGBColor(255, 0, 0)
+            run.font.bold = True
+   
+      st.divider()
+      caparentstep2 = st.checkbox('Step: Parent Canister Step 2',value=True)
+      if caparentstep2:
+         p = document.add_paragraph(style=document.styles['List Bullet 1'])
+         p.add_run('- Canister Parent Step 2')
+         st.caption('Choose specific Canister steps')
+         cachildstep2_1 = st.checkbox('Sub step: child Canister step 2-1',value=True)
+         if cachildstep2_1:
+            p = document.add_paragraph(style=document.styles['List Bullet 2'])
+            p.add_run('Canister Child Step 2-1')
+         cachildstep2_2 = st.checkbox('Sub step: child Canister step 2-2',value=True)
+         if cachildstep2_2:
+            p = document.add_paragraph(style=document.styles['List Bullet 2'])
+            p.add_run('Canister Child Step 2-2')
+      caparentstep2warning = st.checkbox('Any warning regarding Canister step 2?')
+      if caparentstep2warning:
+            caps2warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: caps2)")
+            p = document.add_paragraph(style=document.styles['List Bullet 1'])
+            run = p.add_run(caps2warning)  
+            run.font.color.rgb = RGBColor(255, 0, 0)
+            run.font.bold = True
+
+#----------------------
+#----    COTTON   -----
+#----------------------
+
+if cotton:
+   with st.expander('Select Steps for Cotton Filling Process',expanded=True):
+      p = document.add_paragraph(style=document.styles['List Bullet 0'])
+      p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
+      # Main Process Name
+      run = p.add_run('Cotton Filling Process')
+      run.bold = True
+      run.font.size = Pt(12)
+
+      p = document.add_paragraph(style=document.styles['List Bullet 1'])
+      p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+      run = p.add_run('Operator Notes:')
+      run.font.bold = True
+      run = p.add_run('Ensure hopper gate is closed before charging.')
+      run.font.bold = True
+      run.font.color.rgb = RGBColor(255,0,0)
+      p.add_run('\nAdd materials to their respective hoppers and continue to fill the hoppers throughout the process as needed. ')
+      p.add_run('As each box of closure or bottles is brought in the room, document the quantity in the box, the item number, lot number, and box number on the Bottle Usage Log (pages AA-BB) ')
+      p.add_run('and Closure Usage Log (pages CC-DD). Ensure the hopper gate is closed before charging.')
+
+      cfparentstep1 = st.checkbox('Step 1: Cotton Prepare',value=True)
+      if cfparentstep1:
+         p = document.add_paragraph(style=document.styles['List Bullet 1'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+         p.add_run('- Record the 9-gram Cotton Coil lot number and item number in the spaces provided. Printweigh the weight of the 9-gram Cotton Coil in the space provided. Record the scale number in the space provided.')
+         
+         p = document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.add_run('New Column: Scale #')
+         p = document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.add_run('New Column: Lot #')
+         p = document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.add_run('New Column: Item #')
+         p = document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.add_run('New Column: Blank for recording weight')
+      
+      cfparentstep1warning = st.checkbox('Any warning regarding Cotton Filling step 1?')
+      if cfparentstep1warning:
+            cfps1warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: cfps1)")
+            p = document.add_paragraph(style=document.styles['List Bullet 1'])
+            run = p.add_run(cfps1warning)
+            run.font.color.rgb = RGBColor(255, 0, 0)
+            run.font.bold = True
+
+
+      st.divider()
+      cfparentstep2 = st.checkbox('Step 2: Setting up Bottle Unscrambler',value=True)
+      if cfparentstep2:
+         capsize = st.text_input("Cap Size (ex. XX cc round/square XX mm )")
+         verifiedbottlecount = st.text_input("What is the number of count to verify in Swiftpharm counter?")
+         p = document.add_paragraph(style=document.styles['List Bullet 1'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+         p.add_run('- Select the recipe on the Bottle Unscrambler and ')
+         run = p.add_run('set Air Rinsing/Blowing Pressure to 4-6 bar. ')
+         run.font.bold = True
+         p.add_run('Ensure bottles are in the upright position then press start and allow the bottles to fill the line.')
+         p = document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.add_run('New Column: Recipe Name')
+         p.add_run('\n'+capsize)
+
+         p = document.add_paragraph(style=document.styles['List Bullet 1'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+         p.add_run('- Ensure that the bottles are properly oriented on the conveyor belt.')
+
+         p = document.add_paragraph(style=document.styles['List Bullet 1'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+         p.add_run('- Select and load the appropriate recipe on the Uniline HMI then perform the following actions: \nSelect')        
+         p = document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.add_run('Product Screen')
+         p = document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.add_run('Batch Control')
+         p = document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.add_run('Enter Lot number')
+         p = document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.add_run('Press Start Batch')
+         p = document.add_paragraph(style=document.styles['List Bullet 1'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+         p.add_run('Confirm to start batch')
+
+         p = document.add_paragraph(style=document.styles['List Bullet 1'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+         p.add_run('- Set up the Uniline as required per OTW-PKG-0005 using materials listed in the Primary Packaging Materials list. \n')
+         run = p.add_run('Note: Ensure that cone to bottle alignment is correct for the Swiftpharm counter.')
+         run.font.bold = True
+         
+         p = document.add_paragraph(style=document.styles['List Bullet 1'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+         p.add_run('- Access the Counter Screen on the Uniline HMI under the recipe tab and verify the count is set to '+verifiedbottlecount+'.')
+         p = document.add_paragraph(style=document.styles['List Bullet 1'])
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+         p.add_run('- Place the bulk cotton bag into a portable pot. Load the cotton into the cottoner and ensure the correct length (approximately 5.5 inches / bottle) has been set.')
+      
+      cfparentstep2warning = st.checkbox('Any warning regarding Cotton Filling step 2?')
+      if cfparentstep2warning:
+            cfps2warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: cfps2)")
+            p = document.add_paragraph(style=document.styles['List Bullet 1'])
+            run = p.add_run(cfps2warning)  
+            run.font.color.rgb = RGBColor(255, 0, 0)
+            run.font.bold = True
+        
+
+#----------------------
+#----    SEALER   -----
+#----------------------
+
+if sealer:
+   with st.expander('Select Steps for Sealing Process',expanded=True):
+      p = document.add_paragraph(style=document.styles['List Bullet 0'])
+      p.paragraph_format.line_spacing = Pt(10)  # Set line spacing to 24 points
+      # Main Process Name
+      run = p.add_run('Sealing Process')
+      run.bold = True
+      run.font.size = Pt(12)
+      slparentstep1 = st.checkbox('Step 1: Sealer Setup',value=True)
+      if slparentstep1:
+         sealerrange = st.text_input("Please, provide low and high end of the range (ex. 10 - 90). The default unit of range is %")
+         sealergap = st.text_input("Please, provide the sealing gap (ex. 3 - 4). The default unit of gap is mm")
+         p = document.add_paragraph(style=document.styles['List Bullet 1'])
+         p.add_run('- Verify that the Induction Sealer has been set up properly to ensure a complete seal per SOP OTW-PKG-0014-J11.')
+         run = p.add_run('\nRange: '+sealerrange+'% and sealing gap of '+sealergap+' mm.')
+         run.font.bold = True
+         p.add_run('\nRecord the Induction Sealer and sealing gap setting in the spaces provided.')
+         run = p.add_run('\nNote: Adjust as necessary to achieve proper seal.')
+         run.font.bold = True
+         p = document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.add_run('New Column: Induction Sealer Setting (%)')
+         p = document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.add_run('New Column: Seal Gap (mm)')
+
+         p = document.add_paragraph(style=document.styles['List Bullet 1'])
+         p.add_run('- On the Induction Sealer select:')
+         p = document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.add_run('Data')
+         p = document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.add_run('Bottle Counts')
+         p = document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.add_run('Reset Counts')
+         p = document.add_paragraph(style=document.styles['List Bullet 1'])
+         p.add_run('This completes the set-up process.')
+
+         p = document.add_paragraph(style=document.styles['List Bullet 1'])
+         p.add_run('- Remove the foil from five (5) closures and place the closures back onto the bottles. Run the five (5) bottles through the induction sealer to ensure they are rejected.')
+         p.add_run('\n Circle pass or fail')
+         run = p.add_run('\nIf the bottles are not rejected, stop and contact a Supervisor or above to perform any adjustments needed.')
+         run.font.bold = True
+         p = document.add_paragraph(style=document.styles['List Bullet 2'])
+         p.add_run('New Column: Circle One: Pass / Fail')
+
+      
+      slparentstep1warning = st.checkbox('Any warning regarding Cotton Filling step 1?')
+      if slparentstep1warning:
+            slps1warning = st.text_input("Please, explain the step that ops need to take extra caution (warning ID: cfps1)")
+            p = document.add_paragraph(style=document.styles['List Bullet 1'])
+            run = p.add_run(slps1warning)
+            run.font.color.rgb = RGBColor(255, 0, 0)
+            run.font.bold = True
+   
+
 
 #################################################################################
 
@@ -243,7 +468,7 @@ with col2:
       sidesert = st.checkbox("Sidesert?")
       topsert = st.checkbox("Topsert?")
       bundling = st.checkbox("Bundling?")
-      shipper = st.checkbox("Shipper?")
+      shipper = st.checkbox("Shipper? - N/A")
       additional2 = st.checkbox("Additional2?")
 
       subtitle = document.add_paragraph()
