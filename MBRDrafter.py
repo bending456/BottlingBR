@@ -579,6 +579,7 @@ if bundling and cartoning:
       p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
       p.add_run('- Set up the Shrink Wrap Bundler per OTW-PKG-0016 using materials listed in the Secondary Packaging list.')
       p = document.add_paragraph(style=document.styles['List Bullet 1'])
+      p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
       p.add_run('- Go to Format tab and select correct format: ')
       run = p.add_run('Format XX PG '+bundlingformat)
       run.font.bold = True
