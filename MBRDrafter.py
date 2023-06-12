@@ -889,7 +889,7 @@ if cartoning:
          run = p.add_run(steporder)
          run.font.bold = True
          p.add_run(": Gather any reusable components (bottles, leaflets, pill packes, etc.) and return to appropriate location for rework")
-         run = p.add_run("\nNote: Rework artons per OTW-PKG-0011")
+         run = p.add_run("\nNote: Rework cartons per OTW-PKG-0011")
          run.font.bold = True
          p= document.add_paragraph(style=document.styles['List Bullet 1'])
          SubStepNum += 1
@@ -912,7 +912,7 @@ if cartoning:
          steporder = '\u2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
          run = p.add_run(steporder)
          run.font.bold = True
-         p.add_run(": Pass 5 cartons through the camera system with NLT 1 seal/label missing per carton. Verify all 5 cartons are rejected. Indicate in the space provided if inspection is a Pass or Fail. If any failures are found contact a Supervisor or above to perform an adjustement as needed")
+         p.add_run(": Pass 5 cartons through the camera system with NLT 1 seal/label missing per carton. Verify all 5 cartons are rejected. Indicate in the space provided if inspection is a Pass or Fail. If any failures are found contact a Supervisor or above to perform an adjustment as needed")
          p= document.add_paragraph(style=document.styles['List Bullet 2'])
          p.add_run("New Column: Inspection Results (Circle One) Pass or Fail")
          p= document.add_paragraph(style=document.styles['List Bullet 1'])
