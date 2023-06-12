@@ -897,6 +897,7 @@ if cartoning:
          run = p.add_run(steporder)
          run.font.bold = True
          p.add_run(": Ensure the inspected cartons are rejected.")
+         p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          run = p.add_run("\nNote: Cartons cannot be reworked.")
          run.font.bold = True
          p= document.add_paragraph(style=document.styles['List Bullet 1'])
@@ -1039,7 +1040,7 @@ if bundling and cartoning:
       run = p.add_run(steporder)
       run.font.bold = True
       p.add_run(': Using the changeover list, start setting each station to the correct setting. Then reinstall correct change parts. Once installed, go to machine configuration and press Link tab.')
-      run = p.add_run("\nNote: Once machine is setup for processing, minor adjustments may be needed.")
+      run = p.add_run("\nNote: Once machine is set up for processing, minor adjustments may be needed.")
       run.font.bold = True
       p = document.add_paragraph(style=document.styles['List Bullet 1'])
       p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
