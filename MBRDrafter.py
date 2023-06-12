@@ -622,8 +622,8 @@ if sidesert:
             
             steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
             run = p.add_run(steporder)
-         run.font.bold = True
-         p.add_run(': Collect 10 sideserts and printweigh in the space provided. Record the scale number and lot number in the spaces provided. \nRecord the sidesert usage log on pages XX-XX')
+            run.font.bold = True
+            p.add_run(': Collect 10 sideserts and printweigh in the space provided. Record the scale number and lot number in the spaces provided. \nRecord the sidesert usage log on pages XX-XX')
             p= document.add_paragraph(style=document.styles['List Bullet 2'])
             p.add_run("New Column 1: Scale #")
             p= document.add_paragraph(style=document.styles['List Bullet 2'])
@@ -635,8 +635,8 @@ if sidesert:
             SubStepNum += 1
             steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
             run = p.add_run(steporder)
-         run.font.bold = True
-         p.add_run(': Use the following calculation to determine the average weight of one sidesert')
+            run.font.bold = True
+            p.add_run(': Use the following calculation to determine the average weight of one sidesert')
             p = document.add_paragraph(style=document.styles['List Bullet 2'])
             p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
             p.add_run('__________ g (Wt. of 10 sidesert) / 10 = __________ g (Avg. Wt. of one sidesert)')
@@ -712,8 +712,8 @@ if topsert:
             
             steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
             run = p.add_run(steporder)
-         run.font.bold = True
-         p.add_run(': Collect 10 topserts and printweigh in the space provided. Record the scale number and lot number in the spaces provided. \nRecord the topsert usage log on pages XX-XX')
+            run.font.bold = True
+            p.add_run(': Collect 10 topserts and printweigh in the space provided. Record the scale number and lot number in the spaces provided. \nRecord the topsert usage log on pages XX-XX')
             p= document.add_paragraph(style=document.styles['List Bullet 2'])
             p.add_run("New Column 1: Scale #")
             p= document.add_paragraph(style=document.styles['List Bullet 2'])
@@ -725,8 +725,8 @@ if topsert:
             SubStepNum += 1
             steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
             run = p.add_run(steporder)
-         run.font.bold = True
-         p.add_run(': Use the following calculation to determine the average weight of one topsert')
+            run.font.bold = True
+            p.add_run(': Use the following calculation to determine the average weight of one topsert')
             p = document.add_paragraph(style=document.styles['List Bullet 2'])
             p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
             p.add_run('__________ g (Wt. of 10 topsert) / 10 = __________ g (Avg. Wt. of one topsert)')
@@ -802,8 +802,8 @@ if cartoning:
 
             steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
             run = p.add_run(steporder)
-         run.font.bold = True
-         p.add_run(': Collect 10 cartons and printweigh in the space provided. Record the scale number and lot number in the spaces provided. \nRecord the carton usage log on pages XX-XX')
+            run.font.bold = True
+            p.add_run(': Collect 10 cartons and printweigh in the space provided. Record the scale number and lot number in the spaces provided. \nRecord the carton usage log on pages XX-XX')
             p= document.add_paragraph(style=document.styles['List Bullet 2'])
             p.add_run("New Column 1: Scale #")
             p= document.add_paragraph(style=document.styles['List Bullet 2'])
@@ -815,8 +815,8 @@ if cartoning:
             SubStepNum += 1
             steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
             run = p.add_run(steporder)
-         run.font.bold = True
-         p.add_run(': Use the following calculation to determine the average weight of one carton')
+            run.font.bold = True
+            p.add_run(': Use the following calculation to determine the average weight of one carton')
             p = document.add_paragraph(style=document.styles['List Bullet 2'])
             p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
             p.add_run('__________ g (Wt. of 10 cartons) / 10 = __________ g (Avg. Wt. of one carton)')
@@ -1013,22 +1013,22 @@ if bundling and cartoning:
       
       steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
       run = p.add_run(steporder)
-         run.font.bold = True
-         p.add_run(': Login to Shrink Wrap Bundler')
+      run.font.bold = True
+      p.add_run(': Login to Shrink Wrap Bundler')
       p = document.add_paragraph(style=document.styles['List Bullet 1'])
       p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
       SubStepNum += 1
       steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
       run = p.add_run(steporder)
-         run.font.bold = True
-         p.add_run(': Set up the Shrink Wrap Bundler per OTW-PKG-0016 using materials listed in the Secondary Packaging list.')
+      run.font.bold = True
+      p.add_run(': Set up the Shrink Wrap Bundler per OTW-PKG-0016 using materials listed in the Secondary Packaging list.')
       p = document.add_paragraph(style=document.styles['List Bullet 1'])
       p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
       SubStepNum += 1
       steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
       run = p.add_run(steporder)
-         run.font.bold = True
-         p.add_run(': Go to Format tab and select correct format: ')
+      run.font.bold = True
+      p.add_run(': Go to Format tab and select correct format: ')
       run = p.add_run('Format XX PG '+bundlingformat)
       run.font.bold = True
       p.add_run('\nPress Load format, then press OK.')
@@ -1037,8 +1037,8 @@ if bundling and cartoning:
       SubStepNum += 1
       steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
       run = p.add_run(steporder)
-         run.font.bold = True
-         p.add_run(': Using the changeover list, start setting each station to the correct setting. Then reinstall correct change parts. Once installed, go to machine configuration and press Link tab.')
+      run.font.bold = True
+      p.add_run(': Using the changeover list, start setting each station to the correct setting. Then reinstall correct change parts. Once installed, go to machine configuration and press Link tab.')
       run = p.add_run("\nNote: Once machine is setup for processing, minor adjustments may be needed.")
       run.font.bold = True
       p = document.add_paragraph(style=document.styles['List Bullet 1'])
@@ -1046,8 +1046,8 @@ if bundling and cartoning:
       SubStepNum += 1
       steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
       run = p.add_run(steporder)
-         run.font.bold = True
-         p.add_run(': Ensure both heaters have been turned on (Sealing bar heater and Therm Heater). Allow the machine to heat up to temperature. The alarm will clear once the correct temperature has been reached.')
+      run.font.bold = True
+      p.add_run(': Ensure both heaters have been turned on (Sealing bar heater and Therm Heater). Allow the machine to heat up to temperature. The alarm will clear once the correct temperature has been reached.')
       p = document.add_paragraph(style=document.styles['List Bullet 2'])
       p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
       p.add_run('Parameter: Seal Bar Temperature (degree C)')
