@@ -196,13 +196,15 @@ if sachet:
       run.bold = True
       run.font.size = Pt(12)
       saparentstep1 = st.checkbox('Step: Parent Sachet Step 1',value=True)
-      SubStepNum = 1
+      SubStepNum = 0
 
       if saparentstep1:
          p = document.add_paragraph(style=document.styles['List Bullet 1'])
          
-         steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-         p.add_run(steporder+': Sachet Parent Step')
+         steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+         run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(': Sachet Parent Step')
          
          st.caption('Choose specific Sachet steps')
          sachildstep1_1 = st.checkbox('Sub step: child Sachet step 1-1',value=True)
@@ -229,8 +231,10 @@ if sachet:
          p = document.add_paragraph(style=document.styles['List Bullet 1'])
 
          SubStepNum += 1
-         steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-         p.add_run(steporder+': Sachet Parent Step')
+         steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+         run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(': Sachet Parent Step')
 
          st.caption('Choose specific Sachet steps')
          sachildstep2_1 = st.checkbox('Sub step: child Sachet step 2-1',value=True)
@@ -265,14 +269,16 @@ if canister:
       run = p.add_run('Step '+str(PrimMainStepNum)+': Canister Process')
       run.bold = True
       run.font.size = Pt(12)
-      SubStepNum = 1
+      SubStepNum = 0
       
       caparentstep1 = st.checkbox('Step: Parent Canister Step 1',value=True)
       if caparentstep1:
          p = document.add_paragraph(style=document.styles['List Bullet 1'])
          
-         steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-         p.add_run(steporder+': Canister Parent Step')
+         steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+         run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(': Canister Parent Step')
          
          st.caption('Choose specific Canister steps')
          cachildstep1_1 = st.checkbox('Sub step: child Canister step 1-1',value=True)
@@ -299,8 +305,10 @@ if canister:
          p = document.add_paragraph(style=document.styles['List Bullet 1'])
          
          SubStepNum += 1
-         steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-         p.add_run(steporder+': Canister Parent Step')
+         steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+         run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(': Canister Parent Step')
          
          st.caption('Choose specific Canister steps')
          
@@ -336,7 +344,7 @@ if cotton:
       run = p.add_run('Step '+str(PrimMainStepNum)+': Cotton Filling Process')
       run.bold = True
       run.font.size = Pt(12)
-      SubStepNum = 1
+      SubStepNum = 0
 
       p = document.add_paragraph(style=document.styles['List Bullet 1'])
       p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
@@ -354,8 +362,10 @@ if cotton:
          p = document.add_paragraph(style=document.styles['List Bullet 1'])
          p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          
-         steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-         p.add_run(steporder+': Record the 9-gram Cotton Coil lot number and item number in the spaces provided. Printweigh the weight of the 9-gram Cotton Coil in the space provided. Record the scale number in the space provided.')
+         steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+         run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(': Record the 9-gram Cotton Coil lot number and item number in the spaces provided. Printweigh the weight of the 9-gram Cotton Coil in the space provided. Record the scale number in the space provided.')
          
          p = document.add_paragraph(style=document.styles['List Bullet 2'])
          p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
@@ -389,8 +399,10 @@ if cotton:
          p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          
          SubStepNum += 1
-         steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-         p.add_run(steporder+': Select the recipe on the Bottle Unscrambler and ')
+         steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+         run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(': Select the recipe on the Bottle Unscrambler and ')
          run = p.add_run('set Air Rinsing/Blowing Pressure to 4-6 bar. ')
          run.font.bold = True
          p.add_run('Ensure bottles are in the upright position then press start and allow the bottles to fill the line.')
@@ -402,14 +414,18 @@ if cotton:
          p = document.add_paragraph(style=document.styles['List Bullet 1'])
          p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          SubStepNum += 1
-         steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-         p.add_run(steporder+': Ensure that the bottles are properly oriented on the conveyor belt.')
+         steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+         run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(': Ensure that the bottles are properly oriented on the conveyor belt.')
 
          p = document.add_paragraph(style=document.styles['List Bullet 1'])
          p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          SubStepNum += 1
-         steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-         p.add_run(steporder+': Select and load the appropriate recipe on the Uniline HMI then perform the following actions: \nSelect')        
+         steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+         run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(': Select and load the appropriate recipe on the Uniline HMI then perform the following actions: \nSelect')        
          p = document.add_paragraph(style=document.styles['List Bullet 2'])
          p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          p.add_run('Product Screen')
@@ -429,21 +445,27 @@ if cotton:
          p = document.add_paragraph(style=document.styles['List Bullet 1'])
          p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          SubStepNum += 1
-         steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-         p.add_run(steporder+': Set up the Uniline as required per OTW-PKG-0005 using materials listed in the Primary Packaging Materials list. \n')
+         steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+         run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(': Set up the Uniline as required per OTW-PKG-0005 using materials listed in the Primary Packaging Materials list. \n')
          run = p.add_run('Note: Ensure that cone to bottle alignment is correct for the Swiftpharm counter.')
          run.font.bold = True
          
          p = document.add_paragraph(style=document.styles['List Bullet 1'])
          p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          SubStepNum += 1
-         steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-         p.add_run(steporder+': Access the Counter Screen on the Uniline HMI under the recipe tab and verify the count is set to '+verifiedbottlecount+'.')
+         steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+         run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(': Access the Counter Screen on the Uniline HMI under the recipe tab and verify the count is set to '+verifiedbottlecount+'.')
          p = document.add_paragraph(style=document.styles['List Bullet 1'])
          p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          SubStepNum += 1
-         steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-         p.add_run(steporder+': Place the bulk cotton bag into a portable pot. Load the cotton into the cottoner and ensure the correct length (approximately 5.5 inches / bottle) has been set.')
+         steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+         run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(': Place the bulk cotton bag into a portable pot. Load the cotton into the cottoner and ensure the correct length (approximately 5.5 inches / bottle) has been set.')
       
       cfparentstep2warning = st.checkbox('Any warning regarding Cotton Filling step 2?')
       if cfparentstep2warning:
@@ -468,7 +490,7 @@ if sealer:
       run = p.add_run('Step '+str(PrimMainStepNum)+': Sealing Process')
       run.bold = True
       run.font.size = Pt(12)
-      SubStepNum = 1
+      SubStepNum = 0
       
       slparentstep1 = st.checkbox('Step 1: Sealer Setup',value=True)
       if slparentstep1:
@@ -477,8 +499,10 @@ if sealer:
          p = document.add_paragraph(style=document.styles['List Bullet 1'])
          p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          
-         steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-         p.add_run(steporder+': Verify that the Induction Sealer has been set up properly to ensure a complete seal per SOP OTW-PKG-0014-J11.')
+         steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+         run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(': Verify that the Induction Sealer has been set up properly to ensure a complete seal per SOP OTW-PKG-0014-J11.')
          run = p.add_run('\nRange: '+sealerrange+'% and sealing gap of '+sealergap+' mm.')
          run.font.bold = True
          p.add_run('\nRecord the Induction Sealer and sealing gap setting in the spaces provided.')
@@ -494,8 +518,10 @@ if sealer:
          p = document.add_paragraph(style=document.styles['List Bullet 1'])
          p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          SubStepNum += 1
-         steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-         p.add_run(steporder+': On the Induction Sealer select:')
+         steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+         run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(': On the Induction Sealer select:')
          p = document.add_paragraph(style=document.styles['List Bullet 2'])
          p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          p.add_run('Data')
@@ -512,8 +538,10 @@ if sealer:
          p = document.add_paragraph(style=document.styles['List Bullet 1'])
          p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          SubStepNum += 1
-         steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-         p.add_run(steporder+': Remove the foil from five (5) closures and place the closures back onto the bottles. Run the five (5) bottles through the induction sealer to ensure they are rejected.')
+         steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+         run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(': Remove the foil from five (5) closures and place the closures back onto the bottles. Run the five (5) bottles through the induction sealer to ensure they are rejected.')
          p.add_run('\n Circle pass or fail')
          run = p.add_run('\nIf the bottles are not rejected, stop and contact a Supervisor or above to perform any adjustments needed.')
          run.font.bold = True
@@ -578,7 +606,7 @@ if sidesert:
       run = p.add_run('Step '+str(PrimMainStepNum)+': Adding Sidesert')
       run.bold = True
       run.font.size = Pt(12)
-      SubStepNum = 1
+      SubStepNum = 0
       
       ssparentstep1 = st.checkbox('Step 1: Preparing Sidesert',value=True)  
       
@@ -592,8 +620,10 @@ if sidesert:
             p = document.add_paragraph(style=document.styles['List Bullet 1'])
             p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
             
-            steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-            p.add_run(steporder+': Collect 10 sideserts and printweigh in the space provided. Record the scale number and lot number in the spaces provided. \nRecord the sidesert usage log on pages XX-XX')
+            steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+            run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(': Collect 10 sideserts and printweigh in the space provided. Record the scale number and lot number in the spaces provided. \nRecord the sidesert usage log on pages XX-XX')
             p= document.add_paragraph(style=document.styles['List Bullet 2'])
             p.add_run("New Column 1: Scale #")
             p= document.add_paragraph(style=document.styles['List Bullet 2'])
@@ -603,8 +633,10 @@ if sidesert:
             p = document.add_paragraph(style=document.styles['List Bullet 1'])
             p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
             SubStepNum += 1
-            steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-            p.add_run(steporder+': Use the following calculation to determine the average weight of one sidesert')
+            steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+            run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(': Use the following calculation to determine the average weight of one sidesert')
             p = document.add_paragraph(style=document.styles['List Bullet 2'])
             p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
             p.add_run('__________ g (Wt. of 10 sidesert) / 10 = __________ g (Avg. Wt. of one sidesert)')
@@ -624,8 +656,10 @@ if sidesert:
          p = document.add_paragraph(style=document.styles['List Bullet 1'])
          p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          SubStepNum += 1
-         steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-         p.add_run(steporder+': Once the labeler machine is et up, remove 5 sideserts from the sidesert stream. Using maker, draw a line diagonally through the center of each sidesert. Apply those sideserts to the bottle and place them back. Ensure each bottle is rejected. Circle pass or fail')
+         steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+         run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(': Once the labeler machine is et up, remove 5 sideserts from the sidesert stream. Using maker, draw a line diagonally through the center of each sidesert. Apply those sideserts to the bottle and place them back. Ensure each bottle is rejected. Circle pass or fail')
          run = p.add_run('\nIf the sideserts are not rejected, stop and contact a Supervisor or above to perform any adjustments needed')
          run.font.bold = True
          p = document.add_paragraph(style=document.styles['List Bullet 2'])
@@ -633,8 +667,10 @@ if sidesert:
          p = document.add_paragraph(style=document.styles['List Bullet 1'])
          p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          SubStepNum += 1
-         steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-         p.add_run(steporder+': Place the sideserts on the machine channel to ensure that the sideserts are facing the correct way. Circle pass or fail')
+         steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+         run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(': Place the sideserts on the machine channel to ensure that the sideserts are facing the correct way. Circle pass or fail')
          run = p.add_run('\nIf the sideserts are not rejected, stop and contact a Supervisor or above to perform any adjustments needed. \nNote: This is to ensure that the barcode is facing out. Once placed on the bottle, the barcode is facing out and detectable.')
          run.font.bold = True
          p = document.add_paragraph(style=document.styles['List Bullet 2'])
@@ -661,7 +697,7 @@ if topsert:
       run = p.add_run('Step '+str(PrimMainStepNum)+': Adding Topsert')
       run.bold = True
       run.font.size = Pt(12)
-      SubStepNum = 1
+      SubStepNum = 0
       
       tsparentstep1 = st.checkbox('Step 1: Preparing Topsert',value=True)  
       
@@ -674,8 +710,10 @@ if topsert:
             p = document.add_paragraph(style=document.styles['List Bullet 1'])
             p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
             
-            steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-            p.add_run(steporder+': Collect 10 topserts and printweigh in the space provided. Record the scale number and lot number in the spaces provided. \nRecord the topsert usage log on pages XX-XX')
+            steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+            run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(': Collect 10 topserts and printweigh in the space provided. Record the scale number and lot number in the spaces provided. \nRecord the topsert usage log on pages XX-XX')
             p= document.add_paragraph(style=document.styles['List Bullet 2'])
             p.add_run("New Column 1: Scale #")
             p= document.add_paragraph(style=document.styles['List Bullet 2'])
@@ -685,8 +723,10 @@ if topsert:
             p = document.add_paragraph(style=document.styles['List Bullet 1'])
             p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
             SubStepNum += 1
-            steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-            p.add_run(steporder+': Use the following calculation to determine the average weight of one topsert')
+            steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+            run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(': Use the following calculation to determine the average weight of one topsert')
             p = document.add_paragraph(style=document.styles['List Bullet 2'])
             p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
             p.add_run('__________ g (Wt. of 10 topsert) / 10 = __________ g (Avg. Wt. of one topsert)')
@@ -706,8 +746,10 @@ if topsert:
          p = document.add_paragraph(style=document.styles['List Bullet 1'])
          p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          SubStepNum += 1
-         steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-         p.add_run(steporder+': Once the labeler machine is et up, remove 5 topserts from the topsert stream. Using maker, draw a line diagonally through the center of each topsert. Apply those topserts to the bottle and place them back. Ensure each bottle is rejected. Circle pass or fail')
+         steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+         run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(': Once the labeler machine is et up, remove 5 topserts from the topsert stream. Using maker, draw a line diagonally through the center of each topsert. Apply those topserts to the bottle and place them back. Ensure each bottle is rejected. Circle pass or fail')
          run = p.add_run('\nIf the topserts are not rejected, stop and contact a Supervisor or above to perform any adjustments needed')
          run.font.bold = True
          p = document.add_paragraph(style=document.styles['List Bullet 2'])
@@ -715,8 +757,10 @@ if topsert:
          p = document.add_paragraph(style=document.styles['List Bullet 1'])
          p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          SubStepNum += 1
-         steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-         p.add_run(steporder+': Place the topserts on the machine channel to ensure that the topserts are facing the correct way. Circle pass or fail')
+         steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+         run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(': Place the topserts on the machine channel to ensure that the topserts are facing the correct way. Circle pass or fail')
          run = p.add_run('\nIf the topserts are not rejected, stop and contact a Supervisor or above to perform any adjustments needed. \nNote: This is to ensure that the barcode is facing out. Once placed on the bottle, the barcode is facing out and detectable.')
          run.font.bold = True
          p = document.add_paragraph(style=document.styles['List Bullet 2'])
@@ -743,7 +787,7 @@ if cartoning:
       run = p.add_run('Step '+str(PrimMainStepNum)+': Cartoning')
       run.bold = True
       run.font.size = Pt(12)
-      SubStepNum = 1
+      SubStepNum = 0
 
       cparentstep1 = st.checkbox('Step 1: Preparing Cartons',value=True)  
       
@@ -756,8 +800,10 @@ if cartoning:
             p = document.add_paragraph(style=document.styles['List Bullet 1'])
             p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
 
-            steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-            p.add_run(steporder+': Collect 10 cartons and printweigh in the space provided. Record the scale number and lot number in the spaces provided. \nRecord the carton usage log on pages XX-XX')
+            steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+            run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(': Collect 10 cartons and printweigh in the space provided. Record the scale number and lot number in the spaces provided. \nRecord the carton usage log on pages XX-XX')
             p= document.add_paragraph(style=document.styles['List Bullet 2'])
             p.add_run("New Column 1: Scale #")
             p= document.add_paragraph(style=document.styles['List Bullet 2'])
@@ -767,8 +813,10 @@ if cartoning:
             p = document.add_paragraph(style=document.styles['List Bullet 1'])
             p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
             SubStepNum += 1
-            steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-            p.add_run(steporder+': Use the following calculation to determine the average weight of one carton')
+            steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+            run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(': Use the following calculation to determine the average weight of one carton')
             p = document.add_paragraph(style=document.styles['List Bullet 2'])
             p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
             p.add_run('__________ g (Wt. of 10 cartons) / 10 = __________ g (Avg. Wt. of one carton)')
@@ -785,32 +833,44 @@ if cartoning:
       if cparentstep2:
          p = document.add_paragraph(style=document.styles['List Bullet 1'])
          SubStepNum += 1
-         steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-         p.add_run(steporder+':  Set up all cartoner infeed and outfeed conveyors to match the bottle and carton ins use')
+         steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+         run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(':  Set up all cartoner infeed and outfeed conveyors to match the bottle and carton ins use')
          p = document.add_paragraph(style=document.styles['List Bullet 1'])
          SubStepNum += 1
-         steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-         p.add_run(steporder+': Set up the cartoner in the Dry Run mode and allow to cycle for NLT 1 minute.\nVerify a smooth cycle')
+         steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+         run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(': Set up the cartoner in the Dry Run mode and allow to cycle for NLT 1 minute.\nVerify a smooth cycle')
          p = document.add_paragraph(style=document.styles['List Bullet 1'])
          SubStepNum += 1
-         steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-         p.add_run(steporder+': Allow NLT 5 bottles to be loaded, formed, filled and sealed by turning Dry Run OFF.')
+         steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+         run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(': Allow NLT 5 bottles to be loaded, formed, filled and sealed by turning Dry Run OFF.')
          p = document.add_paragraph(style=document.styles['List Bullet 1'])
          SubStepNum += 1
-         steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-         p.add_run(steporder+': Once NLT 5 bottles have been loaded, turn Dry Run back On.')
+         steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+         run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(': Once NLT 5 bottles have been loaded, turn Dry Run back On.')
          p = document.add_paragraph(style=document.styles['List Bullet 1'])
          p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          SubStepNum += 1
-         steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-         p.add_run(steporder+': Remove NLT 5 completed cartons from the exit conveyor ahead of CartonTracker for inspection. Indicate in the space provided if inspection is a PAss or FAil. If any failures are found, contact a Supervisor or above to perform any adjustment as needed')
+         steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+         run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(': Remove NLT 5 completed cartons from the exit conveyor ahead of CartonTracker for inspection. Indicate in the space provided if inspection is a Pass or Fail. If any failures are found, contact a Supervisor or above to perform any adjustment as needed')
          p = document.add_paragraph(style=document.styles['List Bullet 2'])
          p.add_run('New Column: Inspection Results (Circle One) Pass or Fail')
          p= document.add_paragraph(style=document.styles['List Bullet 1'])
          p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          SubStepNum += 1
-         steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-         p.add_run(steporder+": Verify that the following are correct (carton will need to be opened for some items):")
+         steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+         run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(": Verify that the following are correct (carton will need to be opened for some items):")
          p= document.add_paragraph(style=document.styles['List Bullet 2'])
          p.add_run("Carton is properly closed and sealed")
          p= document.add_paragraph(style=document.styles['List Bullet 2'])
@@ -825,40 +885,52 @@ if cartoning:
          p= document.add_paragraph(style=document.styles['List Bullet 1'])
          p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          SubStepNum += 1
-         steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-         p.add_run(steporder+": Gather any reusable components (bottles, leaflets, pill packes, etc.) and return to appropriate location for rework")
+         steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+         run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(": Gather any reusable components (bottles, leaflets, pill packes, etc.) and return to appropriate location for rework")
          run = p.add_run("\nNote: Rework artons per OTW-PKG-0011")
          run.font.bold = True
          p= document.add_paragraph(style=document.styles['List Bullet 1'])
          SubStepNum += 1
-         steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-         p.add_run(steporder+": Ensure the inspected cartons are rejected.")
+         steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+         run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(": Ensure the inspected cartons are rejected.")
          run = p.add_run("Note: Cartons cannot be reworked.")
          run.font.bold = True
          p= document.add_paragraph(style=document.styles['List Bullet 1'])
          p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          SubStepNum += 1
-         steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-         p.add_run(steporder+": If seals or labels are applied to the carton, perform a challenge of the vision system")
+         steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+         run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(": If seals or labels are applied to the carton, perform a challenge of the vision system")
          p= document.add_paragraph(style=document.styles['List Bullet 1'])
          p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          SubStepNum += 1
-         steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-         p.add_run(steporder+": Pass 5 cartons through the camera system with NLT 1 seal/label missing per carton. Verify all 5 cartons are rejected. Indicate in the space provided if inspection is a Pass or Fail. If any failures are found contact a Supervisor or above to perform an adjustement as needed")
+         steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+         run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(": Pass 5 cartons through the camera system with NLT 1 seal/label missing per carton. Verify all 5 cartons are rejected. Indicate in the space provided if inspection is a Pass or Fail. If any failures are found contact a Supervisor or above to perform an adjustement as needed")
          p= document.add_paragraph(style=document.styles['List Bullet 2'])
          p.add_run("New Column: Inspection Results (Circle One) Pass or Fail")
          p= document.add_paragraph(style=document.styles['List Bullet 1'])
          p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          SubStepNum += 1
-         steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-         p.add_run(steporder+": Using the change over list, start setting each station to the correct setting. Then reinstall correct change parts. Once installed, go to machine configuration and press Link tab.")
+         steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+         run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(": Using the change over list, start setting each station to the correct setting. Then reinstall correct change parts. Once installed, go to machine configuration and press Link tab.")
          run = p.add_run("Note: Once machine is setup for processing, minor adjustment may be needed")
          run.font.bold = True
          p= document.add_paragraph(style=document.styles['List Bullet 1'])
          p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          SubStepNum += 1
-         steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-         p.add_run(steporder+": Setup of Carton Tracker:")
+         steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+         run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(": Setup of Carton Tracker:")
          p= document.add_paragraph(style=document.styles['List Bullet 2'])
          p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
          p.add_run("Press the ")
@@ -932,40 +1004,50 @@ if bundling and cartoning:
       run = p.add_run('Step '+str(PrimMainStepNum)+': Bundling after Cartoning')
       run.bold = True
       run.font.size = Pt(12)
-      SubStepNum = 1
+      SubStepNum = 0
       
       bundlingformat = st.text_input("Please, provide bundling format (ex. 3 cartons in a row = 3 x 1 x 1 [L x W x H])")
       
       p = document.add_paragraph(style=document.styles['List Bullet 1'])
       p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
       
-      steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-      p.add_run(steporder+': Login to Shrink Wrap Bundler')
+      steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+      run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(': Login to Shrink Wrap Bundler')
       p = document.add_paragraph(style=document.styles['List Bullet 1'])
       p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
       SubStepNum += 1
-      steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-      p.add_run(steporder+': Set up the Shrink Wrap Bundler per OTW-PKG-0016 using materials listed in the Secondary Packaging list.')
+      steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+      run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(': Set up the Shrink Wrap Bundler per OTW-PKG-0016 using materials listed in the Secondary Packaging list.')
       p = document.add_paragraph(style=document.styles['List Bullet 1'])
       p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
       SubStepNum += 1
-      steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-      p.add_run(steporder+': Go to Format tab and select correct format: ')
+      steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+      run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(': Go to Format tab and select correct format: ')
       run = p.add_run('Format XX PG '+bundlingformat)
       run.font.bold = True
       p.add_run('\nPress Load format, then press OK.')
       p = document.add_paragraph(style=document.styles['List Bullet 1'])
       p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
       SubStepNum += 1
-      steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-      p.add_run(steporder+': Using the changeover list, start setting each station to the correct setting. Then reinstall correct change parts. Once installed, go to machine configuration and press Link tab.')
+      steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+      run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(': Using the changeover list, start setting each station to the correct setting. Then reinstall correct change parts. Once installed, go to machine configuration and press Link tab.')
       run = p.add_run("\nNote: Once machine is setup for processing, minor adjustments may be needed.")
       run.font.bold = True
       p = document.add_paragraph(style=document.styles['List Bullet 1'])
       p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
       SubStepNum += 1
-      steporder = 'Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
-      p.add_run(steporder+': Ensure both heaters have been turned on (Sealing bar heater and Therm Heater). Allow the machine to heat up to temperature. The alarm will clear once the correct temperature has been reached.')
+      steporder = '\2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+      run = p.add_run(steporder)
+         run.font.bold = True
+         p.add_run(': Ensure both heaters have been turned on (Sealing bar heater and Therm Heater). Allow the machine to heat up to temperature. The alarm will clear once the correct temperature has been reached.')
       p = document.add_paragraph(style=document.styles['List Bullet 2'])
       p.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
       p.add_run('Parameter: Seal Bar Temperature (degree C)')
