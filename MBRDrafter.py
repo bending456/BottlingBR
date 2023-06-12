@@ -659,7 +659,7 @@ if sidesert:
          steporder = '\u2206 Step '+str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
          run = p.add_run(steporder)
          run.font.bold = True
-         p.add_run(': Once the labeler machine is et up, remove 5 sideserts from the sidesert stream. Using maker, draw a line diagonally through the center of each sidesert. Apply those sideserts to the bottle and place them back. Ensure each bottle is rejected. Circle pass or fail')
+         p.add_run(': Once the labeler machine is set up, remove 5 sideserts from the sidesert stream. Using maker, draw a line diagonally through the center of each sidesert. Apply those sideserts to the bottle and place them back. Ensure each bottle is rejected. Circle pass or fail')
          run = p.add_run('\nIf the sideserts are not rejected, stop and contact a Supervisor or above to perform any adjustments needed')
          run.font.bold = True
          p = document.add_paragraph(style=document.styles['List Bullet 2'])
