@@ -5,6 +5,7 @@ import tempfile
 from docx import Document
 from docx.shared import Pt
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
+from docx.enum.text import WD_ALIGN_VERTICAL
 from docx.oxml.ns import nsdecls
 from docx.oxml import parse_xml
 from docx.shared import Inches
@@ -132,7 +133,7 @@ run.font.color.rgb = RGBColor(0, 0, 255)
 #----------------------------------------#
 ##########################################
 
-sachet = canister = cotton = sealer = additional1 = False
+TableFormat = sachet = canister = cotton = sealer = additional1 = False
 cartoning = topsert = sidesert = shipper = bundling = additional2 = False
 
 PrimMainStepNum = 0
@@ -154,6 +155,7 @@ with col1:
    if primary:
       ###--- Primary Packaging related list
       st.divider()
+      TableFormat = st.checkbox("Table Test")
       sachet = st.checkbox("Sachet?")
       canister = st.checkbox("Canister?")
       cotton = st.checkbox("Cotton Filler?")
@@ -180,6 +182,108 @@ if not primary:
 if primary:
    st.markdown('#### Primary Packaging Step Selection')
 
+
+#-----------------------------------
+#----   SACHET - Table Format  -----
+#-----------------------------------
+
+if TableFormat:
+   with st.expander('Select Steps for XXXX Process',expanded=True):
+      SubStepNum = 0 
+      PrimMainStepNum += 1
+      
+      t = document.add_table(rows = 3, cols = 4)
+      
+      # - Title for the section/process
+      cell = t.cell(0,0)
+      cell.text = 'Step'
+      paragraph = cell.paragraphs[0]
+      run = paragraph.runs
+      for run in paragraph.runs:
+          run.font.size = Pt(12)
+          run.font.bold = True
+      paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+      cell.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+      
+      cell = t.cell(0,1) 
+      cell.text = 'Step '+str(PrimMainStepNum)+': XXXX Process'
+      paragraph = cell.paragraphs[0]
+      run = paragraph.runs
+      for run in paragraph.runs:
+          run.font.size = Pt(12)
+          run.font.bold = True
+      paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+      cell.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+
+      cell = t.cell(0,2)
+      cell.text = 'Check Box'
+      paragraph = cell.paragraphs[0]
+      run = paragraph.runs
+      for run in paragraph.runs:
+          run.font.size = Pt(12)
+          run.font.bold = True
+      paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+      cell.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+
+      cell = t.cell(0,3)
+      cell.text = 'Note'
+      paragraph = cell.paragraphs[0]
+      run = paragraph.runs
+      for run in paragraph.runs:
+          run.font.size = Pt(12)
+          run.font.bold = True
+      paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+      cell.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+      
+      
+
+      # Parent Step 1 
+      cell = t.cell(1,0)
+      steporder = str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+      cell.text = steporder
+
+      # Child Steps of Parent step 1
+      cell = t.cell(1,1)
+      cell.text = 'XXXX Parent Step AAAA\n'
+      cell.text = '  \u2206 Child step 1\n'
+      cell.text = '  \u2206 Child step 2\n'
+      cell.text = '  \u2206 Child step 3'
+
+      # Check box 1
+      cell = t.cell(1,2)
+      cell.text = 'Circle one:\n'
+      cell.text = 'Pass\n'
+      cell.text = '\n'
+      cell.text = 'or\n'
+      cell.text = '\n'
+      cell.text = 'Fail'
+      cell.text = '\n'
+      paragraph = cell.paragraphs[0]
+      paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+      cell.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+      
+      # Parent Step 2
+      SubStepNum += 1
+      cell = t.cell(2,0)
+      steporder = str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
+      cell.text = steporder
+
+      # Child Steps of Parent step 2
+      cell = t.cell(2,1)
+      cell.text = 'XXXX Parent Step AAAA\n'
+      cell.text = '  \u2206 Child step 1\n'
+      cell.text = '  \u2206 Child step 2\n'
+      cell.text = '  \u2206 Child step 3'
+
+      # Note 2
+      cell = t.cell(2,3)
+      cell.text = 'Warning in Red'
+      paragraph = cell.paragraphs[0]
+      run = paragraph.runs
+      for run in paragraph.runs:
+          run.font.color.rgb = RGBColor(255, 0, 0)
+          run.font.bold = True
+      
 
 #----------------------
 #----   SACHET  -----
