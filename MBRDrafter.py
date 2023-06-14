@@ -102,11 +102,13 @@ outputfileName = st.sidebar.text_input("Step 2: Write the name of output (docx f
 
 ###------ Header of Document ------------
 header = document.sections[0].header
-table = header.add_table(rows=3, cols=2, width = Inches(6))
+table = header.add_table(rows=3, cols=2, width = Inches(7.5))
 cell = table.cell(0,0)
 cell.text='Universal Primary and Secondary Packaging Batch Record'
 paragraph = cell.paragraphs[0]
 paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+paragraph.paragraph_format.space_after=Pt(0)
+paragraph.paragraph_format.space_before=Pt(0)
 a = table.cell(0,0)
 b = table.cell(0,1)
 a.merge(b)
@@ -126,37 +128,49 @@ cell = table.cell(1,0)
 cell.text = client
 paragraph = cell.paragraphs[0]
 paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+paragraph.paragraph_format.space_after=Pt(0)
+paragraph.paragraph_format.space_before=Pt(0)
 
 # Product Name
 cell = table.cell(2,0)
 cell.text = ProductName
 paragraph = cell.paragraphs[0]
 paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+paragraph.paragraph_format.space_after=Pt(0)
+paragraph.paragraph_format.space_before=Pt(0)
 
 # Batch Number
 cell = table.cell(1,1)
 cell.text = 'Batch No.:____________________'
 paragraph = cell.paragraphs[0]
 paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.RIGHT
+paragraph.paragraph_format.space_after=Pt(0)
+paragraph.paragraph_format.space_before=Pt(0)
 
 
 
 ###------ Footer of Document
 footer = document.sections[0].footer
-table = footer.add_table(rows=1, cols=4, width = Inches(2))
+table = footer.add_table(rows=1, cols=4, width = Inches(7.5))
 cell = table.cell(0,0)
 cell.text = 'Process No.: '+processNo
 paragraph = cell.paragraphs[0]
 paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+paragraph.paragraph_format.space_after=Pt(0)
+paragraph.paragraph_format.space_before=Pt(0)
 cell = table.cell(0,1)
 cell.text = 'Rev No.: '+revNo
 paragraph = cell.paragraphs[0]
 paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+paragraph.paragraph_format.space_after=Pt(0)
+paragraph.paragraph_format.space_before=Pt(0)
 cell = table.cell(0,2)
 cell = table.cell(0,3)
 cell.text = 'QA Initials/Date:_______________'
 paragraph = cell.paragraphs[0]
 paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+paragraph.paragraph_format.space_after=Pt(0)
+paragraph.paragraph_format.space_before=Pt(0)
 
 
 
