@@ -67,7 +67,11 @@ for i in range(5):  # Adjust range for as many levels as you need
   style.paragraph_format.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
   style.font.size = Pt(11)
 
-
+def set_col_widths(table):
+    widths = (Inches(0.5), Inches(3), Inches(1), Inches(1.5))
+    for row in table.rows:
+        for idx, width in enumerate(widths):
+            row.cells[idx].width = width
 
 
 ##########################################
@@ -195,7 +199,6 @@ if TableFormat:
       
       t = document.add_table(rows = 3, cols = 4)
       t.style = 'Table Grid'
-      t.autofit = False  # turn off autofit
       
       # - Title for the section/process
       cell = t.cell(0,0)
@@ -285,11 +288,7 @@ if TableFormat:
           run.font.color.rgb = RGBColor(255, 0, 0)
           run.font.bold = True
 
-      t.autofit = False  # turn off autofit
-      t.columns[0].width = Inches(0.51)
-      t.columns[1].width = Inches(3)
-      t.columns[2].width = Inches(1)
-      t.columns[3].width = Inches(1.5)
+      set_col_widths(t)
       p = document.add_paragraph()
       p.paragraph_format.space_after=Pt(10)
 
