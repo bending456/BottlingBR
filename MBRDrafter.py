@@ -220,14 +220,17 @@ if TableFormat:
 
       for i in np.arange(5):
           cell = t.cell(0,i)
-          cell.text = Attributes[i]
           paragraph = cell.paragraphs[0]
           run = paragraph.runs
           for run in paragraph.runs:
              run.font.bold = True 
           if i == 1:
+              cell.text = Attributes[i]
               paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+          elif i == 2:
+              continue
           else:
+              cell.text = Attributes[i]
               paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
           cell.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
       
