@@ -112,7 +112,7 @@ b = table.cell(0,1)
 a.merge(b)
 
 st.markdown("### Step 3: Product Information")
-col3, col4 = st.colums(2)
+col3, col4 = st.columns(2)
 with col3:
    client = st.text_input('Client Name')
    ProductName = st.text_input('Product Name')
