@@ -195,6 +195,11 @@ if TableFormat:
       
       t = document.add_table(rows = 3, cols = 4)
       t.style = 'Table Grid'
+      t.autofit = False  # turn off autofit
+      t.columns[0].width = Inches(0.51)
+      t.columns[1].width = Inches(3)
+      t.columns[2].width = Inches(1)
+      t.columns[3].width = Inches(1.5)
       
       # - Title for the section/process
       cell = t.cell(0,0)
@@ -249,10 +254,7 @@ if TableFormat:
 
       # Child Steps of Parent step 1
       cell = t.cell(1,1)
-      cell.text = 'XXXX Parent Step AAAA\n'
-      cell.text = '  \u2206 Child step 1\n'
-      cell.text = '  \u2206 Child step 2\n'
-      cell.text = '  \u2206 Child step 3'
+      cell.text = 'XXXX Parent Step AAAA\n  \u2206 Child step 1\n  \u2206 Child step 2\n  \u2206 Child step 3'
 
       # Check box 1
       cell = t.cell(1,2)
@@ -276,10 +278,7 @@ if TableFormat:
 
       # Child Steps of Parent step 2
       cell = t.cell(2,1)
-      cell.text = 'XXXX Parent Step AAAA\n'
-      cell.text = '  \u2206 Child step 1\n'
-      cell.text = '  \u2206 Child step 2\n'
-      cell.text = '  \u2206 Child step 3'
+      cell.text = 'XXXX Parent Step BBBB\n  \u2206 Child step 1\n  \u2206 Child step 2\n  \u2206 Child step 3'
 
       # Note 2
       cell = t.cell(2,3)
