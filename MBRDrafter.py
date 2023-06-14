@@ -1317,7 +1317,7 @@ if additional2:
 #----------------------------------------#
 #----------------------------------------#
 ##########################################
-document = remove_table_spacing(document)
+remove_table_spacing(document)
 # Save the document
 st.sidebar.header("**Step 7: Download Ready**")
 if st.sidebar.checkbox("Check this box if the draft is ready"):
