@@ -81,8 +81,8 @@ font.size = Pt(11)
 
 sections = document.sections
 for section in sections:
-    section.top_margin = Inches(0.1)
-    section.bottom_margin = Inches(0.2)
+    section.top_margin = Inches(0.0)
+    section.bottom_margin = Inches(0.0)
     section.left_margin = Inches(0.5)
     section.right_margin = Inches(0.5)
 
@@ -160,6 +160,12 @@ paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.RIGHT
 paragraph.paragraph_format.space_after=Pt(0)
 paragraph.paragraph_format.space_before=Pt(0)
 
+# Batch Number
+cell = table.cell(1,2)
+paragraph = cell.paragraphs[0]
+paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.RIGHT
+paragraph.paragraph_format.space_after=Pt(0)
+paragraph.paragraph_format.space_before=Pt(0)
 
 
 ###------ Footer of Document
