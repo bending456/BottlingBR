@@ -160,9 +160,6 @@ paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.RIGHT
 paragraph.paragraph_format.space_after=Pt(0)
 paragraph.paragraph_format.space_before=Pt(0)
 
-overall = table.paragraphs[0]
-overall.paragraph_format.space_after=Pt(0)
-overall.paragraph_format.space_before=Pt(0)
 
 
 ###------ Footer of Document
@@ -187,9 +184,7 @@ paragraph = cell.paragraphs[0]
 paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
 paragraph.paragraph_format.space_after=Pt(0)
 paragraph.paragraph_format.space_before=Pt(0)
-overall = table.paragraphs[0]
-overall.paragraph_format.space_after=Pt(0)
-overall.paragraph_format.space_before=Pt(0)
+
 
 
 ##########################################
