@@ -68,34 +68,23 @@ for i in range(5):  # Adjust range for as many levels as you need
   style.font.size = Pt(11)
 
 def set_border(table):
-    # Set a table style
-    table.style = 'Table Grid'
-    
-    # Loop over the rows, then the cells, then the paragraphs
     for row in table.rows:
         for cell in row.cells:
-            # Access _tc element of cell to edit low-level XML properties
             tc = cell._tc
-            # Access tcPr element (TableCellProperties)
             tcPr = tc.get_or_add_tcPr()
+            
+            # Add the borders to the cell
+            tcBorders = OxmlElement('w:tcBorders')
+            
+            # Create each border element and set their attributes
+            for border in ['start', 'top', 'end', 'bottom']:
+                element = OxmlElement('w:' + border)
+                element.set(nsdecls('w'), 'nil')
+                tcBorders.append(element)
+            
+            # Add the borders to the cell
+            tcPr.append(tcBorders)
 
-            # Create new borders element
-            borders = OxmlElement('w:tcBorders')
-
-            # Define and add individual border elements
-            for border_type in ['start', 'top', 'end', 'bottom']:
-                border_el = OxmlElement(f'w:{border_type}')
-                border_el.set(OxmlElement.oxml_ns['w'] + 'val', 'single')
-                border_el.set(OxmlElement.oxml_ns['w'] + 'sz', '4')
-                border_el.set(OxmlElement.oxml_ns['w'] + 'space', '0')
-                border_el.set(OxmlElement.oxml_ns['w'] + 'color', 'auto')
-                borders.append(border_el)
-
-            # Remove any pre-existing tcBorders element, and add the new one
-            for element in tcPr:
-                if element.tag.endswith('tcBorders'):
-                    tcPr.remove(element)
-            tcPr.append(borders)
 
 
 ##########################################
