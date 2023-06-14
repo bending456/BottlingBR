@@ -256,13 +256,8 @@ if TableFormat:
 
       # Check box 1
       cell = t.cell(1,2)
-      cell.text = 'Circle one:\n'
-      cell.text = 'Pass\n'
-      cell.text = '\n'
-      cell.text = 'or\n'
-      cell.text = '\n'
-      cell.text = 'Fail'
-      cell.text = '\n'
+      cell.text = 'Circle one:\nPass\nor\nFail'
+
       paragraph = cell.paragraphs[0]
       paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
       cell.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
