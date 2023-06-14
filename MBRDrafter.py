@@ -102,7 +102,7 @@ outputfileName = st.sidebar.text_input("Step 2: Write the name of output (docx f
 
 ###------ Header of Document ------------
 header = document.sections[0].header
-table = header.add_table(rows=3, cols=2)
+table = header.add_table(rows=3, cols=2, width = Inches(6))
 cell = table.cell(0,0)
 cell.text='Universal Primary and Secondary Packaging Batch Record'
 paragraph = cell.paragraphs[0]
@@ -143,7 +143,7 @@ paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.RIGHT
 
 ###------ Footer of Document
 footer = document.sections[0].footer
-table = footer.add_table(rows=1, cols=4)
+table = footer.add_table(rows=1, cols=4, width = Inches(2))
 cell = table.cell(0,0)
 cell.text = 'Process No.: '+processNo
 paragraph = cell.paragraphs[0]
