@@ -224,6 +224,7 @@ if TableFormat:
       
       cell1 = t.cell(0,1)
       cell2 = t.cell(0,2)
+      cell1.merge(cell2)
                   
 
       # Parent Step 1 
