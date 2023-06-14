@@ -67,23 +67,6 @@ for i in range(5):  # Adjust range for as many levels as you need
   style.paragraph_format.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
   style.font.size = Pt(11)
 
-def set_border(table):
-    for row in table.rows:
-        for cell in row.cells:
-            tc = cell._tc
-            tcPr = tc.get_or_add_tcPr()
-            
-            # Add the borders to the cell
-            tcBorders = OxmlElement('w:tcBorders')
-            
-            # Create each border element and set their attributes
-            for border in ['start', 'top', 'end', 'bottom']:
-                element = OxmlElement('w:' + border)
-                element.set(nsdecls('w'), 'nil')
-                tcBorders.append(element)
-            
-            # Add the borders to the cell
-            tcPr.append(tcBorders)
 
 
 
@@ -312,7 +295,6 @@ if TableFormat:
           run.font.color.rgb = RGBColor(255, 0, 0)
           run.font.bold = True
       
-      set_border(t)
 #----------------------
 #----   SACHET  -----
 #----------------------
