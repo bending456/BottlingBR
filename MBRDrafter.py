@@ -211,7 +211,7 @@ if TableFormat:
       
       Attributes = ['Step',
                     'Step '+str(PrimMainStepNum)+': XXXX Process',
-                    ' ',
+                    '',
                     'Done\n By /\nDate',
                     'Check\n By /\nDate']
       
