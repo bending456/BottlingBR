@@ -195,7 +195,7 @@ if TableFormat:
       
       t = document.add_table(rows = 3, cols = 4)
       t.style = 'Table Grid'
-      
+      t.autofit = False  # turn off autofit
       
       # - Title for the section/process
       cell = t.cell(0,0)
@@ -290,6 +290,9 @@ if TableFormat:
       t.columns[1].width = Inches(3)
       t.columns[2].width = Inches(1)
       t.columns[3].width = Inches(1.5)
+      p = document.add_paragraph()
+      p.paragraph_format.space_after=Pt(10)
+
       
 #----------------------
 #----   SACHET  -----
