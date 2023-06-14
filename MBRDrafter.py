@@ -96,53 +96,68 @@ for section in sections:
 title = document.add_paragraph()
 titleText = st.sidebar.text_input("Step 1: Write the title of your document in here ... (ex: Bundling procedure for XXX project)")
 outputfileName = st.sidebar.text_input("Step 2: Write the name of output (docx file) name in here ...")
-run = title.add_run(titleText)
-run.bold = True
-run.font.size = Pt(16)
+#run = title.add_run(titleText)
+#run.bold = True
+#run.font.size = Pt(16)
 
-###------ Header of Document - Batch Number
-header1 = document.sections[0].header
-paragraph = header1.paragraphs[0]
+###------ Header of Document ------------
+header = document.section[0].header
+table = header.add_table(rows=3, cols=2)
+cell = table.cell(0,0)
+cell.text='Universal Primary and Secondary Packaging Batch Record'
+paragraph = cell.paragraphs[0]
+paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+a = table.cell(0,0)
+b = table.cell(0,1)
+a.merge(b)
+
+st.markdown("### Step 3: Product Information")
+col3, col4 = st.colums(2)
+with col3:
+   client = st.text_input('Client Name')
+   ProductName = st.text_input('Product Name')
+with col4:
+   batchnumber = st.text_input("Batch Number (This will not appear in UBR)")
+   processNo = st.text_input("Process No.")
+   revNo = st.text_input('Revision No.')
+
+# Customer Name
+cell = table.cell(1,0)
+cell.text = client
+paragraph = cell.paragraphs[0]
+paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+
+# Product Name
+cell = table.cell(2,0)
+cell.text = ProductName
+paragraph = cell.paragraphs[0]
+paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+
+# Batch Number
+cell = table.cell(1,1)
+cell.text = 'Batch No.:____________________'
+paragraph = cell.paragraphs[0]
 paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.RIGHT
-batchnumber = st.sidebar.text_input("Step 3: Write the batch number in here ...")
-run = paragraph.add_run(batchnumber)
-run.bold = True
-run.font.size = Pt(10)
-run.font.color.rgb = RGBColor(255, 0, 0)
-paragraph.paragraph_format.space_before=Pt(0)
-paragraph.paragraph_format.space_after=Pt(0)
 
-###------ Header of Document - Name
-authorname = st.sidebar.text_input("Step 4: Write the name of author in here ...")
-new_paragraph = header1.add_paragraph()
-run2 = new_paragraph.add_run(authorname)
-run2.bold = True
-run2.font.size = Pt(10)
-run2.font.color.rgb = RGBColor(0,0,255)
-new_paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
-new_paragraph.paragraph_format.space_before=Pt(0)
-new_paragraph.paragraph_format.space_after=Pt(0)
 
-###------ Header of Document - Date
-new_paragraph2 = header1.add_paragraph()
-today = date.today()
-formatted_date = today.strftime("%B %d, %Y")
-run3 = new_paragraph2.add_run(f'{formatted_date}')
-run3.bold = True
-run3.font.size = Pt(10)
-run3.font.color.rgb = RGBColor(0,0,0)
-new_paragraph2.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
-new_paragraph2.paragraph_format.space_before=Pt(0)
-new_paragraph2.paragraph_format.space_after=Pt(0)
 
 ###------ Footer of Document
 footer = document.sections[0].footer
-paragraph = footer.paragraphs[0]
-paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
-run = paragraph.add_run("Confidential")
-run.bold = True
-run.font.size = Pt(10)
-run.font.color.rgb = RGBColor(0, 0, 255)
+table = footer.add_table(rows=1, cols=4)
+cell = table.cell(0,0)
+cell.text = 'Process No.: '+processNo
+paragraph = cell.paragraphs[0]
+paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+cell = table.cell(0,1)
+cell.text = 'Rev No.: '+revNo
+paragraph = cell.paragraphs[0]
+paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+cell = table.cell(0,2)
+cell = table.cell(0,3)
+cell.text = 'QA Initials/Date:_______________'
+paragraph = cell.paragraphs[0]
+paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+
 
 
 ##########################################
@@ -283,14 +298,14 @@ if TableFormat:
       cell = t.cell(2,1)
       cell.text = 'XXXX Parent Step BBBB\n  \u25AA Child step 1\n  \u25AA Child step 2\n  \u25AA Child step 3'
 
-      # Note 2
-      cell = t.cell(2,3)
-      cell.text = 'Warning in Red'
-      paragraph = cell.paragraphs[0]
-      run = paragraph.runs
-      for run in paragraph.runs:
-          run.font.color.rgb = RGBColor(255, 0, 0)
-          run.font.bold = True
+      ## Note 2
+      #cell = t.cell(2,3)
+      #cell.text = 'Warning in Red'
+      #paragraph = cell.paragraphs[0]
+      #run = paragraph.runs
+      #for run in paragraph.runs:
+      #    run.font.color.rgb = RGBColor(255, 0, 0)
+      #    run.font.bold = True
 
       set_col_widths(t)
       p = document.add_paragraph()
