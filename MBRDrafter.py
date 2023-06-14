@@ -253,7 +253,7 @@ if TableFormat:
 
       # Child Steps of Parent step 1
       cell = t.cell(1,1)
-      cell.text = 'XXXX Parent Step AAAA\n  \u2206 Child step 1\n  \u2206 Child step 2\n  \u2206 Child step 3'
+      cell.text = 'XXXX Parent Step AAAA\n  \u25CF Child step 1\n  \u25CF Child step 2\n  \u25CF Child step 3'
 
       # Check box 1
       cell = t.cell(1,2)
@@ -277,7 +277,7 @@ if TableFormat:
 
       # Child Steps of Parent step 2
       cell = t.cell(2,1)
-      cell.text = 'XXXX Parent Step BBBB\n  \u2206 Child step 1\n  \u2206 Child step 2\n  \u2206 Child step 3'
+      cell.text = 'XXXX Parent Step BBBB\n  \u25CF Child step 1\n  \u25CF Child step 2\n  \u25CF Child step 3'
 
       # Note 2
       cell = t.cell(2,3)
