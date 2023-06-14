@@ -81,8 +81,8 @@ font.size = Pt(11)
 
 sections = document.sections
 for section in sections:
-    section.top_margin = Inches(0.5)
-    section.bottom_margin = Inches(0.5)
+    section.top_margin = Inches(0.4)
+    section.bottom_margin = Inches(0.3)
     section.left_margin = Inches(0.5)
     section.right_margin = Inches(0.5)
 
@@ -102,11 +102,12 @@ outputfileName = st.sidebar.text_input("Step 2: Write the name of output (docx f
 
 ###------ Header of Document ------------
 header = document.sections[0].header
+header.header_distance(Inches(0.3))
 table = header.add_table(rows=3, cols=2, width = Inches(7.5))
 cell = table.cell(0,0)
 cell.text='Universal Primary and Secondary Packaging Batch Record'
 paragraph = cell.paragraphs[0]
-paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
 paragraph.paragraph_format.space_after=Pt(0)
 paragraph.paragraph_format.space_before=Pt(0)
 a = table.cell(0,0)
