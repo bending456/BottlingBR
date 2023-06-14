@@ -211,6 +211,7 @@ if TableFormat:
       PrimMainStepNum += 1
       
       t = document.add_table(rows = 3, cols = 4)
+      t.style = 'Table Grid'
       
       # - Title for the section/process
       cell = t.cell(0,0)
