@@ -101,7 +101,7 @@ outputfileName = st.sidebar.text_input("Step 2: Write the name of output (docx f
 #run.font.size = Pt(16)
 
 ###------ Header of Document ------------
-header = document.section[0].header
+header = document.sections[0].header
 table = header.add_table(rows=3, cols=2)
 cell = table.cell(0,0)
 cell.text='Universal Primary and Secondary Packaging Batch Record'
