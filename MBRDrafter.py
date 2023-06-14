@@ -161,7 +161,7 @@ paragraph.paragraph_format.space_after=Pt(0)
 paragraph.paragraph_format.space_before=Pt(0)
 
 # Batch Number
-cell = table.cell(1,2)
+cell = table.cell(2,1)
 paragraph = cell.paragraphs[0]
 paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.RIGHT
 paragraph.paragraph_format.space_after=Pt(0)
