@@ -102,7 +102,7 @@ outputfileName = st.sidebar.text_input("Step 2: Write the name of output (docx f
 
 ###------ Header of Document ------------
 header = document.sections[0].header
-header.header_distance(Inches(0.3))
+header.header_distance=Inches(0.3)
 table = header.add_table(rows=3, cols=2, width = Inches(7.5))
 cell = table.cell(0,0)
 cell.text='Universal Primary and Secondary Packaging Batch Record'
