@@ -10,6 +10,7 @@ from docx.oxml.ns import nsdecls
 from docx.oxml import parse_xml
 from docx.shared import Inches
 from docx.shared import RGBColor
+from docx.oxml import OxmlElement
 from datetime import date
 import string
 
