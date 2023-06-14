@@ -86,6 +86,18 @@ for section in sections:
     section.left_margin = Inches(0.5)
     section.right_margin = Inches(0.5)
 
+
+def remove_table_spacing(doc):
+    # Iterate through each paragraph in the document
+    for paragraph in doc.paragraphs:
+        # Check if the paragraph contains a table
+        if paragraph._p.xml.startswith('<w:tbl'):
+            # Access the paragraph's paragraph format
+            paragraph_format = paragraph.paragraph_format
+            # Set the spacing before and after the table to zero
+            paragraph_format.space_before = Pt(0)
+            paragraph_format.space_after = Pt(0)
+
 ##########################################
 #----------------------------------------#
 #----------------------------------------#
@@ -1310,7 +1322,7 @@ if additional2:
 #----------------------------------------#
 #----------------------------------------#
 ##########################################
-
+document = remove_table_spacing(document)
 # Save the document
 st.sidebar.header("**Step 7: Download Ready**")
 if st.sidebar.checkbox("Check this box if the draft is ready"):
