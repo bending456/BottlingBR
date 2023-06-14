@@ -79,6 +79,12 @@ font = style.font
 font.name = 'Times New Roman'
 font.size = Pt(11)
 
+sections = document.sections
+for section in sections:
+    section.top_margin = Inches(0.5)
+    section.bottom_margin = Inches(0.5)
+    section.left_margin = Inches(0.5)
+    section.right_margin = Inches(0.5)
 
 ##########################################
 #----------------------------------------#
@@ -212,14 +218,17 @@ if TableFormat:
       t = document.add_table(rows = 3, cols = 5)
       t.style = 'Table Grid'
 
-      for i in np.arange(4):
+      for i in np.arange(5):
           cell = t.cell(0,i)
           cell.text = Attributes[i]
           paragraph = cell.paragraphs[0]
           run = paragraph.runs
           for run in paragraph.runs:
-             run.font.bold = True
-          paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+             run.font.bold = True 
+          if i == 1:
+              paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+          else:
+              paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
           cell.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
       
       cell1 = t.cell(0,1)
