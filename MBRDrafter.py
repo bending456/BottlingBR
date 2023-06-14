@@ -81,8 +81,8 @@ font.size = Pt(11)
 
 sections = document.sections
 for section in sections:
-    section.top_margin = Inches(0.4)
-    section.bottom_margin = Inches(0.3)
+    section.top_margin = Inches(0.1)
+    section.bottom_margin = Inches(0.2)
     section.left_margin = Inches(0.5)
     section.right_margin = Inches(0.5)
 
