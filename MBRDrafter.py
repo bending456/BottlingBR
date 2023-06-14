@@ -66,7 +66,35 @@ for i in range(5):  # Adjust range for as many levels as you need
   style.paragraph_format.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
   style.font.size = Pt(11)
 
+def set_border(table):
+    # Set a table style
+    table.style = 'Table Grid'
+    
+    # Loop over the rows, then the cells, then the paragraphs
+    for row in table.rows:
+        for cell in row.cells:
+            # Access _tc element of cell to edit low-level XML properties
+            tc = cell._tc
+            # Access tcPr element (TableCellProperties)
+            tcPr = tc.get_or_add_tcPr()
 
+            # Create new borders element
+            borders = OxmlElement('w:tcBorders')
+
+            # Define and add individual border elements
+            for border_type in ['start', 'top', 'end', 'bottom']:
+                border_el = OxmlElement(f'w:{border_type}')
+                border_el.set(OxmlElement.oxml_ns['w'] + 'val', 'single')
+                border_el.set(OxmlElement.oxml_ns['w'] + 'sz', '4')
+                border_el.set(OxmlElement.oxml_ns['w'] + 'space', '0')
+                border_el.set(OxmlElement.oxml_ns['w'] + 'color', 'auto')
+                borders.append(border_el)
+
+            # Remove any pre-existing tcBorders element, and add the new one
+            for element in tcPr:
+                if element.tag.endswith('tcBorders'):
+                    tcPr.remove(element)
+            tcPr.append(borders)
 
 
 ##########################################
@@ -200,7 +228,6 @@ if TableFormat:
       paragraph = cell.paragraphs[0]
       run = paragraph.runs
       for run in paragraph.runs:
-          run.font.size = Pt(12)
           run.font.bold = True
       paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
       cell.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
@@ -220,7 +247,6 @@ if TableFormat:
       paragraph = cell.paragraphs[0]
       run = paragraph.runs
       for run in paragraph.runs:
-          run.font.size = Pt(12)
           run.font.bold = True
       paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
       cell.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
@@ -230,7 +256,6 @@ if TableFormat:
       paragraph = cell.paragraphs[0]
       run = paragraph.runs
       for run in paragraph.runs:
-          run.font.size = Pt(12)
           run.font.bold = True
       paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
       cell.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
@@ -241,6 +266,12 @@ if TableFormat:
       cell = t.cell(1,0)
       steporder = str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
       cell.text = steporder
+      paragraph = cell.paragraphs[0]
+      run = paragraph.runs
+      for run in paragraph.runs:
+          run.font.bold = True
+      paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+      cell.vertical_alignment = WD_ALIGN_VERTICAL.TOP
 
       # Child Steps of Parent step 1
       cell = t.cell(1,1)
@@ -267,6 +298,12 @@ if TableFormat:
       cell = t.cell(2,0)
       steporder = str(PrimMainStepNum)+'-'+alphabet[SubStepNum]
       cell.text = steporder
+      paragraph = cell.paragraphs[0]
+      run = paragraph.runs
+      for run in paragraph.runs:
+          run.font.bold = True
+      paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+      cell.vertical_alignment = WD_ALIGN_VERTICAL.TOP
 
       # Child Steps of Parent step 2
       cell = t.cell(2,1)
@@ -284,7 +321,7 @@ if TableFormat:
           run.font.color.rgb = RGBColor(255, 0, 0)
           run.font.bold = True
       
-
+      set_border(t)
 #----------------------
 #----   SACHET  -----
 #----------------------
