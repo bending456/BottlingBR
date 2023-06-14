@@ -1,5 +1,6 @@
 ## Opening of Python Packages to run the program ###
 import streamlit as st
+import numpy as np
 import os
 import tempfile
 from docx import Document
@@ -68,10 +69,15 @@ for i in range(5):  # Adjust range for as many levels as you need
   style.font.size = Pt(11)
 
 def set_col_widths(table):
-    widths = (Inches(0.5), Inches(3), Inches(1), Inches(1.5))
+    widths = (Inches(0.47), Inches(4.69), Inches(0.97), Inches(0.67), Inches(0.67))
     for row in table.rows:
         for idx, width in enumerate(widths):
             row.cells[idx].width = width
+
+style = document.styles['Normal']
+font = style.font
+font.name = 'Times New Roman'
+font.size = Pt(11)
 
 
 ##########################################
@@ -197,48 +203,28 @@ if TableFormat:
       SubStepNum = 0 
       PrimMainStepNum += 1
       
-      t = document.add_table(rows = 3, cols = 4)
+      Attributes = ['Step',
+                    'Step '+str(PrimMainStepNum)+': XXXX Process',
+                    ' ',
+                    'Done\n By /\nDate',
+                    'Check\n By /\nDate']
+      
+      t = document.add_table(rows = 3, cols = 5)
       t.style = 'Table Grid'
-      
-      # - Title for the section/process
-      cell = t.cell(0,0)
-      cell.text = 'Step'
-      paragraph = cell.paragraphs[0]
-      run = paragraph.runs
-      for run in paragraph.runs:
-          run.font.bold = True
-      paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
-      cell.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
-      
-      cell = t.cell(0,1) 
-      cell.text = 'Step '+str(PrimMainStepNum)+': XXXX Process'
-      paragraph = cell.paragraphs[0]
-      run = paragraph.runs
-      for run in paragraph.runs:
-          run.font.size = Pt(12)
-          run.font.bold = True
-      paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
-      cell.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
 
-      cell = t.cell(0,2)
-      cell.text = 'Check Box'
-      paragraph = cell.paragraphs[0]
-      run = paragraph.runs
-      for run in paragraph.runs:
-          run.font.bold = True
-      paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
-      cell.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
-
-      cell = t.cell(0,3)
-      cell.text = 'Note'
-      paragraph = cell.paragraphs[0]
-      run = paragraph.runs
-      for run in paragraph.runs:
-          run.font.bold = True
-      paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
-      cell.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+      for i in np.arange(4):
+          cell = t.cell(0,i)
+          cell.text = Attributes[i]
+          paragraph = cell.paragraphs[0]
+          run = paragraph.runs
+          for run in paragraph.runs:
+             run.font.bold = True
+          paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+          cell.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
       
-      
+      cell1 = t.cell(0,1)
+      cell2 = t.cell(0,2)
+                  
 
       # Parent Step 1 
       cell = t.cell(1,0)
