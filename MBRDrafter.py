@@ -5,7 +5,7 @@ import tempfile
 from docx import Document
 from docx.shared import Pt
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
-from docx.enum.text import WD_ALIGN_VERTICAL
+from docx.enum.table import WD_ALIGN_VERTICAL
 from docx.oxml.ns import nsdecls
 from docx.oxml import parse_xml
 from docx.shared import Inches
