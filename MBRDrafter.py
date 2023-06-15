@@ -226,11 +226,12 @@ if primary:
    st.markdown('##### Primary Material Information')
    
    ## Primary Material Setup ##
+   numberProds = st.checkbox("More than one Item Number?")
    col_pri1, col_pri2, col_pri3 = st.columns(3)
 
    ### Item Number
    with col_pri1:
-      numberProds = st.checkbox("More than one Item Number?")
+      
       if numberProds:
          prodItemNo1 = st.text_input("#1 Item No.")
          prodItemNo2 = st.text_input("#2 Item No.")
