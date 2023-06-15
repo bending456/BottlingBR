@@ -128,9 +128,9 @@ with st.expander("Primary Packaging Operations"):
 for table in document.tables:
     tablecounter1 += 1
     if tablecounter1 == 4:
-        cell1 = table.rows.cells(14,3)
-        cell2 = table.rows.cells(15,3)
-        cell3 = table.rows.cells(16,4)
+        cell1 = table.cell(14,3)
+        cell2 = table.cell(15,3)
+        cell3 = table.cell(16,4)
         cell1.text = 'Fill Count per\n Bottle\n'+fillcount+'\n'+fillcountref
         cell2.text = 'Total Bottles\n Required\n'+totalbottle+'\n'+totalbottleref
         cell3.text = verWipotecref
