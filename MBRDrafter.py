@@ -13,6 +13,8 @@ from docx.shared import Inches
 from docx.shared import RGBColor
 from docx.oxml import OxmlElement
 from docx.table import _Cell
+from docx.oxml.ns import qn
+
 from datetime import date
 import string
 
