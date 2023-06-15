@@ -18,6 +18,7 @@ import string
 
 ##########################################
 #----------------------------------------#
+#              Title Panel               #
 #----------------------------------------#
 ##########################################
 
@@ -26,6 +27,7 @@ st.caption("[Not Ready]")
 
 ##########################################
 #----------------------------------------#
+#             ReadMe Panel               #
 #----------------------------------------#
 ##########################################
 
@@ -43,21 +45,22 @@ with st.expander("User Guide",expanded=True):
 if 'writing draft' not in st.session_state:
    st.session_state['writing draft']=False
 
-document = Document('UBR.docx')
-
 #---------- Sidebar Setup
 stateholder = st.sidebar.checkbox("Step 0: Check this box to prevent unwanted rerun")
 if stateholder:
    st.session_state['writing draft']=True
 
-
 ##########################################
 #----------------------------------------#
+#            Control Panel               #
 #----------------------------------------#
 ##########################################
 
-##----------- docx file generator setup 
-####------- Create a new style for each indent level
+
+# Loading up the template document 
+document = Document('UBR.docx')
+
+## Setting up the bullet point (It may not be used)
 for i in range(5):  # Adjust range for as many levels as you need
   try:
       style = document.styles.add_style(f'List Bullet {i}', document.styles['Normal'].type)
@@ -68,26 +71,20 @@ for i in range(5):  # Adjust range for as many levels as you need
   style.paragraph_format.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
   style.font.size = Pt(11)
 
+## Setting up the width of columns in MBR steps
 def set_col_widths(table):
     widths = (Inches(0.47), Inches(4.69), Inches(0.97), Inches(0.67), Inches(0.67))
     for row in table.rows:
         for idx, width in enumerate(widths):
             row.cells[idx].width = width
 
-# Overall Font #
+## Overall Font in the document
 style = document.styles['Normal']
 font = style.font
 font.name = 'Times New Roman'
 font.size = Pt(11)
 
-#sections = document.sections
-#for section in sections:
-#    section.top_margin = Inches(0.0)
-#    section.bottom_margin = Inches(0.0)
-#    section.left_margin = Inches(0.5)
-#    section.right_margin = Inches(0.5)
-
-
+## Spacing after and before table
 def remove_table_spacing(doc):
     # Iterate through each paragraph in the document
     for paragraph in doc.paragraphs:
@@ -98,6 +95,13 @@ def remove_table_spacing(doc):
             # Set the spacing before and after the table to zero
             paragraph_format.space_before = Pt(0)
             paragraph_format.space_after = Pt(0)
+
+
+##########################################
+#----------------------------------------#
+#      Step 1: General Info              #
+#----------------------------------------#
+##########################################
 
 
 ## Access the tables in word file 
@@ -113,7 +117,7 @@ def remove_table_spacing(doc):
 
 
 tablecounter1 = 0 #<---- This will count a number of tables being processed.
-st.markdown("### ***Setting up Primary Packaging Operations***")
+st.markdown("### Setting up Primary Packaging Operations")
 with st.expander("Primary Packaging Operations"):
     st.caption("Fill Count Input")
     fillcount = st.text_input("Fill count per bottle")
@@ -126,33 +130,276 @@ with st.expander("Primary Packaging Operations"):
     st.caption("Verify the status of Wipotec Scale")
     verWipotecref = st.text_input("Verification Reference (ex. PSIS-Sec X)")
 
-for table in document.tables:
-    tablecounter1 += 1
-    if tablecounter1 == 5:
-        cell1 = table.cell(13,2)
-        cell2 = table.cell(14,2)
-        cell3 = table.cell(16,3)
-        cell1.text = 'Fill Count per\n Bottle\n'+fillcount+'\n'+fillcountref
-        cell2.text = 'Total Bottles\n Required\n'+totalbottle+'\n'+totalbottleref
-        cell3.text = verWipotecref
-        
-        paragraph = cell1.paragraphs[0]
-        run = paragraph.runs
-        for run in paragraph.runs:
-            paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
-        cell1.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+table = document.tables[4]
+cell1 = table.cell(13,2)
+cell2 = table.cell(14,2)
+cell3 = table.cell(16,3)
+cell1.text = 'Fill Count per\n Bottle\n'+fillcount+'\n'+fillcountref
+cell2.text = 'Total Bottles\n Required\n'+totalbottle+'\n'+totalbottleref
+cell3.text = verWipotecref
 
-        paragraph = cell2.paragraphs[0]
-        run = paragraph.runs
-        for run in paragraph.runs:
-            paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
-        cell2.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+paragraph = cell1.paragraphs[0]
+run = paragraph.runs
+for run in paragraph.runs:
+    paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+cell1.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+paragraph = cell2.paragraphs[0]
+run = paragraph.runs
+for run in paragraph.runs:
+    paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+cell2.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+paragraph = cell3.paragraphs[0]
+run = paragraph.runs
+for run in paragraph.runs:
+    paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+cell3.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
 
-        paragraph = cell3.paragraphs[0]
-        run = paragraph.runs
-        for run in paragraph.runs:
-            paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
-        cell3.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+##########################################
+#----------------------------------------#
+#           Step 2: Packaging            #
+#----------------------------------------#
+##########################################
+
+# This will be overall step number in the first column of MBR
+StepNum = 0
+
+# This will prevent error where if-statement generates error as undefined variable 
+# if the step is not selected
+TableFormat = sachet = canister = cotton = sealer = additional1 = False
+cartoning = topsert = sidesert = shipper = bundling = additional2 = False
+
+# Setting up the interface frame
+st.markdown("### List of Processes")
+col1, col2 = st.columns(2)
+
+##################################
+### Step 2-A Primary Pacakging ###
+##################################
+
+#################################################################################
+### -------------- Primary Packaging -------------------
+
+with col1:
+   st.markdown('#### Primary Packaging')
+   primary = st.checkbox("Primary Packaging")
+
+   # Define all checkbox variables first
+   
+   if primary:
+      ###--- Primary Packaging related list
+      st.divider()
+      sachet = st.checkbox("Sachet")
+      canister = st.checkbox("Canister")
+      cotton = st.checkbox("Cotton Filler")
+      sealer = st.checkbox("Sealer")
+
+      # break the page 
+      document.add_page_break()
+
+      subtitle = document.add_paragraph()
+      run = subtitle.add_run('Part II: Primary Packaging')
+      run.bold = True
+      run.font.size = Pt(14)
+      subtitle.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+      subtitle.paragraph_format.space_after = 0
+      subtitle.paragraph_format.space_before = 0
+      i = 0
+
+st.divider()
+st.markdown('### Process Control Panel')
+
+##################################################################
+if not primary:
+   st.caption("Primary is not Selected")
+   st.divider()
+
+
+## Structure of the template
+#Table 6: Primary Material
+#Table 7: Packaging Material
+#Table 8: Equipment List
+
+
+if primary:
+   st.markdown('#### Primary Packaging Step Selection')
+   
+   ## Primary Material Setup ##
+   col_pri1, col_pri2, col_pri3 = st.columns(3)
+
+   ### Item Number
+   with col_pri1:
+      numberProds = st.checkbox("More than one Item Number?")
+      if numberProds:
+         prodItemNo1 = st.text_input("#1 Item No.")
+         prodItemNo2 = st.text_input("#2 Item No.")
+         ProdItemNo = prodItemNo1 + '\nor \n' + prodItemNo2
+      else:
+         ProdItemNo = st.text_input("Item No.")
+
+   ### Name of product
+   with col_pri2:
+      productName = st.text_input("Name of Product")
+
+   ### Theoretical Amount
+   with col_pri3:
+      theo_spec = st.text_input("Theoretical Amount required")
+     
+   ## Adding to pre-existing table
+   table = document.tables[5]
+   cell1 = table.cell(1,0)
+   cell2 = table.cell(1,1)
+   cell3 = table.cell(1,2)
+
+   cell1.text = ProdItemNo
+   cell2.text = productName
+   cell3.text = theo_spec
+
+   paragraph = cell1.paragraphs[0]
+   run = paragraph.runs
+   for run in paragraph.runs:
+       paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+   cell1.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+
+   paragraph = cell2.paragraphs[0]
+   run = paragraph.runs
+   for run in paragraph.runs:
+       paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+
+   paragraph = cell3.paragraphs[0]
+   run = paragraph.runs
+   for run in paragraph.runs:
+       paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+
+   #[Note]: I may need to make a section where we may have more than one primary material (not really)
+   ############################################################
+
+   ## Packaging Material Information ##
+   table = document.tables[6]
+   
+   col_pri4, col_pri5, col_pri6 = st.columns(3)
+   
+   noOfmaterials = st.number_input("Enter a number of packaging materials",min_value = 3, max_value = 10, value = 3)
+   iter1 = int(noOfmaterials)
+   
+   itemNoInput1 = []
+   itemNoInput2 = []
+   matNameInput = []
+   theoInput = []
+
+   with col_pri4:
+      for i in np.arange(iter1):
+         itemNo1 = st.text_input(f'Enter First Item Number for Material No. {i+1}')
+         itemNo2 = st.text_input(f'Enter Second Item Number for Material No. {i+1} (if none, type N/A)')
+         itemNoInput1.append(itemNo1)
+         itemNoInput2.append(itemNo2)       
+
+   with col_pri5:
+      for i in np.arange(iter1):
+         matName = st.text_input(f'Enter Name for Material No. {i+1}')
+         matNameInput.append(matName)
+
+
+   with col_pri6:
+      for i in np.arange(iter1):
+         theoAmt = st.text_input(f'Enter Theoretical Amount for Material No. {i+1}')
+         theoInput.append(theoAmt)
+
+   if iter1 > 3:
+      for i in np.arange(iter1 - 3):
+         row_cells = table.add_row().cells
+         cell = table.cell(3+i,0)
+         cell.text = 'Circle\nItem\n#(s)'
+         
+
+   
+   for i,j in enumerate(itemNoInput1):
+      if itemNoInput2[i] == 'N/A':
+         itemNoInput = j
+      else:
+         itemNoInput = j+'\n or\n'+itemNoInput2[i]
+      
+      cell1 = table.cell(i+1,1)
+      cell1.text = itemNoInput
+      cell2 = table.cell(i+1,2)
+      cell2.text = matNameInput[i]
+      cell3 = table.cell(i+1,3)
+      cell3.text = theoInput[i]
+
+      paragraph = cell1.paragraphs[0]
+      run = paragraph.runs
+      for run in paragraph.runs:
+          paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+      cell1.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+
+      paragraph = cell2.paragraphs[0]
+      run = paragraph.runs
+      for run in paragraph.runs:
+          paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+      cell2.vertical_alignment = WD_ALIGN_VERTICAL.TOP
+
+      paragraph = cell3.paragraphs[0]
+      run = paragraph.runs
+      for run in paragraph.runs:
+          paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+      cell3.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+
+
+   ## Equipment Information
+   option1 = option2 = option3 = option4 = option5 = option6 = option7 = option8 = False
+   with st.expander("Primary Packaging Material Setup", expanded=True):
+      option1 = st.checkbox('Bottle Unscrambler',value=True)
+      option2 = st.checkbox('Line Control',value=True)
+      option3 = st.checkbox('Uniline',value=True)
+      option4 = st.checkbox('Surekap Re-torquer',value=True)
+      option5 = st.checkbox('Induction Sealer',value=True)
+      option6 = st.checkbox('IMADA Torque Tester',value=True)
+      option7 = st.checkbox('Wipotec Weight Checker',value=True)
+      option8 = st.checkbox('Swiftcheck Tablet Capsule Counter',value=True)     
+       
+   
+
+
+
+
+
+
+#################################################################################
+
+## ---- Secondary Packaging ------------------------------
+
+with col2:
+   st.markdown('#### Secondary Packaging')
+   secondary = st.checkbox("Secondary Packaging")
+      
+   if secondary:
+      ###--- Secondary Packaging related list
+      st.divider()
+      cartoning = st.checkbox("Cartoning")
+      sidesert = st.checkbox("Sidesert")
+      topsert = st.checkbox("Topsert")
+      bundling = st.checkbox("Bundling")
+      shipper = st.checkbox("Shipper")
+
+      # break the page 
+      document.add_page_break()
+
+   
+      subtitle = document.add_paragraph()
+      run = subtitle.add_run('Part III: Secondary Packaging')
+      run.bold = True
+      run.font.size = Pt(14)
+      subtitle.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+      subtitle.paragraph_format.space_after = 0
+      subtitle.paragraph_format.space_before = 0
+
+##################################################################
+if not secondary:
+   st.caption("Secondary is not Selected")
+   st.divider()
+
+if secondary:
+   st.markdown('#### Secondary Packaging Step Selection')
+
 
 
 
