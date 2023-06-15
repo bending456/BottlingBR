@@ -22,6 +22,7 @@ import string
 #----------------------------------------#
 ##########################################
 
+st.set_page_config(layout='wide')
 st.header("Master Batch Record Drafter")
 st.caption("[Not Ready]")
 
@@ -320,7 +321,7 @@ if primary:
       if itemNoInput2[i] == 'N/A':
          itemNoInput = j
       else:
-         itemNoInput = j+'\n or\n'+itemNoInput2[i]
+         itemNoInput = j+'\n and/or\n'+itemNoInput2[i]
       
       cell1 = table.cell(i+1,1)
       cell1.text = itemNoInput
