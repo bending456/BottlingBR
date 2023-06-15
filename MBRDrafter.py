@@ -12,6 +12,7 @@ from docx.oxml import parse_xml
 from docx.shared import Inches
 from docx.shared import RGBColor
 from docx.oxml import OxmlElement
+from docx.table import _Cell
 from datetime import date
 import string
 
@@ -97,6 +98,15 @@ def remove_table_spacing(doc):
             paragraph_format.space_before = Pt(0)
             paragraph_format.space_after = Pt(0)
 
+
+def set_vertical_cell_direction(cell: _Cell, direction: str):
+    # direction: tbRl -- top to bottom, btLr -- bottom to top
+    assert direction in ("tbRl", "btLr")
+    tc = cell._tc
+    tcPr = tc.get_or_add_tcPr()
+    textDirection = OxmlElement('w:textDirection')
+    textDirection.set(qn('w:val'), direction)  # btLr tbRl
+    tcPr.append(textDirection)
 
 ##########################################
 #----------------------------------------#
@@ -315,25 +325,27 @@ if primary:
          row_cells = table.add_row().cells
          cell = table.cell(4+i,0)
          cell.text = 'Circle\nItem\n#(s)'
-         
          paragraph = cell.paragraphs[0]
          run = paragraph.runs
          for run in paragraph.runs:
             paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
          cell.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+         set_vertical_cell_direction(cell, 'btLr')
+         
+         
 
          # Create a new tcPr (table cell properties) element
-         tcpr = OxmlElement('w:tcPr')
+         #tcpr = OxmlElement('w:tcPr')
 
          # Create a new text direction element
-         text_direction = OxmlElement('w:textDirection')
-         text_direction.set(nsdecls('w'), 'btlr')
+         #text_direction = OxmlElement('w:textDirection')
+         #text_direction.set(nsdecls('w'), 'btLr')
 
          # Add the text direction element to the tcPr element
-         tcpr.append(text_direction)
+         #tcpr.append(text_direction)
 
          # Add the new tcPr element to the cell's existing tc element
-         cell._tc.get_or_add_tcPr().append(tcpr)
+         #cell._tc.get_or_add_tcPr().append(tcpr)
 
 
 
