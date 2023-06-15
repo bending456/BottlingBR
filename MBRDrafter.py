@@ -315,6 +315,26 @@ if primary:
          row_cells = table.add_row().cells
          cell = table.cell(4+i,0)
          cell.text = 'Circle\nItem\n#(s)'
+         
+         paragraph = cell.paragraphs[0]
+         run = paragraph.runs
+         for run in paragraph.runs:
+            paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+         cell.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+
+         # Create a new tcPr (table cell properties) element
+         tcpr = OxmlElement('w:tcPr')
+
+         # Create a new text direction element
+         text_direction = OxmlElement('w:textDirection')
+         text_direction.set(nsdecls('w'), 'btlr')
+
+         # Add the text direction element to the tcPr element
+         tcpr.append(text_direction)
+
+         # Add the new tcPr element to the cell's existing tc element
+         cell._tc.get_or_add_tcPr().append(tcpr)
+
 
 
    
