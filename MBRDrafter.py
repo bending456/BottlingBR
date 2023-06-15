@@ -102,15 +102,14 @@ def remove_table_spacing(doc):
 ## Access the tables in word file 
 
 ## Iterate over each table in the Word Doc.
-'''
-Structure of the template
-Table 1: Section1 - Document Approval and Review
-Table 2: Section2 - General Information - Table of Content:
-Table 3: Section3 - Reference Information - Referenced Documents 
-Table 4: Section4 - Primary Packaging Equipment List 
-Table 5: Section5 - Primary Packaging Operations #<----- This is where we need to add input via Python
 
-'''
+##Structure of the template
+#Table 1: Section1 - Document Approval and Review
+#Table 2: Section2 - General Information - Table of Content:
+#Table 3: Section3 - Reference Information - Referenced Documents 
+#Table 4: Section4 - Primary Packaging Equipment List 
+#Table 5: Section5 - Primary Packaging Operations #<----- This is where we need to add input via Python
+
 
 tablecounter1 = 0 #<---- This will count a number of tables being processed.
 st.markdown("### ***Setting up Primary Packaging Operations***")
