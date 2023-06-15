@@ -386,7 +386,18 @@ if primary:
       row = table.rows[i+1]
       row.height = Inches(0.66)
 
-   
+   # Define the border, adjust the w:sz for the size of the border
+   border_xml = """
+   <w:tblBorders xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+   <w:insideH w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+   <w:insideV w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+   </w:tblBorders>
+   """
+
+   # Apply the border to the table
+   table_element = table._element
+   table_borders_element = parse_xml(border_xml)
+   table_element.tblPr.append(table_borders_element)
    
 
    ## Equipment Information
@@ -401,18 +412,7 @@ if primary:
       option7 = st.checkbox('Wipotec Weight Checker',value=True)
       option8 = st.checkbox('Swiftcheck Tablet Capsule Counter',value=True)     
        
-   # Define the border, adjust the w:sz for the size of the border
-   border_xml = """
-   <w:tblBorders xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
-   <w:insideH w:val="single" w:sz="4" w:space="0" w:color="auto"/>
-   <w:insideV w:val="single" w:sz="4" w:space="0" w:color="auto"/>
-   </w:tblBorders>
-   """
-
-   # Apply the border to the table
-   table_element = table._element
-   table_borders_element = parse_xml(border_xml)
-   table_element.tblPr.append(table_borders_element)
+   
 
 
 
