@@ -127,7 +127,7 @@ with st.expander("Primary Packaging Operations"):
 
 for table in document.tables:
     tablecounter1 += 1
-    if tablecounter1 == 4:
+    if tablecounter1 == 5:
         cell1 = table.cell(14,3)
         cell2 = table.cell(15,3)
         cell3 = table.cell(16,4)
@@ -162,7 +162,6 @@ for table in document.tables:
 #----------------------------------------#
 #----------------------------------------#
 ##########################################
-remove_table_spacing(document)
 # Save the document
 st.sidebar.header("**Step 7: Download Ready**")
 if st.sidebar.checkbox("Check this box if the draft is ready"):
