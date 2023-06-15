@@ -128,9 +128,9 @@ with st.expander("Primary Packaging Operations"):
 for table in document.tables:
     tablecounter1 += 1
     if tablecounter1 == 5:
-        cell1 = table.cell(14,3)
-        cell2 = table.cell(15,3)
-        cell3 = table.cell(16,4)
+        cell1 = table.cell(13,2)
+        cell2 = table.cell(14,2)
+        cell3 = table.cell(16,3)
         cell1.text = 'Fill Count per\n Bottle\n'+fillcount+'\n'+fillcountref
         cell2.text = 'Total Bottles\n Required\n'+totalbottle+'\n'+totalbottleref
         cell3.text = verWipotecref
@@ -138,21 +138,18 @@ for table in document.tables:
         paragraph = cell1.paragraphs[0]
         run = paragraph.runs
         for run in paragraph.runs:
-            run.font.bold = True 
             paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
         cell1.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
 
         paragraph = cell2.paragraphs[0]
         run = paragraph.runs
         for run in paragraph.runs:
-            run.font.bold = True 
             paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
         cell2.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
 
         paragraph = cell3.paragraphs[0]
         run = paragraph.runs
         for run in paragraph.runs:
-            run.font.bold = True 
             paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
         cell3.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
 
