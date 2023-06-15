@@ -222,6 +222,7 @@ if not primary:
 
 if primary:
    st.markdown('#### Primary Packaging Step Selection')
+   st.markdown('##### Primary Material Information')
    
    ## Primary Material Setup ##
    col_pri1, col_pri2, col_pri3 = st.columns(3)
@@ -276,10 +277,13 @@ if primary:
    ## Packaging Material Information ##
    table = document.tables[6]
    
-   col_pri4, col_pri5, col_pri6 = st.columns(3)
    
+   st.divider()
+   st.markdown('##### Primary Packaging Material Information')
    noOfmaterials = st.number_input("Enter a number of packaging materials",min_value = 3, max_value = 10, value = 3)
    iter1 = int(noOfmaterials)
+   
+   col_pri4, col_pri5, col_pri6 = st.columns(3)
    
    itemNoInput1 = []
    itemNoInput2 = []
@@ -309,7 +313,7 @@ if primary:
          row_cells = table.add_row().cells
          cell = table.cell(3+i,0)
          cell.text = 'Circle\nItem\n#(s)'
-         
+
 
    
    for i,j in enumerate(itemNoInput1):
