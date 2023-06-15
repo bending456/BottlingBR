@@ -313,7 +313,7 @@ if primary:
    if iter1 > 3:
       for i in np.arange(iter1 - 3):
          row_cells = table.add_row().cells
-         cell = table.cell(3+i,0)
+         cell = table.cell(4+i,0)
          cell.text = 'Circle\nItem\n#(s)'
 
 
@@ -349,6 +349,10 @@ if primary:
           paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
       cell3.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
 
+      row = table.rows[i+1]
+      row.height = Inches(0.66)
+
+   
 
    ## Equipment Information
    option1 = option2 = option3 = option4 = option5 = option6 = option7 = option8 = False
