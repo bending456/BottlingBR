@@ -74,17 +74,18 @@ def set_col_widths(table):
         for idx, width in enumerate(widths):
             row.cells[idx].width = width
 
+# Overall Font #
 style = document.styles['Normal']
 font = style.font
 font.name = 'Times New Roman'
 font.size = Pt(11)
 
-sections = document.sections
-for section in sections:
-    section.top_margin = Inches(0.0)
-    section.bottom_margin = Inches(0.0)
-    section.left_margin = Inches(0.5)
-    section.right_margin = Inches(0.5)
+#sections = document.sections
+#for section in sections:
+#    section.top_margin = Inches(0.0)
+#    section.bottom_margin = Inches(0.0)
+#    section.left_margin = Inches(0.5)
+#    section.right_margin = Inches(0.5)
 
 
 def remove_table_spacing(doc):
@@ -103,7 +104,7 @@ def remove_table_spacing(doc):
 
 ## Iterate over each table in the Word Doc.
 
-##Structure of the template
+## Structure of the template
 #Table 1: Section1 - Document Approval and Review
 #Table 2: Section2 - General Information - Table of Content:
 #Table 3: Section3 - Reference Information - Referenced Documents 
