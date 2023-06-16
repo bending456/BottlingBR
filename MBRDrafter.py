@@ -14,7 +14,6 @@ from docx.shared import RGBColor
 from docx.oxml import OxmlElement
 from docx.table import _Cell
 from docx.oxml.ns import qn
-import pyautogui
 
 from datetime import date
 import string
@@ -486,6 +485,6 @@ st.sidebar.header('**RESET**')
 if st.sidebar.checkbox("Ready to reset"):
    btn = st.sidebar.button("RESET")
    if btn:
-      pyautogui.hotkey("ctrl","F5")
+      st.experimental_rerun()
 
 
