@@ -337,23 +337,6 @@ if primary:
          cell.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
          set_vertical_cell_direction(cell, 'btLr')
          
-         
-
-         # Create a new tcPr (table cell properties) element
-         #tcpr = OxmlElement('w:tcPr')
-
-         # Create a new text direction element
-         #text_direction = OxmlElement('w:textDirection')
-         #text_direction.set(nsdecls('w'), 'btLr')
-
-         # Add the text direction element to the tcPr element
-         #tcpr.append(text_direction)
-
-         # Add the new tcPr element to the cell's existing tc element
-         #cell._tc.get_or_add_tcPr().append(tcpr)
-
-
-
    
    for i,j in enumerate(itemNoInput1):
       if itemNoInput2[i] == 'N/A':
@@ -404,16 +387,20 @@ if primary:
    
 
    ## Equipment Information
+   st.divider()
+   st.markdown('##### Primary Packaging Equipment Information')
    option1 = option2 = option3 = option4 = option5 = option6 = option7 = option8 = False
-   with st.expander("Primary Packaging Material Setup", expanded=True):
-      option1 = st.checkbox('Bottle Unscrambler',value=True)
-      option2 = st.checkbox('Line Control',value=True)
-      option3 = st.checkbox('Uniline',value=True)
-      option4 = st.checkbox('Surekap Re-torquer',value=True)
-      option5 = st.checkbox('Induction Sealer',value=True)
-      option6 = st.checkbox('IMADA Torque Tester',value=True)
-      option7 = st.checkbox('Wipotec Weight Checker',value=True)
-      option8 = st.checkbox('Swiftcheck Tablet Capsule Counter',value=True)     
+   equipments = ['Bottle Unscrambler','Line Control','Uniline','Surekap Re-torquer','Induction Sealer','IMADA Torque Tester','Wipotec Weight Checker','Swiftcheck Tablet Capsule Counter']
+   equipselected = []
+
+   with st.expander("Primary Packaging Equipment List", expanded=True):
+      for i, equip in enumerate(equipments):
+         option = st.checkbox(equipments[i],value=False)
+         if option:
+            equipselected.append(equipments[i])
+
+      for equip in equipselected:
+         st.caption(equip)
        
    
 
