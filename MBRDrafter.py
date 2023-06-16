@@ -132,16 +132,18 @@ def set_vertical_cell_direction(cell: _Cell, direction: str):
 tablecounter1 = 0 #<---- This will count a number of tables being processed.
 st.markdown("### Setting up Primary Packaging Operations")
 with st.expander("Primary Packaging Operations"):
-    st.caption("Fill Count Input")
-    fillcount = st.text_input("Fill count per bottle")
-    fillcountref = st.text_input("Fill count per bottle reference (ex. PSIS-Sec X)")
-    st.divider()
-    st.caption("Total Bottle Required Input")
-    totalbottle = st.text_input("Total Bottles Required")
-    totalbottleref = st.text_input("Total Bottles Required reference (ex. PSIS-Sec X)")
-    st.divider()
-    st.caption("Verify the status of Wipotec Scale")
-    verWipotecref = st.text_input("Verification Reference (ex. PSIS-Sec X)")
+    col_ppo1, col_ppo2, col_ppo3 = st.beta_columns(3)
+    with col_ppo1:
+      st.caption("Fill Count Input")
+      fillcount = st.text_input("Fill count per bottle")
+      fillcountref = st.text_input("Reference (ex. PSIS-Sec X)")
+    with col_ppo2:
+       st.caption("Total Bottle Required Input")
+       totalbottle = st.text_input("Total Bottles Required")
+       totalbottleref = st.text_input("Reference (ex. PSIS-Sec X)")
+    with col_ppo3:
+       st.caption("Verify the status of Wipotec Scale")
+       verWipotecref = st.text_input("Verification Reference (ex. PSIS-Sec X)")
 
 table = document.tables[4]
 cell1 = table.cell(13,2)
