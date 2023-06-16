@@ -54,6 +54,9 @@ stateholder = st.sidebar.checkbox("Step 0: Check this box to prevent unwanted re
 if stateholder:
    st.session_state['writing draft']=True
 
+customerName = st.sidebar.text_input("Client Name")
+productName = st.sidebar.text_input("Product Name")
+
 ##########################################
 #----------------------------------------#
 #            Control Panel               #
@@ -361,7 +364,6 @@ if primary:
    
    st.divider()
    st.markdown('##### Primary Packaging Equipment Information')
-   option1 = option2 = option3 = option4 = option5 = option6 = option7 = option8 = False
 
    # Note: I should create a dictionary
    equiplist1 = {'Bottle Unscrambler':'ILS-1',
@@ -409,15 +411,31 @@ if primary:
       format_cell(cells[0], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER,12)
       format_cell(cells[1], WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.CENTER,12)
       format_cell(cells[2], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER,12)
-    
 
-    
       # If not the last element, add a new row for the next iteration
       if i != len(equipselected):
          table.add_row()
 
+   ###########################
+   ##       Line Check      ##
+   ###########################
 
+   table = document.table[9]
+   cell = table.cell(5,1)
+   text = 'Record the batch number and quantity of '+productName+' available in the spaces provided.'
+   cell.text = text
 
+   table = document.table[10]
+   for i in [1,3,5]:
+      cell = table.cell(i,1)
+      paragraph = cell.add_paragraph()
+      text1 = 'Collect one hundred (100) '+productName+' from the beginning of the bulk product allocated for this batch and printweigh \
+               (in grams) using the space provided. Record the scale number in the space provided.'
+      text2 = 'Note: All product used for the 100 ct. weights are to be returned to bulk product.'
+      run1 = paragraph.add_run(text1)
+      run2 = paragraph.add_run(text2)
+      run2.bold = True
+   
 
 #################################################################################
 
@@ -455,6 +473,7 @@ if not secondary:
 
 if secondary:
    st.markdown('#### Secondary Packaging Step Selection')
+
 
 
 
