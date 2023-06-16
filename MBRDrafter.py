@@ -137,6 +137,7 @@ def format_cell(cell, alignment, vertical_alignment):
 
 tablecounter1 = 0 #<---- This will count a number of tables being processed.
 st.markdown("### Setting up Primary Packaging Operations")
+
 with st.expander("Primary Packaging Operations"):
    col_ppo1, col_ppo2, col_ppo3 = st.columns(3)
 
@@ -165,29 +166,6 @@ format_cell(cells[0], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER)
 format_cell(cells[1], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER)
 format_cell(cells[2], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER)
 
-
-#cell1 = table.cell(13,2)
-#cell2 = table.cell(14,2)
-#cell3 = table.cell(16,3)
-#cell1.text = 'Fill Count per\n Bottle\n'+fillcount+'\n'+fillcountref
-#cell2.text = 'Total Bottles\n Required\n'+totalbottle+'\n'+totalbottleref
-#cell3.text = verWipotecref
-#
-#paragraph = cell1.paragraphs[0]
-#run = paragraph.runs
-#for run in paragraph.runs:
-#    paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
-#cell1.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
-#paragraph = cell2.paragraphs[0]
-#run = paragraph.runs
-#for run in paragraph.runs:
-#    paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
-#cell2.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
-#paragraph = cell3.paragraphs[0]
-#run = paragraph.runs
-#for run in paragraph.runs:
-#    paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
-#cell3.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
 
 ##########################################
 #----------------------------------------#
@@ -293,30 +271,6 @@ if primary:
    format_cell(cells[1], WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.CENTER)
    format_cell(cells[2], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER)
 
-   #cell1 = table.cell(1,0)
-   #cell2 = table.cell(1,1)
-   #cell3 = table.cell(1,2)
-#
-   #cell1.text = ProdItemNo
-   #cell2.text = productName
-   #cell3.text = theo_spec
-#
-   #paragraph = cell1.paragraphs[0]
-   #run = paragraph.runs
-   #for run in paragraph.runs:
-   #    paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
-   #cell1.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
-#
-   #paragraph = cell2.paragraphs[0]
-   #run = paragraph.runs
-   #for run in paragraph.runs:
-   #    paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
-#
-   #paragraph = cell3.paragraphs[0]
-   #run = paragraph.runs
-   #for run in paragraph.runs:
-   #    paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
-
    #[Note]: I may need to make a section where we may have more than one primary material (not really)
    ############################################################
 
@@ -383,39 +337,12 @@ if primary:
 
       # Format cells
       format_cell(cells[0], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER)
-      format_cell(cells[1], WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.TOP)
+      format_cell(cells[1], WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.CENTER)
       format_cell(cells[2], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER)
 
       # Set row height
       table.rows[i+1].height = Inches(0.66)
-      
-      #cell1 = table.cell(i+1,1)
-      #cell1.text = itemNoInput
-      #cell2 = table.cell(i+1,2)
-      #cell2.text = matNameInput[i]
-      #cell3 = table.cell(i+1,3)
-      #cell3.text = theoInput[i]
-#
-      #paragraph = cell1.paragraphs[0]
-      #run = paragraph.runs
-      #for run in paragraph.runs:
-      #    paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
-      #cell1.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
-#
-      #paragraph = cell2.paragraphs[0]
-      #run = paragraph.runs
-      #for run in paragraph.runs:
-      #    paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
-      #cell2.vertical_alignment = WD_ALIGN_VERTICAL.TOP
-#
-      #paragraph = cell3.paragraphs[0]
-      #run = paragraph.runs
-      #for run in paragraph.runs:
-      #    paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
-      #cell3.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
-#
-      #row = table.rows[i+1]
-      #row.height = Inches(0.66)
+   
 
    # Define the border, adjust the w:sz for the size of the border
    border_xml = """
