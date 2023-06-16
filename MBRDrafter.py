@@ -521,10 +521,7 @@ if primary:
    paragraph = cell.paragraphs[0]
    line1 = 'Use the calculations below to determine either the total amount of '+prodTypeplural+' needed (kg) or the total number of bottles needed. '
    line2 = 'If a bottle count is available and the total weight of '+prodTypeplural+' needed is what needs to be determined use the calculation below.'
-   # Clear the paragraph
-   for run in paragraph.runs:
-      run.text = ''
-   
+
    run = paragraph.add_run(line1+line2)
    run.font.size = Pt(11)
    
@@ -536,7 +533,7 @@ if primary:
    format_cell(cell, WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.TOP,12)
  
    cell = nested_table.cell(0,6)
-   line4 = 'Total Weight of \n'+prodTypeplural+'needed (kg)\n(round to two decimal places)'
+   line4 = 'Total Weight of \n'+prodTypeplural+' needed (kg)\n(round to two decimal places)'
    cell.text = line4
    format_cell(cell, WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.TOP,12)
 
@@ -545,11 +542,12 @@ if primary:
    paragraph = cell.paragraphs[0]
    line1 = 'If the total weight of  '+prodTypeplural+' (kg) to be used is available and the bottle count is to be determined, use the calculation below.'
    run = paragraph.add_run(line1)
+   run.font.size = Pt(11)
 
    nested_table = cell.tables[0]
    
    cell = nested_table.cell(0,0)
-   line3 = 'Total Weight of \n'+prodTypeplural+'on hand\n(Step 6) (kg)'
+   line3 = 'Total Weight of \n'+prodTypeplural+' on hand\n(Step 6) (kg)'
    cell.text = line3
    format_cell(cell, WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.TOP,12)
  
