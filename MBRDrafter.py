@@ -330,7 +330,7 @@ if primary:
       else:
          itemNoInput = j+'\n and/or\n'+itemNoInput2[i]
       
-      cells = [table.cell(i+1,col) for col in range(1,iter1+1)]
+      cells = [table.cell(i+1,col) for col in range(1,4)]
       texts = [itemNoInput, matNameInput[i],theoInput[i]]
       for cell, text in zip(cells, texts):
          cell.text = text
