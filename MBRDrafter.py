@@ -236,8 +236,13 @@ if not primary:
 if primary:
    st.markdown('#### Primary Packaging Step Selection')
    st.markdown('##### Primary Material Information')
-   
+
+   ############################
    ## Primary Material Setup ##
+   ############################
+
+   table = document.tables[5]
+
    numberProds = st.checkbox("More than one Item Number?")
    col_pri1, col_pri2, col_pri3 = st.columns(3)
 
@@ -260,7 +265,7 @@ if primary:
       theo_spec = st.text_input("Theoretical Amount required")
      
    ## Adding to pre-existing table
-   table = document.tables[5]
+   
    cells = [table.cell(1,col) for col in range(0,3)]
    texts = [ProdItemNo,productName,theo_spec]
    for cell, text in zip(cells, texts):
@@ -274,136 +279,133 @@ if primary:
    #[Note]: I may need to make a section where we may have more than one primary material (not really)
    ############################################################
 
+   ####################################
    ## Packaging Material Information ##
+   ####################################
+
    table = document.tables[6]
-   
    
    st.divider()
    st.markdown('##### Primary Packaging Material Information')
    noOfmaterials = st.number_input("Enter a number of packaging materials",min_value = 3, max_value = 10, value = 3)
    iter1 = int(noOfmaterials)
    
-   col_pri4, col_pri5, col_pri6, col_pri7 = st.columns([1,1,2,1])
+   with st.expander("Primary Packaging Material Info Entry"):
+      col_pri4, col_pri5, col_pri6, col_pri7 = st.columns([1,1,2,1])
+
+      itemNoInput1 = []
+      itemNoInput2 = []
+      matNameInput = []
+      theoInput = []
+
+      with col_pri4:
+         for i in np.arange(iter1):
+            itemNo1 = st.text_input(f'1st Item No. for Mat. No. {i+1}')
+            itemNoInput1.append(itemNo1)
+
+      with col_pri5:
+         for i in np.arange(iter1):
+            itemNo2 = st.text_input(f'2nd Item No. for Mat. No. {i+1} (if none, type N/A)')
+            itemNoInput2.append(itemNo2)        
+
+      with col_pri6:
+         for i in np.arange(iter1):
+            matName = st.text_input(f'Name for Mat. No. {i+1}')
+            matNameInput.append(matName)
+
+
+      with col_pri7:
+         for i in np.arange(iter1):
+            theoAmt = st.text_input(f'Theoretical Amount for Mat. No. {i+1}')
+            theoInput.append(theoAmt)
+
+      if iter1 > 3:
+         for i in np.arange(iter1 - 3):
+            row_cells = table.add_row().cells
+            cell = table.cell(4+i,0)
+            cell.text = 'Circle\nItem\n#(s)'
+            paragraph = cell.paragraphs[0]
+            run = paragraph.runs
+            for run in paragraph.runs:
+               paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+            cell.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+            set_vertical_cell_direction(cell, 'btLr')
+
+
+      for i,j in enumerate(itemNoInput1):
+         if itemNoInput2[i] == 'N/A':
+            itemNoInput = j
+         else:
+            itemNoInput = j+'\n and/or\n'+itemNoInput2[i]
+
+         cells = [table.cell(i+1,col) for col in range(1,4)]
+         texts = [itemNoInput, matNameInput[i],theoInput[i]]
+         for cell, text in zip(cells, texts):
+            cell.text = text
+
+         # Format cells
+         format_cell(cells[0], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER)
+         format_cell(cells[1], WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.CENTER)
+         format_cell(cells[2], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER)
+
+         # Set row height
+         table.rows[i+1].height = Inches(0.66)
+
    
-   itemNoInput1 = []
-   itemNoInput2 = []
-   matNameInput = []
-   theoInput = []
+   ###########################
+   ## Equipment Information ##
+   ###########################
 
-   with col_pri4:
-      for i in np.arange(iter1):
-         itemNo1 = st.text_input(f'1st Item No. for Mat. No. {i+1}')
-         itemNoInput1.append(itemNo1)
-
-   with col_pri5:
-      for i in np.arange(iter1):
-         itemNo2 = st.text_input(f'2nd Item No. for Mat. No. {i+1} (if none, type N/A)')
-         itemNoInput2.append(itemNo2)        
-
-   with col_pri6:
-      for i in np.arange(iter1):
-         matName = st.text_input(f'Name for Mat. No. {i+1}')
-         matNameInput.append(matName)
-
-
-   with col_pri7:
-      for i in np.arange(iter1):
-         theoAmt = st.text_input(f'Theoretical Amount for Mat. No. {i+1}')
-         theoInput.append(theoAmt)
-
-   if iter1 > 3:
-      for i in np.arange(iter1 - 3):
-         row_cells = table.add_row().cells
-         cell = table.cell(4+i,0)
-         cell.text = 'Circle\nItem\n#(s)'
-         paragraph = cell.paragraphs[0]
-         run = paragraph.runs
-         for run in paragraph.runs:
-            paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
-         cell.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
-         set_vertical_cell_direction(cell, 'btLr')
-         
+   table = document.tables[7]
    
-   for i,j in enumerate(itemNoInput1):
-      if itemNoInput2[i] == 'N/A':
-         itemNoInput = j
-      else:
-         itemNoInput = j+'\n and/or\n'+itemNoInput2[i]
-      
-      cells = [table.cell(i+1,col) for col in range(1,4)]
-      texts = [itemNoInput, matNameInput[i],theoInput[i]]
-      for cell, text in zip(cells, texts):
-         cell.text = text
-
-      # Format cells
-      format_cell(cells[0], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER)
-      format_cell(cells[1], WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.CENTER)
-      format_cell(cells[2], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER)
-
-      # Set row height
-      table.rows[i+1].height = Inches(0.66)
-   
-
-   # Define the border, adjust the w:sz for the size of the border
-   border_xml = """
-   <w:tblBorders xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
-   <w:insideH w:val="single" w:sz="4" w:space="0" w:color="auto"/>
-   <w:insideV w:val="single" w:sz="4" w:space="0" w:color="auto"/>
-   </w:tblBorders>
-   """
-
-   # Apply the border to the table
-   table_element = table._element
-   table_borders_element = parse_xml(border_xml)
-   table_element.tblPr.append(table_borders_element)
-   
-
-   ## Equipment Information
    st.divider()
    st.markdown('##### Primary Packaging Equipment Information')
    option1 = option2 = option3 = option4 = option5 = option6 = option7 = option8 = False
+
    # Note: I should create a dictionary
-   equipments1 = ['Bottle Unscrambler','Line Control','Uniline']
-   equipID1 = []
-   equipments2 = ['Surekap Re-torquer','Induction Sealer','IMADA Torque Tester']
-   equipID2 = []
-   equipments3 = ['Wipotec Weight Checker','Swiftcheck Tablet Capsule Counter']
-   equipID3 = []
-   equipselected1 = []
-   equipselected2 = []
-   equipselected3 = []
+   equiplist1 = {'Bottle Unscrambler':'ILS-1',
+                 'Line Control':'Conveyor',
+                 'Uniline':'IMA'}
+   equiplist2 = {'Surekap Re-torquer':'SK600',
+                 'Induction Sealer':'LM5412-T67',
+                 'IMADA Torque Tester':'N/A'}
+   equiplist3 = {'Wipotec Weight Checker':'N/A',
+                 'Swiftcheck Tablet Capsule Counter':'N/A'}
+
+   allequiplist = {**equiplist1, **equiplist2, **equiplist3}
+
+   equipselected = []
 
    with st.expander("Primary Packaging Equipment List", expanded=True):
       col_ppe1, col_ppe2, col_ppe3 = st.columns(3)
 
       with col_ppe1:
-         for i, equip in enumerate(equipments1):
-            option = st.checkbox(equipments1[i],value=False)
+         for i, equip in enumerate(list(equiplist1.keys())):
+            option = st.checkbox(equip,value=False)
             if option:
-               equipselected1.append(equipments1[i])
-
-         for equip in equipselected1:
-            st.caption(equip)
+               equipselected.append(equip)
        
       with col_ppe2:
-         for i, equip in enumerate(equipments2):
-            option = st.checkbox(equipments2[i],value=False)
+         for i, equip in enumerate(list(equiplist2.keys())):
+            option = st.checkbox(equip,value=False)
             if option:
-               equipselected2.append(equipments2[i])
-
-         for equip in equipselected2:
-            st.caption(equip) 
+               equipselected.append(equip)
       
       with col_ppe3:
-         for i, equip in enumerate(equipments3):
-            option = st.checkbox(equipments3[i],value=False)
+         for i, equip in enumerate(list(equiplist3.keys())):
+            option = st.checkbox(equip,value=False)
             if option:
-               equipselected3.append(equipments3[i])
+               equipselected.append(equip)
 
-         for equip in equipselected3:
-            st.caption(equip)
-
-
+   for i, equip in enumerate(equipselected, start=1):
+      # Assign value to cells
+      table.cell(i, 0).text = '1'
+      table.cell(i, 1).text = equip
+      table.cell(i, 2).text = allequiplist[equip]
+    
+      # If not the last element, add a new row for the next iteration
+      if i != len(equipselected):
+         table.add_row()
 
 
 
