@@ -110,6 +110,12 @@ def set_vertical_cell_direction(cell: _Cell, direction: str):
     textDirection.set(qn('w:val'), direction)  # btLr tbRl
     tcPr.append(textDirection)
 
+def format_cell(cell, alignment, vertical_alignment):
+    paragraph = cell.paragraphs[0]
+    for run in paragraph.runs:
+        paragraph.alignment = alignment
+    cell.vertical_alignment = vertical_alignment
+
 ##########################################
 #----------------------------------------#
 #      Step 1: General Info              #
@@ -347,33 +353,46 @@ if primary:
       else:
          itemNoInput = j+'\n and/or\n'+itemNoInput2[i]
       
-      cell1 = table.cell(i+1,1)
-      cell1.text = itemNoInput
-      cell2 = table.cell(i+1,2)
-      cell2.text = matNameInput[i]
-      cell3 = table.cell(i+1,3)
-      cell3.text = theoInput[i]
+      cells = [table.cell(i+1,col) for col in range(1,4)]
+      texts = [itemNoInput, matNameInput[i],theoInput[i]]
+      for cell, text in zip(cells, texts):
+         cell.text = text
 
-      paragraph = cell1.paragraphs[0]
-      run = paragraph.runs
-      for run in paragraph.runs:
-          paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
-      cell1.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+      # Format cells
+      format_cell(cells[0], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER)
+      format_cell(cells[1], WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.TOP)
+      format_cell(cells[2], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER)
 
-      paragraph = cell2.paragraphs[0]
-      run = paragraph.runs
-      for run in paragraph.runs:
-          paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
-      cell2.vertical_alignment = WD_ALIGN_VERTICAL.TOP
-
-      paragraph = cell3.paragraphs[0]
-      run = paragraph.runs
-      for run in paragraph.runs:
-          paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
-      cell3.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
-
-      row = table.rows[i+1]
-      row.height = Inches(0.66)
+      # Set row height
+      table.rows[i+1].height = Inches(0.66)
+      
+      #cell1 = table.cell(i+1,1)
+      #cell1.text = itemNoInput
+      #cell2 = table.cell(i+1,2)
+      #cell2.text = matNameInput[i]
+      #cell3 = table.cell(i+1,3)
+      #cell3.text = theoInput[i]
+#
+      #paragraph = cell1.paragraphs[0]
+      #run = paragraph.runs
+      #for run in paragraph.runs:
+      #    paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+      #cell1.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+#
+      #paragraph = cell2.paragraphs[0]
+      #run = paragraph.runs
+      #for run in paragraph.runs:
+      #    paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+      #cell2.vertical_alignment = WD_ALIGN_VERTICAL.TOP
+#
+      #paragraph = cell3.paragraphs[0]
+      #run = paragraph.runs
+      #for run in paragraph.runs:
+      #    paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+      #cell3.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+#
+      #row = table.rows[i+1]
+      #row.height = Inches(0.66)
 
    # Define the border, adjust the w:sz for the size of the border
    border_xml = """
