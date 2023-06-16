@@ -454,6 +454,58 @@ if primary:
           run.font.size = Pt(style['size'])
           run.bold = style['bold']
    
+   st.divider()
+   st.markdown('##### Primary Product Specification')
+
+   with st.expander("Individual Capsule/Tablet Specification"):
+      productType = st.selectbox("Select Type of Product",
+                                 ('Tablet', 'Capsule', 'Soft Gel'))
+      
+      col_ind1, col_ind2 = st.columns(2)
+      with col_ind1:
+         indiv_wt_min = st.text_input("Min. Individual Product wt. (g)")
+      with col_ind2:
+         indiv_wt_max = st.text_input("Max. Individual Product wt. (g)")
+
+      if productType == 'Tablet':
+         prodTypesingle = 'tablet'
+         prodTypeplural = 'tablets'
+      elif productType == 'Capsule':
+         prodTypesingle = 'capsule'
+         prodTypeplural = 'capsules'
+      elif productType == 'Soft Gel':
+         prodTypesingle = 'soft gel'
+         prodTypeplural = 'soft gels'
+      
+      cells = [table.cell(row,2) for row in [2,4,6]]
+      texts = ['100 '+prodTypeplural+' wt.\n(beginning)(grams):',
+               '100 '+prodTypeplural+' wt.\n(middle)(grams):',
+               '100 '+prodTypeplural+' wt.\n(end)(grams):']
+      
+      for cell, text in zip(cells, texts):
+         cell.text = text
+
+      # Format cells - Fontsize = 10
+      format_cell(cells[0], WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.TOP,10)
+      format_cell(cells[1], WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.TOP,10)
+      format_cell(cells[2], WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.TOP,10)
+
+      cell = table.cell(7,1)
+      paragraph = cell.add_paragraph()
+
+      line1 = 'Use the following calculations to determine the average '+prodTypesingle+' weight and the weight of 120 '+prodTypeplural+':\n'
+      line2 = '__ __.__ __ __  g + __ __.__ __ __ g + __ __.__ __ __ g  = __ __.__ __ __ g\n'
+      line3 = '     Step 7              Step 8             Step 9       A. Wt. of 300 '+prodTypeplural+'\n'
+      line4 = '__ __.__ __ __ g   ÷   300    =    __ .__ __ __ __ g (Range: '+indiv_wt_min+' - '+indiv_wt_max+' g)\n'
+      line5 = ' A. Wt. of 300                  B. Avg. '+prodTypesingle+' wt.\n'
+      line6 = '  '+prodTypesingle+'\n'
+      line7 = '__ .__ __ __ __ g     x   120   =   __ __ .__ __ __ g\n'
+      line8 = 'B. Avg. capsules wt.              C. Wt. of 120 '+prodTypeplural
+
+      lines = line1 + line2 + line3 + line4 + line5 + line6 + line7 + line8
+
+      run = paragraph.add_run(lines)
+
 
 #################################################################################
 
