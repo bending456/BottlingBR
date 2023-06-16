@@ -393,19 +393,42 @@ if primary:
    st.divider()
    st.markdown('##### Primary Packaging Equipment Information')
    option1 = option2 = option3 = option4 = option5 = option6 = option7 = option8 = False
-   equipments = ['Bottle Unscrambler','Line Control','Uniline','Surekap Re-torquer','Induction Sealer','IMADA Torque Tester','Wipotec Weight Checker','Swiftcheck Tablet Capsule Counter']
-   equipselected = []
+   equipments1 = ['Bottle Unscrambler','Line Control','Uniline']
+   equipments2 = ['Surekap Re-torquer','Induction Sealer','IMADA Torque Tester']
+   equipments3 = ['Wipotec Weight Checker','Swiftcheck Tablet Capsule Counter']
+   equipselected1 = []
+   equipselected2 = []
+   equipselected3 = []
 
    with st.expander("Primary Packaging Equipment List", expanded=True):
-      for i, equip in enumerate(equipments):
-         option = st.checkbox(equipments[i],value=False)
-         if option:
-            equipselected.append(equipments[i])
+      col_ppe1, col_ppe2, col_ppe3 = st.columns(3)
 
-      for equip in equipselected:
-         st.caption(equip)
+      with col_ppe1:
+         for i, equip in enumerate(equipments1):
+            option = st.checkbox(equipments1[i],value=False)
+            if option:
+               equipselected1.append(equipments1[i])
+
+         for equip in equipselected1:
+            st.caption(equip)
        
-   
+      with col_ppe2:
+         for i, equip in enumerate(equipments2):
+            option = st.checkbox(equipments2[i],value=False)
+            if option:
+               equipselected2.append(equipments2[i])
+
+         for equip in equipselected2:
+            st.caption(equip) 
+      
+      with col_ppe3:
+         for i, equip in enumerate(equipments3):
+            option = st.checkbox(equipments3[i],value=False)
+            if option:
+               equipselected3.append(equipments3[i])
+
+         for equip in equipselected3:
+            st.caption(equip)
 
 
 
