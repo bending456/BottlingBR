@@ -306,23 +306,23 @@ if primary:
 
    with col_pri4:
       for i in np.arange(iter1):
-         itemNo1 = st.text_input(f'Enter 1st Item Number for Material No. {i+1}')
+         itemNo1 = st.text_input(f'1st Item No. for Mat. No. {i+1}')
          itemNoInput1.append(itemNo1)
 
    with col_pri5:
       for i in np.arange(iter1):
-         itemNo2 = st.text_input(f'Enter 2nd Item Number for Material No. {i+1} (if none, type N/A)')
+         itemNo2 = st.text_input(f'2nd Item No. for Mat. No. {i+1} (if none, type N/A)')
          itemNoInput2.append(itemNo2)        
 
    with col_pri6:
       for i in np.arange(iter1):
-         matName = st.text_input(f'Enter Name for Material No. {i+1}')
+         matName = st.text_input(f'Name for Mat. No. {i+1}')
          matNameInput.append(matName)
 
 
    with col_pri7:
       for i in np.arange(iter1):
-         theoAmt = st.text_input(f'Enter Theoretical Amount for Material No. {i+1}')
+         theoAmt = st.text_input(f'Theoretical Amount for Mat. No. {i+1}')
          theoInput.append(theoAmt)
 
    if iter1 > 3:
