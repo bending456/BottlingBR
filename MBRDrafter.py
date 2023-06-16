@@ -86,7 +86,7 @@ def set_col_widths(table):
 style = document.styles['Normal']
 font = style.font
 font.name = 'Times New Roman'
-font.size = Pt(11)
+#font.size = Pt(11)
 
 ## Spacing after and before table
 def remove_table_spacing(doc):
@@ -297,7 +297,7 @@ if primary:
    noOfmaterials = st.number_input("Enter a number of packaging materials",min_value = 3, max_value = 10, value = 3)
    iter1 = int(noOfmaterials)
    
-   col_pri4, col_pri5, col_pri6 = st.columns(3)
+   col_pri4, col_pri5, col_pri6, col_pri7 = st.columns([1,1,2,1])
    
    itemNoInput1 = []
    itemNoInput2 = []
@@ -306,18 +306,21 @@ if primary:
 
    with col_pri4:
       for i in np.arange(iter1):
-         itemNo1 = st.text_input(f'Enter First Item Number for Material No. {i+1}')
-         itemNo2 = st.text_input(f'Enter Second Item Number for Material No. {i+1} (if none, type N/A)')
+         itemNo1 = st.text_input(f'Enter 1st Item Number for Material No. {i+1}')
          itemNoInput1.append(itemNo1)
-         itemNoInput2.append(itemNo2)       
 
    with col_pri5:
+      for i in np.arange(iter1):
+         itemNo2 = st.text_input(f'Enter 2nd Item Number for Material No. {i+1} (if none, type N/A)')
+         itemNoInput2.append(itemNo2)        
+
+   with col_pri6:
       for i in np.arange(iter1):
          matName = st.text_input(f'Enter Name for Material No. {i+1}')
          matNameInput.append(matName)
 
 
-   with col_pri6:
+   with col_pri7:
       for i in np.arange(iter1):
          theoAmt = st.text_input(f'Enter Theoretical Amount for Material No. {i+1}')
          theoInput.append(theoAmt)
