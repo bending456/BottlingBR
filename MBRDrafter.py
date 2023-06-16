@@ -493,7 +493,7 @@ if primary:
       cell = table.cell(7,1)
       paragraph = cell.add_paragraph()
 
-      line1 = '\nUse the following calculations to determine the average '+prodTypesingle+' weight and the weight of 120 '+prodTypeplural+':\n'
+      line1 = 'Use the following calculations to determine the average '+prodTypesingle+' weight and the weight of 120 '+prodTypeplural+':\n'
       line2 = '__ __.__ __ __  g + __ __.__ __ __ g + __ __.__ __ __ g  = __ __.__ __ __ g\n'
       line3 = '     Step 7                         Step 8                    Step 9          A. Wt. of 300 '+prodTypeplural+'\n \n'
       line4 = '__ __.__ __ __ g   ÷   300    =    __ .__ __ __ __ g    (Range: '+indiv_wt_min+' - '+indiv_wt_max+' g)\n'
@@ -505,8 +505,7 @@ if primary:
       lines = line1 + line2 + line3 + line4 + line5 + line6 + line7 + line8
 
       run = paragraph.add_run(lines)
-      #run.font.size = Pt(12)
-      format_cell(cell, WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.TOP,12)
+      run.font.size = Pt(12)
 
 
 #################################################################################
