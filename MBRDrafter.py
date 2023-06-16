@@ -153,28 +153,41 @@ with st.expander("Primary Packaging Operations"):
       verWipotecref = st.text_input("Reference (ex. PSIS-Sec X) (ref ID 3)")
 
 table = document.tables[4]
-cell1 = table.cell(13,2)
-cell2 = table.cell(14,2)
-cell3 = table.cell(16,3)
-cell1.text = 'Fill Count per\n Bottle\n'+fillcount+'\n'+fillcountref
-cell2.text = 'Total Bottles\n Required\n'+totalbottle+'\n'+totalbottleref
-cell3.text = verWipotecref
+cells = [table.cell(13,2),table.cell(14,2),table.cell(16,3)]
+texts = ['Fill Count per\n Bottle\n'+fillcount+'\n'+fillcountref,
+         'Total Bottles\n Required\n'+totalbottle+'\n'+totalbottleref,
+         verWipotecref]
+for cell, text in zip(cells, texts):
+         cell.text = text
 
-paragraph = cell1.paragraphs[0]
-run = paragraph.runs
-for run in paragraph.runs:
-    paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
-cell1.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
-paragraph = cell2.paragraphs[0]
-run = paragraph.runs
-for run in paragraph.runs:
-    paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
-cell2.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
-paragraph = cell3.paragraphs[0]
-run = paragraph.runs
-for run in paragraph.runs:
-    paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
-cell3.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+# Format cells
+format_cell(cells[0], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER)
+format_cell(cells[1], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER)
+format_cell(cells[2], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER)
+
+
+#cell1 = table.cell(13,2)
+#cell2 = table.cell(14,2)
+#cell3 = table.cell(16,3)
+#cell1.text = 'Fill Count per\n Bottle\n'+fillcount+'\n'+fillcountref
+#cell2.text = 'Total Bottles\n Required\n'+totalbottle+'\n'+totalbottleref
+#cell3.text = verWipotecref
+#
+#paragraph = cell1.paragraphs[0]
+#run = paragraph.runs
+#for run in paragraph.runs:
+#    paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+#cell1.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+#paragraph = cell2.paragraphs[0]
+#run = paragraph.runs
+#for run in paragraph.runs:
+#    paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+#cell2.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+#paragraph = cell3.paragraphs[0]
+#run = paragraph.runs
+#for run in paragraph.runs:
+#    paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+#cell3.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
 
 ##########################################
 #----------------------------------------#
@@ -270,29 +283,39 @@ if primary:
      
    ## Adding to pre-existing table
    table = document.tables[5]
-   cell1 = table.cell(1,0)
-   cell2 = table.cell(1,1)
-   cell3 = table.cell(1,2)
+   cells = [table.cell(1,col) for col in range(0,3)]
+   texts = [ProdItemNo,productName,theo_spec]
+   for cell, text in zip(cells, texts):
+         cell.text = text
 
-   cell1.text = ProdItemNo
-   cell2.text = productName
-   cell3.text = theo_spec
+   # Format cells
+   format_cell(cells[0], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER)
+   format_cell(cells[1], WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.CENTER)
+   format_cell(cells[2], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER)
 
-   paragraph = cell1.paragraphs[0]
-   run = paragraph.runs
-   for run in paragraph.runs:
-       paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
-   cell1.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
-
-   paragraph = cell2.paragraphs[0]
-   run = paragraph.runs
-   for run in paragraph.runs:
-       paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
-
-   paragraph = cell3.paragraphs[0]
-   run = paragraph.runs
-   for run in paragraph.runs:
-       paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+   #cell1 = table.cell(1,0)
+   #cell2 = table.cell(1,1)
+   #cell3 = table.cell(1,2)
+#
+   #cell1.text = ProdItemNo
+   #cell2.text = productName
+   #cell3.text = theo_spec
+#
+   #paragraph = cell1.paragraphs[0]
+   #run = paragraph.runs
+   #for run in paragraph.runs:
+   #    paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+   #cell1.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+#
+   #paragraph = cell2.paragraphs[0]
+   #run = paragraph.runs
+   #for run in paragraph.runs:
+   #    paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+#
+   #paragraph = cell3.paragraphs[0]
+   #run = paragraph.runs
+   #for run in paragraph.runs:
+   #    paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
 
    #[Note]: I may need to make a section where we may have more than one primary material (not really)
    ############################################################
@@ -353,7 +376,7 @@ if primary:
       else:
          itemNoInput = j+'\n and/or\n'+itemNoInput2[i]
       
-      cells = [table.cell(i+1,col) for col in range(1,4)]
+      cells = [table.cell(i+1,col) for col in range(1,iter1+1)]
       texts = [itemNoInput, matNameInput[i],theoInput[i]]
       for cell, text in zip(cells, texts):
          cell.text = text
