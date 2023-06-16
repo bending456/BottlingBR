@@ -507,6 +507,13 @@ if primary:
       run = paragraph.add_run(lines)
       run.font.size = Pt(12)
 
+      # Get the first (or only) paragraph in the cell
+      paragraph = cell.paragraphs[0]
+
+      # Set the space before and after the paragraph to 0
+      paragraph.paragraph_format.space_before = Pt(0)
+      paragraph.paragraph_format.space_after = Pt(0)
+
 
 #################################################################################
 
