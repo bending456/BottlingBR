@@ -423,21 +423,34 @@ if primary:
    table = document.tables[9]
    cell = table.cell(6,1)
    paragraph = cell.add_paragraph()
-   text = 'Record the batch number and quantity of '+ProductName+' available in the spaces provided.\n'
-   run = paragraph.add_run(text)
-   run.font.size = Pt(11)
+   # Prepare texts
+   texts = ['Record the batch number and quantity of ', ProductName, ' available in the spaces provided.\n']
+   # Prepare styles
+   styles = [{'size': 11, 'bold': False}, {'size': 11, 'bold': True}, {'size': 11, 'bold': False}]
+
+   for text, style in zip(texts, styles):
+       run = paragraph.add_run(text)
+       run.font.size = Pt(style['size'])
+       run.bold = style['bold']
+
 
    table = document.tables[10]
    for i in [1,3,5]:
-      cell = table.cell(i,1)
-      paragraph = cell.add_paragraph()
-      text1 = 'Collect one hundred (100) '+ProductName+' from the beginning of the bulk product allocated for this batch and printweigh (in grams) using the space provided. Record the scale number in the space provided.\n'
-      text2 = '\nNote: All product used for the 100 ct. weights are to be returned to bulk product.\n'
-      run1 = paragraph.add_run(text1)
-      run2 = paragraph.add_run(text2)
-      run2.bold = True
-      run1.font.size = Pt(11)
-      run2.font.size = Pt(11)
+      # Prepare texts
+      texts = ['Collect one hundred (100) ', ProductName, 
+               ' from the beginning of the bulk product allocated for this batch and printweigh (in grams) using the space provided. Record the scale number in the space provided.\n',
+               '\nNote: All product used for the 100 ct. weights are to be returned to bulk product.\n']
+      
+      # Prepare styles
+      styles = [{'size': 11, 'bold': False}, 
+                {'size': 11, 'bold': True}, 
+                {'size': 11, 'bold': False},
+                {'size': 11, 'bold': True}]
+      
+      for text, style in zip(texts, styles):
+          run = paragraph.add_run(text)
+          run.font.size = Pt(style['size'])
+          run.bold = style['bold']
    
 
 #################################################################################
