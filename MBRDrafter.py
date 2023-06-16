@@ -132,7 +132,8 @@ def set_vertical_cell_direction(cell: _Cell, direction: str):
 tablecounter1 = 0 #<---- This will count a number of tables being processed.
 st.markdown("### Setting up Primary Packaging Operations")
 with st.expander("Primary Packaging Operations"):
-    col_ppo1, col_ppo2, col_ppo3 = st.beta_columns(3)
+    col_ppo1, col_ppo2, col_ppo3 = st.columns(3)
+    
     with col_ppo1:
       st.caption("Fill Count Input")
       fillcount = st.text_input("Fill count per bottle")
