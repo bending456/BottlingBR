@@ -423,20 +423,32 @@ if primary:
    table = document.tables[9]
    cell = table.cell(6,1)
    paragraph = cell.add_paragraph()
-   text = 'Record the batch number and quantity of '+productName+' available in the spaces provided.\n'
-   run = paragraph.add_run(text)
-   run.font.size = Pt(11)
+   text1 = 'Record the batch number and quantity of '
+   text2 = productName
+   text3 = ' available in the spaces provided.\n'
+   run1 = paragraph.add_run(text1)
+   run2 = paragraph.add_run(text2)
+   run3 = paragraph.add_run(text3)
+   run1.font.size = Pt(11)
+   run2.font.size = Pt(11)
+   run3.font.size = Pt(11)
 
    table = document.tables[10]
    for i in [1,3,5]:
       cell = table.cell(i,1)
       paragraph = cell.add_paragraph()
-      text1 = 'Collect one hundred (100) '+productName+' from the beginning of the bulk product allocated for this batch and printweigh (in grams) using the space provided. Record the scale number in the space provided.\n'
+      texta = 'Collect one hundred (100) '
+      textb = productName
+      textc = ' from the beginning of the bulk product allocated for this batch and printweigh (in grams) using the space provided. Record the scale number in the space provided.\n'
       text2 = '\nNote: All product used for the 100 ct. weights are to be returned to bulk product.\n'
-      run1 = paragraph.add_run(text1)
+      runa = paragraph.add_run(texta)
+      runb = paragraph.add_run(textb)
+      runc = paragraph.add_run(textc)
       run2 = paragraph.add_run(text2)
       run2.bold = True
-      run1.font.size = Pt(11)
+      runa.font.size = Pt(11)
+      runb.font.size = Pt(11)
+      runc.font.size = Pt(11)
       run2.font.size = Pt(11)
    
 
