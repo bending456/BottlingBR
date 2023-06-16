@@ -517,11 +517,11 @@ if primary:
 
    #----------------------------------------------------------
    table = document.tables[11]
+
    cell = table.cell(1,1)
    paragraph = cell.paragraphs[0]
    line1 = 'Use the calculations below to determine either the total amount of '+prodTypeplural+' needed (kg) or the total number of bottles needed. '
    line2 = 'If a bottle count is available and the total weight of '+prodTypeplural+' needed is what needs to be determined use the calculation below.'
-
    run = paragraph.add_run(line1+line2)
    run.font.size = Pt(11)
    
@@ -539,10 +539,10 @@ if primary:
 
    ##----------------------
    cell = table.cell(2,1)
-   paragraph = cell.paragraphs[0]
-   line1 = 'If the total weight of  '+prodTypeplural+' (kg) to be used is available and the bottle count is to be determined, use the calculation below.'
-   run = paragraph.add_run(line1)
-   run.font.size = Pt(11)
+   paragraph2 = cell.paragraphs[0]
+   line1 = 'If the total weight of '+prodTypeplural+' (kg) to be used is available and the bottle count is to be determined, use the calculation below.'
+   run2 = paragraph2.add_run(line1)
+   run2.font.size = Pt(11)
 
    nested_table = cell.tables[0]
    
