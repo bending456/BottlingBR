@@ -420,6 +420,7 @@ if primary:
    ##       Line Check      ##
    ###########################
 
+   #----------------------------------------------------------
    table = document.tables[9]
    cell = table.cell(6,1)
    paragraph = cell.add_paragraph()
@@ -433,7 +434,7 @@ if primary:
        run.font.size = Pt(style['size'])
        run.bold = style['bold']
 
-
+   #----------------------------------------------------------
    table = document.tables[10]
    for i in [1,3,5]:
       cell = table.cell(i,1)
@@ -497,8 +498,8 @@ if primary:
       line2 = '__ __.__ __ __  g + __ __.__ __ __ g + __ __.__ __ __ g  = __ __.__ __ __ g\n'
       line3 = '     Step 7                         Step 8                    Step 9          A. Wt. of 300 '+prodTypeplural+'\n \n'
       line4 = '__ __.__ __ __ g   ÷   300    =    __ .__ __ __ __ g    (Range: '+indiv_wt_min+' - '+indiv_wt_max+' g)\n'
-      line5 = ' A. Wt. of 300                         B. Avg. '+prodTypesingle+' wt.\n \n'
-      line6 = '        '+prodTypesingle+'\n'
+      line5 = ' A. Wt. of 300                         B. Avg. '+prodTypesingle+' wt.\n'
+      line6 = '        '+prodTypesingle+'\n \n'
       line7 = '__ .__ __ __ __ g     x   120   =   __ __ .__ __ __ g\n'
       line8 = 'B. Avg. capsules wt.              C. Wt. of 120 '+prodTypeplural+'\n'
 
@@ -513,6 +514,44 @@ if primary:
       # Set the space before and after the paragraph to 0
       paragraph.paragraph_format.space_before = Pt(0)
       paragraph.paragraph_format.space_after = Pt(0)
+
+   #----------------------------------------------------------
+   table = document.tables[11]
+   cell = table.cell(1,1)
+   paragraph = cell.paragraphs[0]
+   line1 = 'Use the calculations below to determine either the total amount of '+prodTypeplural+' needed (kg) or the total number of bottles needed. '
+   line2 = 'If a bottle count is available and the total weight of '+prodTypeplural+' needed is what needs to be determined use the calculation below.'
+   run = paragraph.add_run(line1+line2)
+   
+   nested_table = cell.tables[0]
+ 
+   cell = nested_table.cell(0,0)
+   line3 = 'Wt. of 120\n'+prodTypeplural+'\n(Step 10C)'
+   cell.text = line3
+   format_cell(cell, WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.TOP,12)
+ 
+   cell = nested_table.cell(0,6)
+   line4 = 'Total Weight of \n'+prodTypeplural+'\nneeded (kg)\n(round to two decimal places)'
+   cell.text = line4
+   format_cell(cell, WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.TOP,12)
+
+   cell = table.cell(2,1)
+   paragraph = cell.paragraphs[0]
+   line1 = 'If the total weight of  '+prodTypeplural+' (kg) to be used is available and the bottle count is to be determined, use the calculation below.'
+   run = paragraph.add_run(line1)
+
+   nested_table = cell.tables[0]
+   
+   cell = nested_table.cell(0,0)
+   line3 = 'Total Weight of \n'+prodTypeplural+'on hand\n(Step 6) (kg)'
+   cell.text = line3
+   format_cell(cell, WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.TOP,12)
+ 
+   cell = nested_table.cell(0,4)
+   line4 = 'Wt. of 120 '+prodTypeplural+'\n(Step 10C)'
+   cell.text = line4
+   format_cell(cell, WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.TOP,12)
+
 
 
 #################################################################################
@@ -551,8 +590,6 @@ if not secondary:
 
 if secondary:
    st.markdown('#### Secondary Packaging Step Selection')
-
-
 
 
 
