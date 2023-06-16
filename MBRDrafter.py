@@ -14,6 +14,7 @@ from docx.shared import RGBColor
 from docx.oxml import OxmlElement
 from docx.table import _Cell
 from docx.oxml.ns import qn
+import pyautogui
 
 from datetime import date
 import string
@@ -110,9 +111,10 @@ def set_vertical_cell_direction(cell: _Cell, direction: str):
     textDirection.set(qn('w:val'), direction)  # btLr tbRl
     tcPr.append(textDirection)
 
-def format_cell(cell, alignment, vertical_alignment):
+def format_cell(cell, alignment, vertical_alignment, font_size):
     paragraph = cell.paragraphs[0]
     for run in paragraph.runs:
+        run.font.size = Pt(font_size)  # Adjust the font size
         paragraph.alignment = alignment
     cell.vertical_alignment = vertical_alignment
 
@@ -161,10 +163,10 @@ texts = ['Fill Count per\n Bottle\n'+fillcount+'\n'+fillcountref,
 for cell, text in zip(cells, texts):
          cell.text = text
 
-# Format cells
-format_cell(cells[0], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER)
-format_cell(cells[1], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER)
-format_cell(cells[2], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER)
+# Format cells - Fontsize = 10
+format_cell(cells[0], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER,10)
+format_cell(cells[1], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER,10)
+format_cell(cells[2], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER,10)
 
 
 ##########################################
@@ -271,10 +273,10 @@ if primary:
    for cell, text in zip(cells, texts):
          cell.text = text
 
-   # Format cells
-   format_cell(cells[0], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER)
-   format_cell(cells[1], WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.CENTER)
-   format_cell(cells[2], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER)
+   # Format cells - Fontsize = 12
+   format_cell(cells[0], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER,12)
+   format_cell(cells[1], WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.CENTER,12)
+   format_cell(cells[2], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER,12)
 
    #[Note]: I may need to make a section where we may have more than one primary material (not really)
    ############################################################
@@ -343,10 +345,10 @@ if primary:
          for cell, text in zip(cells, texts):
             cell.text = text
 
-         # Format cells
-         format_cell(cells[0], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER)
-         format_cell(cells[1], WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.CENTER)
-         format_cell(cells[2], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER)
+         # Format cells - Fontsize = 12
+         format_cell(cells[0], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER,12)
+         format_cell(cells[1], WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.CENTER,12)
+         format_cell(cells[2], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER,12)
 
          # Set row height
          table.rows[i+1].height = Inches(0.66)
@@ -399,9 +401,17 @@ if primary:
 
    for i, equip in enumerate(equipselected, start=1):
       # Assign value to cells
-      table.cell(i, 0).text = '1'
-      table.cell(i, 1).text = equip
-      table.cell(i, 2).text = allequiplist[equip]
+      cells = [table.cell(i,col) for col in range(0,3)]
+      texts = ['1', equip, allequiplist[equip]]
+      
+      for cell, text in zip(cells, texts):
+         cell.text = text
+
+      format_cell(cells[0], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER,12)
+      format_cell(cells[1], WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.CENTER,12)
+      format_cell(cells[2], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER,12)
+    
+
     
       # If not the last element, add a new row for the next iteration
       if i != len(equipselected):
@@ -471,3 +481,11 @@ if st.sidebar.checkbox("Check this box if the draft is ready"):
 
    # Remove temporary file
    os.unlink(tmp.name)
+
+st.sidebar.header('**RESET**')
+if st.sidebar.checkbox("Ready to reset"):
+   btn = st.sidebar.button("RESET")
+   if btn:
+      pyautogui.hotkey("ctrl","F5")
+
+
