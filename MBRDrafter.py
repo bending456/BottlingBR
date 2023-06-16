@@ -420,12 +420,12 @@ if primary:
    ##       Line Check      ##
    ###########################
 
-   table = document.table[9]
+   table = document.tables[9]
    cell = table.cell(5,1)
    text = 'Record the batch number and quantity of '+productName+' available in the spaces provided.'
    cell.text = text
 
-   table = document.table[10]
+   table = document.tables[10]
    for i in [1,3,5]:
       cell = table.cell(i,1)
       paragraph = cell.add_paragraph()
