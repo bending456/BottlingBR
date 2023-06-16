@@ -393,9 +393,13 @@ if primary:
    st.divider()
    st.markdown('##### Primary Packaging Equipment Information')
    option1 = option2 = option3 = option4 = option5 = option6 = option7 = option8 = False
+   # Note: I should create a dictionary
    equipments1 = ['Bottle Unscrambler','Line Control','Uniline']
+   equipID1 = []
    equipments2 = ['Surekap Re-torquer','Induction Sealer','IMADA Torque Tester']
+   equipID2 = []
    equipments3 = ['Wipotec Weight Checker','Swiftcheck Tablet Capsule Counter']
+   equipID3 = []
    equipselected1 = []
    equipselected2 = []
    equipselected3 = []
