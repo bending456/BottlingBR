@@ -113,12 +113,14 @@ def set_vertical_cell_direction(cell: _Cell, direction: str):
     textDirection.set(qn('w:val'), direction)  # btLr tbRl
     tcPr.append(textDirection)
 
-def format_cell(cell, alignment, vertical_alignment, font_size):
+def format_cell(cell, alignment, vertical_alignment, font_size, bold):
     paragraph = cell.paragraphs[0]
     for run in paragraph.runs:
         run.font.size = Pt(font_size)  # Adjust the font size
+        run.font.bold = bold
         paragraph.alignment = alignment
     cell.vertical_alignment = vertical_alignment
+
 
 ##########################################
 #----------------------------------------#
@@ -166,9 +168,9 @@ for cell, text in zip(cells, texts):
          cell.text = text
 
 # Format cells - Fontsize = 10
-format_cell(cells[0], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER,10)
-format_cell(cells[1], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER,10)
-format_cell(cells[2], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER,10)
+format_cell(cells[0], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER,10, False)
+format_cell(cells[1], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER,10, False)
+format_cell(cells[2], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER,10, False)
 
 
 ##########################################
@@ -276,9 +278,9 @@ if primary:
          cell.text = text
 
    # Format cells - Fontsize = 12
-   format_cell(cells[0], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER,12)
-   format_cell(cells[1], WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.CENTER,12)
-   format_cell(cells[2], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER,12)
+   format_cell(cells[0], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER,12, False)
+   format_cell(cells[1], WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.CENTER,12, False)
+   format_cell(cells[2], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER,12, False)
 
    #[Note]: I may need to make a section where we may have more than one primary material (not really)
    ############################################################
@@ -348,9 +350,9 @@ if primary:
             cell.text = text
 
          # Format cells - Fontsize = 12
-         format_cell(cells[0], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER,12)
-         format_cell(cells[1], WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.CENTER,12)
-         format_cell(cells[2], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER,12)
+         format_cell(cells[0], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER,12, False)
+         format_cell(cells[1], WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.CENTER,12, False)
+         format_cell(cells[2], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER,12, False)
 
          # Set row height
          table.rows[i+1].height = Inches(0.66)
@@ -408,9 +410,9 @@ if primary:
       for cell, text in zip(cells, texts):
          cell.text = text
 
-      format_cell(cells[0], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER,12)
-      format_cell(cells[1], WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.CENTER,12)
-      format_cell(cells[2], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER,12)
+      format_cell(cells[0], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER,12, False)
+      format_cell(cells[1], WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.CENTER,12, False)
+      format_cell(cells[2], WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.CENTER,12, False)
 
       # If not the last element, add a new row for the next iteration
       if i != len(equipselected):
@@ -487,9 +489,9 @@ if primary:
          cell.text = text
 
       # Format cells - Fontsize = 10
-      format_cell(cells[0], WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.TOP,10)
-      format_cell(cells[1], WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.TOP,10)
-      format_cell(cells[2], WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.TOP,10)
+      format_cell(cells[0], WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.TOP,10, False)
+      format_cell(cells[1], WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.TOP,10, False)
+      format_cell(cells[2], WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.TOP,10, False)
 
       cell = table.cell(7,1)
       paragraph = cell.add_paragraph()
@@ -530,12 +532,12 @@ if primary:
    cell = nested_table.cell(0,0)
    line3 = 'Wt. of 120\n'+prodTypeplural+'\n(Step 10C)'
    cell.text = line3
-   format_cell(cell, WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.TOP,12)
+   format_cell(cell, WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.TOP,12, False)
  
    cell = nested_table.cell(0,6)
    line4 = 'Total Weight of \n'+prodTypeplural+' needed (kg)\n(round to two decimal places)'
    cell.text = line4
-   format_cell(cell, WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.TOP,12)
+   format_cell(cell, WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.TOP,12, False)
 
    ##----------------------
    cell = table.cell(2,1)
@@ -549,15 +551,93 @@ if primary:
    cell = nested_table.cell(0,0)
    line3 = 'Total Weight of \n'+prodTypeplural+' on hand\n(Step 6) (kg)'
    cell.text = line3
-   format_cell(cell, WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.TOP,12)
+   format_cell(cell, WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.TOP,12, False)
  
    cell = nested_table.cell(0,4)
    line4 = 'Wt. of 120 '+prodTypeplural+'\n(Step 10C)'
    cell.text = line4
-   format_cell(cell, WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.TOP,12)
+   format_cell(cell, WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.TOP,12, False)
 
 
+## This step number should not change as long as prerequisit step is fixed 
+stepNum = 12
+alphabet = list(string.ascii_uppercase)
+alphaNum = 1
 
+if sachet:
+   stepNum += 1
+   stepName = 'Sachet Inserting'
+   
+   with st.expander('Select Steps for '+stepName+' Process',expanded=True):
+
+      # Breaking the page - > This will be add one more time if the process is longer to have two pages 
+      document.add_page_break() 
+      Attributes = ['Step',
+                    alphabet[alphaNum]+'. '+stepName+'Process',
+                    '',
+                    'Done\n By /\nDate',
+                    'Check\n By /\nDate']
+      
+      t = document.add_table(rows = 3, cols = 5) # Number of Rows will be changed depending on the case
+      t.style = 'Table Grid'
+
+      for i in np.arange(5):
+          cell = t.cell(0,i)
+          
+          if i == 1:
+              cell.text = Attributes[i]
+              paragraph = cell.paragraphs[0]
+              run = paragraph.runs
+              for run in paragraph.runs:
+                 run.font.bold = True 
+                 paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+          elif i == 2:
+              continue
+          else:
+              cell.text = Attributes[i]
+              paragraph = cell.paragraphs[0]
+              run = paragraph.runs
+              for run in paragraph.runs:
+                 run.font.bold = True 
+              paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+          cell.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+      
+      set_col_widths(t)
+      cell1 = t.cell(0,1)
+      cell2 = t.cell(0,2)
+      cell1.merge(cell2)
+
+      ########################
+      ## Addition of Step 1 ##
+      ########################
+      step = t.cell(1,0)
+      step.text = str(stepNum)
+      stepNum += 1
+      format_cell(step, WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.TOP,11, False)
+
+      cell = t.cell(1,1)
+      cell.text = "This is the addition of Step 1 of Process "+stepName
+      format_cell(cell, WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.TOP,11, False)
+
+      input = t.cell(1,2)
+      input.text = "Record Something\n (Unit1)(Unit2)"
+      format_cell(input, WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.TOP,10, False)
+
+      ########################
+      ## Addition of Step 2 ##
+      ########################
+      step = t.cell(2,0)
+      step.text = str(stepNum)
+      stepNum += 1
+      format_cell(step, WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.TOP,11, False)
+
+      cell1 = t.cell(2,1)
+      cell2 = t.cell(2,2)
+      cell1.merge(cell2)
+      cell1.text = "This is the addition of Step 1 of Process "+stepName
+      format_cell(cell1, WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.TOP,11, False)
+
+      
 #################################################################################
 
 ## ---- Secondary Packaging ------------------------------
