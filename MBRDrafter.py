@@ -589,8 +589,12 @@ if sachet:
               paragraph = cell.paragraphs[0]
               run = paragraph.runs
               for run in paragraph.runs:
+                 run.font.size = Pt(12)
                  run.font.bold = True 
                  paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+              paragraph.paragraph_format.space_before = Pt(12)
+              paragraph.paragraph_format.space_after = Pt(12)
+
           elif i == 2:
               continue
           else:
@@ -598,8 +602,11 @@ if sachet:
               paragraph = cell.paragraphs[0]
               run = paragraph.runs
               for run in paragraph.runs:
+                 run.font.size = Pt(12)
                  run.font.bold = True 
               paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+              paragraph.paragraph_format.space_before = Pt(12)
+              paragraph.paragraph_format.space_after = Pt(12)
           cell.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
       
       set_col_widths(t)
@@ -613,10 +620,16 @@ if sachet:
       step = t.cell(1,0)
       step.text = str(stepNum)
       stepNum += 1
+      paragraph = step.paragraph[0]
+      paragraph.paragraph_format.space_before = Pt(12)
+      paragraph.paragraph_format.space_after = Pt(12)
       format_cell(step, WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.TOP,11, False)
 
       cell = t.cell(1,1)
       cell.text = "This is the addition of Step 1 of Process "+stepName
+      paragraph = cell.paragraph[0]
+      paragraph.paragraph_format.space_before = Pt(12)
+      paragraph.paragraph_format.space_after = Pt(12)
       format_cell(cell, WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.TOP,11, False)
 
       input = t.cell(1,2)
@@ -629,12 +642,18 @@ if sachet:
       step = t.cell(2,0)
       step.text = str(stepNum)
       stepNum += 1
+      paragraph = step.paragraph[0]
+      paragraph.paragraph_format.space_before = Pt(12)
+      paragraph.paragraph_format.space_after = Pt(12)
       format_cell(step, WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.TOP,11, False)
 
       cell1 = t.cell(2,1)
       cell2 = t.cell(2,2)
       cell1.merge(cell2)
       cell1.text = "This is the addition of Step 1 of Process "+stepName
+      paragraph = cell1.paragraph[0]
+      paragraph.paragraph_format.space_before = Pt(12)
+      paragraph.paragraph_format.space_after = Pt(12)
       format_cell(cell1, WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.TOP,11, False)
 
       
