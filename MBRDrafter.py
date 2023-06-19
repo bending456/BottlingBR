@@ -573,7 +573,7 @@ if sachet:
       # Breaking the page - > This will be add one more time if the process is longer to have two pages 
       document.add_page_break() 
       Attributes = ['Step',
-                    alphabet[alphaNum]+'. '+stepName+'Process',
+                    alphabet[alphaNum]+'. '+stepName+' Process',
                     '',
                     'Done\n By /\nDate',
                     'Check\n By /\nDate']
