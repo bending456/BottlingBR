@@ -592,8 +592,6 @@ if sachet:
                  run.font.size = Pt(12)
                  run.font.bold = True 
                  paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
-              paragraph.paragraph_format.space_before = Pt(12)
-              paragraph.paragraph_format.space_after = Pt(12)
 
           elif i == 2:
               continue
@@ -605,8 +603,6 @@ if sachet:
                  run.font.size = Pt(12)
                  run.font.bold = True 
               paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
-              paragraph.paragraph_format.space_before = Pt(12)
-              paragraph.paragraph_format.space_after = Pt(12)
           cell.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
       
       set_col_widths(t)
@@ -650,7 +646,7 @@ if sachet:
       cell1 = t.cell(2,1)
       cell2 = t.cell(2,2)
       cell1.merge(cell2)
-      cell1.text = "This is the addition of Step 1 of Process "+stepName
+      cell1.text = "This is the addition of Step 2 of Process "+stepName
       paragraph = cell1.paragraphs[0]
       paragraph.paragraph_format.space_before = Pt(12)
       paragraph.paragraph_format.space_after = Pt(12)
