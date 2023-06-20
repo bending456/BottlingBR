@@ -594,7 +594,7 @@ if sachet:
                     '',
                     'Done\n By /\nDate',
                     'Check\n By /\nDate']
-      
+      alphaNum += 1
       t = document.add_table(rows = 3, cols = 5) # Number of Rows will be changed depending on the case
       t.style = 'Table Grid'
 
@@ -674,6 +674,8 @@ if sachet:
       paragraph.paragraph_format.space_before = Pt(12)
       paragraph.paragraph_format.space_after = Pt(12)
       format_cell(cell1, WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.TOP,11, False)
+
+      document.add_page_break()
 
 ###############################################
 ##      Framework for Canister Inserting     ##
@@ -690,7 +692,7 @@ if canister:
                     '',
                     'Done\n By /\nDate',
                     'Check\n By /\nDate']
-      
+      alphaNum += 1
       t = document.add_table(rows = 3, cols = 5) # Number of Rows will be changed depending on the case
       t.style = 'Table Grid'
 
@@ -770,6 +772,8 @@ if canister:
       paragraph.paragraph_format.space_before = Pt(12)
       paragraph.paragraph_format.space_after = Pt(12)
       format_cell(cell1, WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.TOP,11, False)
+
+      document.add_page_break()
 
 ####################################################
 ##      Framework for Cotton Filler Inserting     ##
@@ -786,7 +790,7 @@ if cotton:
                     '',
                     'Done\n By /\nDate',
                     'Check\n By /\nDate']
-      
+      alphaNum += 1
       t = document.add_table(rows = 3, cols = 5) # Number of Rows will be changed depending on the case
       t.style = 'Table Grid'
 
@@ -866,6 +870,8 @@ if cotton:
       paragraph.paragraph_format.space_before = Pt(12)
       paragraph.paragraph_format.space_after = Pt(12)
       format_cell(cell1, WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.TOP,11, False)
+
+      document.add_page_break()
 
 ###################################
 ##      Framework for Sealer     ##
@@ -882,7 +888,7 @@ if cotton:
                     '',
                     'Done\n By /\nDate',
                     'Check\n By /\nDate']
-      
+      alphaNum += 1
       t = document.add_table(rows = 3, cols = 5) # Number of Rows will be changed depending on the case
       t.style = 'Table Grid'
 
@@ -962,6 +968,8 @@ if cotton:
       paragraph.paragraph_format.space_before = Pt(12)
       paragraph.paragraph_format.space_after = Pt(12)
       format_cell(cell1, WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.TOP,11, False)
+
+      document.add_page_break()
 
 #################################################################################
 
