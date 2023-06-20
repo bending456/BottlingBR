@@ -14,6 +14,7 @@ from docx.shared import RGBColor
 from docx.oxml import OxmlElement
 from docx.table import _Cell
 from docx.oxml.ns import qn
+import pandas as pd
 
 from datetime import date
 import string
@@ -242,6 +243,15 @@ if not primary:
 if primary:
    st.markdown('#### Primary Packaging Step Selection')
    st.markdown('##### Primary Material Information')
+
+   ######################################
+   ## Loading up the excel spreadsheet ##
+   ######################################
+   primary_excel = pd.ExcelFile('primary_steps.xlsx')
+   Sachet_steps = pd.read_excel(primary_excel,'Sachet')
+   Canister_steps = pd.read_excel(primary_excel,'Canister')
+   Cotton_steps = pd.read_excel(primary_excel,'Cotton')
+   Sealer_steps = pd.read_excel(primary_excel,'Sealer')
 
    ############################
    ## Primary Material Setup ##
@@ -579,13 +589,15 @@ stepNum = 12
 alphabet = list(string.ascii_uppercase)
 alphaNum = 1
 
+
 #############################################
 ##      Framework for Sachet Inserting     ##
 #############################################
 if sachet:
    stepNum += 1
    stepName = 'Sachet Inserting'
-   
+
+   #------------------------------------------------------------------------------------------
    with st.expander('Select Steps for '+stepName+' Process',expanded=True):
       st.caption(stepName)
       # Breaking the page - > This will be add one more time if the process is longer to have two pages  
@@ -632,7 +644,9 @@ if sachet:
          # If so, remove it
          document.paragraphs[-1]._element.getparent().remove(document.paragraphs[-1]._element)
 
+      #------------------------------------------------------------------------------------------
 
+      
       ########################
       ## Addition of Step 1 ##
       ########################
@@ -876,7 +890,7 @@ if cotton:
 ###################################
 ##      Framework for Sealer     ##
 ###################################
-if cotton:
+if sealer:
    stepNum += 1
    stepName = 'Sealer'
    
