@@ -579,6 +579,9 @@ stepNum = 12
 alphabet = list(string.ascii_uppercase)
 alphaNum = 1
 
+#############################################
+##      Framework for Sachet Inserting     ##
+#############################################
 if sachet:
    stepNum += 1
    stepName = 'Sachet Inserting'
@@ -672,7 +675,294 @@ if sachet:
       paragraph.paragraph_format.space_after = Pt(12)
       format_cell(cell1, WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.TOP,11, False)
 
+###############################################
+##      Framework for Canister Inserting     ##
+###############################################
+if canister:
+   stepNum += 1
+   stepName = 'Canister Inserting'
+   
+   with st.expander('Select Steps for '+stepName+' Process',expanded=True):
+      st.caption(stepName)
+      # Breaking the page - > This will be add one more time if the process is longer to have two pages  
+      Attributes = ['Step',
+                    alphabet[alphaNum]+'. '+stepName+' Process',
+                    '',
+                    'Done\n By /\nDate',
+                    'Check\n By /\nDate']
       
+      t = document.add_table(rows = 3, cols = 5) # Number of Rows will be changed depending on the case
+      t.style = 'Table Grid'
+
+      for i in np.arange(5):
+          cell = t.cell(0,i)
+          
+          if i == 1:
+              cell.text = Attributes[i]
+              paragraph = cell.paragraphs[0]
+              run = paragraph.runs
+              for run in paragraph.runs:
+                 run.font.size = Pt(12)
+                 run.font.bold = True 
+                 paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+
+          elif i == 2:
+              continue
+          else:
+              cell.text = Attributes[i]
+              paragraph = cell.paragraphs[0]
+              run = paragraph.runs
+              for run in paragraph.runs:
+                 run.font.size = Pt(12)
+                 run.font.bold = True 
+              paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+          cell.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+      
+      set_col_widths(t)
+      cell1 = t.cell(0,1)
+      cell2 = t.cell(0,2)
+      cell1.merge(cell2)
+
+      # Check if the last paragraph is the undesired section title
+      if document.paragraphs[-1].text == "Part II: Primary Packaging":
+         # If so, remove it
+         document.paragraphs[-1]._element.getparent().remove(document.paragraphs[-1]._element)
+
+
+      ########################
+      ## Addition of Step 1 ##
+      ########################
+      step = t.cell(1,0)
+      step.text = str(stepNum)
+      stepNum += 1
+      paragraph = step.paragraphs[0]
+      paragraph.paragraph_format.space_before = Pt(12)
+      paragraph.paragraph_format.space_after = Pt(12)
+      format_cell(step, WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.TOP,11, False)
+
+      cell = t.cell(1,1)
+      cell.text = "This is the addition of Step 1 of Process "+stepName
+      paragraph = cell.paragraphs[0]
+      paragraph.paragraph_format.space_before = Pt(12)
+      paragraph.paragraph_format.space_after = Pt(12)
+      format_cell(cell, WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.TOP,11, False)
+
+      input = t.cell(1,2)
+      input.text = "Record Something\n (Unit1)(Unit2)"
+      format_cell(input, WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.TOP,10, False)
+
+      ########################
+      ## Addition of Step 2 ##
+      ########################
+      step = t.cell(2,0)
+      step.text = str(stepNum)
+      stepNum += 1
+      paragraph = step.paragraphs[0]
+      paragraph.paragraph_format.space_before = Pt(12)
+      paragraph.paragraph_format.space_after = Pt(12)
+      format_cell(step, WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.TOP,11, False)
+
+      cell1 = t.cell(2,1)
+      cell2 = t.cell(2,2)
+      cell1.merge(cell2)
+      cell1.text = "This is the addition of Step 2 of Process "+stepName
+      paragraph = cell1.paragraphs[0]
+      paragraph.paragraph_format.space_before = Pt(12)
+      paragraph.paragraph_format.space_after = Pt(12)
+      format_cell(cell1, WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.TOP,11, False)
+
+####################################################
+##      Framework for Cotton Filler Inserting     ##
+####################################################
+if cotton:
+   stepNum += 1
+   stepName = 'Cotton Filler Inserting'
+   
+   with st.expander('Select Steps for '+stepName+' Process',expanded=True):
+      st.caption(stepName)
+      # Breaking the page - > This will be add one more time if the process is longer to have two pages  
+      Attributes = ['Step',
+                    alphabet[alphaNum]+'. '+stepName+' Process',
+                    '',
+                    'Done\n By /\nDate',
+                    'Check\n By /\nDate']
+      
+      t = document.add_table(rows = 3, cols = 5) # Number of Rows will be changed depending on the case
+      t.style = 'Table Grid'
+
+      for i in np.arange(5):
+          cell = t.cell(0,i)
+          
+          if i == 1:
+              cell.text = Attributes[i]
+              paragraph = cell.paragraphs[0]
+              run = paragraph.runs
+              for run in paragraph.runs:
+                 run.font.size = Pt(12)
+                 run.font.bold = True 
+                 paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+
+          elif i == 2:
+              continue
+          else:
+              cell.text = Attributes[i]
+              paragraph = cell.paragraphs[0]
+              run = paragraph.runs
+              for run in paragraph.runs:
+                 run.font.size = Pt(12)
+                 run.font.bold = True 
+              paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+          cell.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+      
+      set_col_widths(t)
+      cell1 = t.cell(0,1)
+      cell2 = t.cell(0,2)
+      cell1.merge(cell2)
+
+      # Check if the last paragraph is the undesired section title
+      if document.paragraphs[-1].text == "Part II: Primary Packaging":
+         # If so, remove it
+         document.paragraphs[-1]._element.getparent().remove(document.paragraphs[-1]._element)
+
+
+      ########################
+      ## Addition of Step 1 ##
+      ########################
+      step = t.cell(1,0)
+      step.text = str(stepNum)
+      stepNum += 1
+      paragraph = step.paragraphs[0]
+      paragraph.paragraph_format.space_before = Pt(12)
+      paragraph.paragraph_format.space_after = Pt(12)
+      format_cell(step, WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.TOP,11, False)
+
+      cell = t.cell(1,1)
+      cell.text = "This is the addition of Step 1 of Process "+stepName
+      paragraph = cell.paragraphs[0]
+      paragraph.paragraph_format.space_before = Pt(12)
+      paragraph.paragraph_format.space_after = Pt(12)
+      format_cell(cell, WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.TOP,11, False)
+
+      input = t.cell(1,2)
+      input.text = "Record Something\n (Unit1)(Unit2)"
+      format_cell(input, WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.TOP,10, False)
+
+      ########################
+      ## Addition of Step 2 ##
+      ########################
+      step = t.cell(2,0)
+      step.text = str(stepNum)
+      stepNum += 1
+      paragraph = step.paragraphs[0]
+      paragraph.paragraph_format.space_before = Pt(12)
+      paragraph.paragraph_format.space_after = Pt(12)
+      format_cell(step, WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.TOP,11, False)
+
+      cell1 = t.cell(2,1)
+      cell2 = t.cell(2,2)
+      cell1.merge(cell2)
+      cell1.text = "This is the addition of Step 2 of Process "+stepName
+      paragraph = cell1.paragraphs[0]
+      paragraph.paragraph_format.space_before = Pt(12)
+      paragraph.paragraph_format.space_after = Pt(12)
+      format_cell(cell1, WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.TOP,11, False)
+
+###################################
+##      Framework for Sealer     ##
+###################################
+if cotton:
+   stepNum += 1
+   stepName = 'Sealer'
+   
+   with st.expander('Select Steps for '+stepName+' Process',expanded=True):
+      st.caption(stepName)
+      # Breaking the page - > This will be add one more time if the process is longer to have two pages  
+      Attributes = ['Step',
+                    alphabet[alphaNum]+'. '+stepName+' Process',
+                    '',
+                    'Done\n By /\nDate',
+                    'Check\n By /\nDate']
+      
+      t = document.add_table(rows = 3, cols = 5) # Number of Rows will be changed depending on the case
+      t.style = 'Table Grid'
+
+      for i in np.arange(5):
+          cell = t.cell(0,i)
+          
+          if i == 1:
+              cell.text = Attributes[i]
+              paragraph = cell.paragraphs[0]
+              run = paragraph.runs
+              for run in paragraph.runs:
+                 run.font.size = Pt(12)
+                 run.font.bold = True 
+                 paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+
+          elif i == 2:
+              continue
+          else:
+              cell.text = Attributes[i]
+              paragraph = cell.paragraphs[0]
+              run = paragraph.runs
+              for run in paragraph.runs:
+                 run.font.size = Pt(12)
+                 run.font.bold = True 
+              paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+          cell.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+      
+      set_col_widths(t)
+      cell1 = t.cell(0,1)
+      cell2 = t.cell(0,2)
+      cell1.merge(cell2)
+
+      # Check if the last paragraph is the undesired section title
+      if document.paragraphs[-1].text == "Part II: Primary Packaging":
+         # If so, remove it
+         document.paragraphs[-1]._element.getparent().remove(document.paragraphs[-1]._element)
+
+
+      ########################
+      ## Addition of Step 1 ##
+      ########################
+      step = t.cell(1,0)
+      step.text = str(stepNum)
+      stepNum += 1
+      paragraph = step.paragraphs[0]
+      paragraph.paragraph_format.space_before = Pt(12)
+      paragraph.paragraph_format.space_after = Pt(12)
+      format_cell(step, WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.TOP,11, False)
+
+      cell = t.cell(1,1)
+      cell.text = "This is the addition of Step 1 of Process "+stepName
+      paragraph = cell.paragraphs[0]
+      paragraph.paragraph_format.space_before = Pt(12)
+      paragraph.paragraph_format.space_after = Pt(12)
+      format_cell(cell, WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.TOP,11, False)
+
+      input = t.cell(1,2)
+      input.text = "Record Something\n (Unit1)(Unit2)"
+      format_cell(input, WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.TOP,10, False)
+
+      ########################
+      ## Addition of Step 2 ##
+      ########################
+      step = t.cell(2,0)
+      step.text = str(stepNum)
+      stepNum += 1
+      paragraph = step.paragraphs[0]
+      paragraph.paragraph_format.space_before = Pt(12)
+      paragraph.paragraph_format.space_after = Pt(12)
+      format_cell(step, WD_PARAGRAPH_ALIGNMENT.CENTER, WD_ALIGN_VERTICAL.TOP,11, False)
+
+      cell1 = t.cell(2,1)
+      cell2 = t.cell(2,2)
+      cell1.merge(cell2)
+      cell1.text = "This is the addition of Step 2 of Process "+stepName
+      paragraph = cell1.paragraphs[0]
+      paragraph.paragraph_format.space_before = Pt(12)
+      paragraph.paragraph_format.space_after = Pt(12)
+      format_cell(cell1, WD_PARAGRAPH_ALIGNMENT.LEFT, WD_ALIGN_VERTICAL.TOP,11, False)
+
 #################################################################################
 
 ## ---- Secondary Packaging ------------------------------
