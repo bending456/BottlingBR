@@ -624,6 +624,41 @@ if sachet:
       cell2 = t.cell(0,2)
       cell1.merge(cell2)
 
+
+      document.add_page_break()
+      t = document.add_table(rows = 3, cols = 5) # Number of Rows will be changed depending on the case
+      t.style = 'Table Grid'
+
+      for i in np.arange(5):
+          cell = t.cell(0,i)
+          
+          if i == 1:
+              cell.text = Attributes[i]
+              paragraph = cell.paragraphs[0]
+              run = paragraph.runs
+              for run in paragraph.runs:
+                 run.font.size = Pt(12)
+                 run.font.bold = True 
+                 paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+
+          elif i == 2:
+              continue
+          else:
+              cell.text = Attributes[i]
+              paragraph = cell.paragraphs[0]
+              run = paragraph.runs
+              for run in paragraph.runs:
+                 run.font.size = Pt(12)
+                 run.font.bold = True 
+              paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+          cell.vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+      
+      set_col_widths(t)
+      cell1 = t.cell(0,1)
+      cell2 = t.cell(0,2)
+      cell1.merge(cell2)
+
+
       ########################
       ## Addition of Step 1 ##
       ########################
