@@ -561,15 +561,15 @@ if primary:
    ##-----------------------
    cell = table.cell(3,1)
    paragraph = cell.paragraphs[0]
-   line1 = "Using the space provided, printweigh 10 kg of "+prodTypeplural+" into a clean, tared, double polyethylene liner. Record the scale number in the space provided. Prepare the material to complete the EFS Learn per the example below.\n"
-   line2 = "Example of prepared capsules: Remove quantity of banded capsules from the bulk containers. Manipulating the bag in a manner that is cGMP compliant as to separate any conjoined capsules before charging into the fill hopper of the Swiftpharm.\n"  
+   line1 = "\nUsing the space provided, printweigh 10 kg of "+prodTypeplural+" into a clean, tared, double polyethylene liner. Record the scale number in the space provided. Prepare the material to complete the EFS Learn per the example below.\n\n"
+   line2 = "Example of prepared capsules: Remove quantity of banded capsules from the bulk containers. Manipulating the bag in a manner that is cGMP compliant as to separate any conjoined capsules before charging into the fill hopper of the Swiftpharm.\n\n"  
    line3 = f"Note: Perform a 100% inspection on the 10 kg of prepared capsules to ensure that there are no defects found as a result of the manipulation prior to charging (e.g. incomplete band/crack in band, scrape marks on band twinned capsules). Any defect found prior to the introduction of the product to the batch does not count toward the defect allowance for the batch. The prepared capsules should also be inspected for foreign matter (e.g. pieces of the liner) that could be introduced as a result of the manipulation. This material will be used for processing once the EFS Learn is complete."
    run1 = paragraph.add_run(line1)
    run1.font.size = Pt(11)
    run2 = paragraph.add_run(line2)
    run2.bold = True
    run2.font.size = Pt(11)
-   run3 = paragraph.add_run(line3)
+   run3 = paragraph.add_run(line3+'\n')
    run3.bold = True
    run3.font.size = Pt(11)
    #document.add_page_break()
