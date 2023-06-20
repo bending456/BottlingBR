@@ -244,15 +244,6 @@ if primary:
    st.markdown('#### Primary Packaging Step Selection')
    st.markdown('##### Primary Material Information')
 
-   ######################################
-   ## Loading up the excel spreadsheet ##
-   ######################################
-   primary_excel = pd.ExcelFile('primary_steps.xlsx')
-   Sachet_steps = pd.read_excel(primary_excel,'Sachet')
-   Canister_steps = pd.read_excel(primary_excel,'Canister')
-   Cotton_steps = pd.read_excel(primary_excel,'Cotton')
-   Sealer_steps = pd.read_excel(primary_excel,'Sealer')
-
    ############################
    ## Primary Material Setup ##
    ############################
